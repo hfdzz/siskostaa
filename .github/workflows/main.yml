@@ -26,3 +26,11 @@ jobs:
         password: ${{ secrets.FTP_PASSWORD }}
         # Server port to connect to (read your web hosts docs)
         port: 21
+        # An array of glob patterns, these files will not be included in the publish/delete process
+        exclude: |
+          **/.git*
+          **/.git*/**
+          **/node_modules/**
+          **/.editorconfig
+          **/.env.example
+          **/README.md
