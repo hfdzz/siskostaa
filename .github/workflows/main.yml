@@ -1,9 +1,19 @@
 name: Deploy site to live
 on:
   push:
+    paths-ignore:
+      - 'README.md'
+      - '.editorconfig'
+      - '.env.example'
+      - '**/.git*'
     branches: 
     - stable(LIVE)
   pull_request:
+    paths-ignore:
+      - 'README.md'
+      - '.editorconfig'
+      - '.env.example'
+      - '**/.git*'
     branches:
     - stable(LIVE)
   # manual trigger
