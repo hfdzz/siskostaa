@@ -2,7 +2,10 @@ name: Deploy site to live
 on:
   push:
     branches: 
-    - main
+    - stable(LIVE)
+  pull_request:
+    branches:
+    - stable(LIVE)
   # manual trigger
   workflow_dispatch:
 jobs:
