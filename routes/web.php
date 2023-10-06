@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,24 +20,36 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// artisan command line interface in laravel
-Route::get('/artisan-cli', function () {
-    return view('artisan-cli');
-})->name('artisan-cli');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::post('/artisan-cli', function (Request $request) {
-    $request->validate([
-        'command' => 'required|string',
-    ]);
-    try {
-        Artisan::call($request->input('command'));
-    } catch (\Exception $e) {
-        return view('artisan-cli', [
-            'output' => $e->getMessage(),
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    // artisan command line interface in laravel
+    Route::get('/artisan-cli', function () {
+        return view('artisan-cli');
+    })->name('artisan-cli');
+
+    Route::post('/artisan-cli', function (Request $request) {
+        $request->validate([
+            'command' => 'required|string',
         ]);
-    }
-    $output = Artisan::output();
-    return view('artisan-cli', [
-        'output' => $output,
-    ]);
-})->name('artisan-cli');
+        try {
+            Artisan::call($request->input('command'));
+        } catch (\Exception $e) {
+            return view('artisan-cli', [
+                'output' => $e->getMessage(),
+            ]);
+        }
+        $output = Artisan::output();
+        return view('artisan-cli', [
+            'output' => $output,
+        ]);
+    })->name('artisan-cli');
+});
+
+require __DIR__.'/auth.php';
