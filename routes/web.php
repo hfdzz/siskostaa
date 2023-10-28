@@ -18,6 +18,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('berandauser');
 });
+Route::get('/pesan', function () {
+    return view('pemesananuser');
+});
+
 
 // artisan command line interface in laravel
 Route::get('/artisan-cli', function () {
