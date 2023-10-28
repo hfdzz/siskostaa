@@ -137,7 +137,7 @@
     <div class="mt-3 d-flex justify-content-center">
       <div class="card mt-4" style="width: 60rem">
         <div class="card-body text-center">
-          <h3 class="title">Frequently Asked Question</h3>
+          <h3 class="title">Frequently Asked <span style="color: #84545a">Question</span></h3>
         </div>
         <div class="row">
           <div class="col-6">
@@ -179,7 +179,7 @@
 
     <div class="mt-3 d-flex justify-content-center">
       <div class="card mt-4" style="width: 60rem; background-color: #ffcdba; border-radius: 40px">
-        <h3 class="title text-center">Lokasi Kami</h3>
+        <h3 class="title text-center"><span style="color: #84545a">Lokasi</span>Kami</h3>
         <div class="card-body d-flex justify-content-center">
           <img src="./Assets/Lokasi.png" class="card-img-top" style="width: 50rem; height: 25rem" alt="..." />
         </div>
