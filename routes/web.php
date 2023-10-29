@@ -24,6 +24,9 @@ Route::get('/pesan', function () {
 Route::get('/statuspesan', function () {
     return view('user.statuspemesanan');
 });
+Route::get('/editprofile', function () {
+    return view('user.editprofile');
+});
 Route::get('/login', function () {
     return view('user.login');
 });
