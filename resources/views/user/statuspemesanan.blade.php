@@ -20,11 +20,14 @@
             <a class="nav-link" href="#">Pemesanan</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="#">Username</a>
+        </li>
+          {{-- <li class="nav-item">
             <a class="nav-link" href="#">Login</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" style="border-radius: 20px; background: #383950; color: white" href="#">Register</a>
-          </li>
+          </li> --}}
         </ul>
       </div>
     </nav>
