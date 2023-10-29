@@ -24,6 +24,9 @@ Route::get('/pesan', function () {
 Route::get('/statuspesan', function () {
     return view('user.statuspemesanan');
 });
+Route::get('/login', function () {
+    return view('user.login');
+});
 
 
 // artisan command line interface in laravel
