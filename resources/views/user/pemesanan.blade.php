@@ -7,6 +7,20 @@
     <link rel="stylesheet" href="nav.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
     <title>Pemesanan</title>
+   
+   <style>
+    .form-group {
+      border: none; 
+      border-bottom: 1px solid black;
+      margin-bottom: 20px;
+    }
+
+    .form-control {
+      border: none;
+    }
+  </style>
+
+
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -60,6 +74,10 @@
             <div class="form-group">
               <label for="kampus">Asal Kampus:</label>
               <input type="text" class="form-control" id="kampus" name="kampus" required />
+            </div>
+            <div class="form-group">
+              <label for="nik">NIK:</label>
+              <input type="text" class="form-control" id="nik" name="nik" required />
             </div>
             <div class="form-group">
               <label for="jenis_kelamin">Jenis Kelamin:</label>
