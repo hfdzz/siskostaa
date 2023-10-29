@@ -27,6 +27,9 @@ Route::get('/statuspesan', function () {
 Route::get('/login', function () {
     return view('user.login');
 });
+Route::get('/regis', function () {
+    return view('user.registrasi');
+});
 
 
 // artisan command line interface in laravel
