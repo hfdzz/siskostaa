@@ -28,16 +28,16 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="#">Beranda</a>
+            <a class="nav-link" href="/">Beranda</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Pemesanan</a>
+            <a class="nav-link" href="/pesan">Pemesanan</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Login</a>
+            <a class="nav-link" href="/login">Login</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" style="border-radius: 20px; background: #383950; color: white" href="#">Register</a>
+            <a class="nav-link" style="border-radius: 20px; background: #383950; color: white" href="/regis">Register</a>
           </li>
         </ul>
       </div>
