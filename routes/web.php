@@ -28,19 +28,14 @@ Route::get('/statuspesan', function () {
 Route::get('/editprofile', function () {
     return view('user.editprofile');
 });
-Route::get('/login', function () {
-    return view('user.login');
-});
+
 Route::get('/regis', function () {
-    return view('user.registrasi');
+    return redirect()->route('registrasi');
 });
 
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', function () {return view('dashboard');})->name('dashboard');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -65,7 +60,7 @@ Route::middleware('auth')->group(function () {
         return view('artisan-cli', [
             'output' => $output,
         ]);
-    })->name('artisan-cli');
+    });
 });
 
 require __DIR__.'/auth.php';

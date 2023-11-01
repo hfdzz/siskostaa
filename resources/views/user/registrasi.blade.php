@@ -149,31 +149,40 @@
       <div class="textH2">Daftar untuk Pesan Kost Sekarang!</div>
     </div>
     <div class="Semua">
-      <div class="Form">
-        <div class="FormField">
-          <div class="FormFieldLabel">Nama</div>
-          <input type="text" class="FormFieldInput">
+      <form action={{ route('registrasi') }} method="POST">
+        @csrf
+        <div class="Form">
+          <div class="FormField">
+            <div class="FormFieldLabel">Nama</div>
+            <input type="text" class="FormFieldInput" name="nama">
+          </div>
+          <div class="FormField">
+            <div class="FormFieldLabel">Email</div>
+            <input type="text" class="FormFieldInput" name="email">
+          </div>
+          <div class="FormField">
+            <div class="FormFieldLabel">Password</div>
+            <input type="password" class="FormFieldInput" name="password">
+          </div>
+          <div class="FormField">
+            <div class="FormFieldLabel">Retype Password</div>
+            <input type="password" class="FormFieldInput" name="password_confirmation">
+          </div>
         </div>
-        <div class="FormField">
-          <div class="FormFieldLabel">Username</div>
-          <input type="text" class="FormFieldInput">
-        </div>
-        <div class="FormField">
-          <div class="FormFieldLabel">Email</div>
-          <input type="text" class="FormFieldInput">
-        </div>
-        <div class="FormField">
-          <div class="FormFieldLabel">Password</div>
-          <input type="password" class="FormFieldInput">
-        </div>
-        <div class="FormField">
-          <div class="FormFieldLabel">Retype Password</div>
-          <input type="password" class="FormFieldInput">
-        </div>
-      </div>
-      <div class="Button" style="margin-top: 20px;">
-        <div class="RegisButton">Registrasi</div>
-      </div>
+        {{-- input error div --}}
+        @if ($errors->any())
+          <div class="alert alert-danger" style="margin-top: 20px;">
+            <ul style="margin-bottom: 0px;">
+              @foreach ($errors->all() as $error)
+                <li style="list-style-type: none;">{{ $error }}</li>
+              @endforeach
+            </ul>
+          </div>
+        @endif
+        <button type="submit" class="Button" style="margin-top: 20px;">
+          <div class="RegisButton">Registrasi</div>
+        </button>
+      </form>
 
     </div>
   </div>

@@ -143,29 +143,41 @@
     </div>
   </nav>
   <div class="Login">
-    <div class="Top">
-      <div class="LoginTitle">Login</div>
-      <div class="AyoLoginText">Ayo Login dan Pesan Kost Sekarang!</div>
-    </div>
-    <div class="Semua">
-      <div class="Form">
-        <div class="FormField">
-          <div class="FormFieldLabel">Email</div>
-          <input type="text" class="FormFieldInput">
-        </div>
-        <div class="FormField">
-          <div class="FormFieldLabel">Password</div>
-          <input type="password" class="FormFieldInput">
-        </div>
+    <form action="{{ route('login') }}" method="POST">
+      @csrf
+      <div class="Top">
+        <div class="LoginTitle">Login</div>
+        <div class="AyoLoginText">Ayo Login dan Pesan Kost Sekarang!</div>
       </div>
-      <div class="Button">
-        <div class="LoginButton">Login</div>
+      <div class="Semua">
+        <div class="Form">
+          <div class="FormField">
+            <div class="FormFieldLabel">Email</div>
+            <input type="text" class="FormFieldInput" name="email">
+          </div>
+          <div class="FormField">
+            <div class="FormFieldLabel">Password</div>
+            <input type="password" class="FormFieldInput" name="password">
+          </div>
+        </div>
+        @if ($errors->any())
+          <div class="alert alert-danger">
+            <ul>
+              @foreach ($errors->all() as $error) 
+                <li>{{ $error }}</li>
+              @endforeach
+            </ul>
+          </div>
+        @endif
+        <button type="submit" class="Button">
+          <div class="LoginButton">Login</div>
+        </button>
       </div>
-    </div>
-    <div class="BelumPunyaAkunSignUp">
-      <span>Belum punya akun?</span>
-      <a class="SignUpLink" href="#">Sign Up</a>
-    </div>
+      <div class="BelumPunyaAkunSignUp">
+        <span>Belum punya akun?</span>
+        <a class="SignUpLink" href="#">Sign Up</a>
+      </div>
+    </form>
   </div>
 
   <footer class="text-white" style="background-color: #383950">
