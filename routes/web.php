@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PesanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,9 +20,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('user.beranda');
 });
-Route::get('/pesan', function () {
-    return view('user.pemesanan');
-});
+
+Route::get('/pesan', [PesanController::class, 'create'])->name('pesan');
+
+Route::post('/pesan', [PesanController::class, 'store']);
+
 Route::get('/statuspesan', function () {
     return view('user.statuspemesanan');
 });

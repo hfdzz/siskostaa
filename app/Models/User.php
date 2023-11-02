@@ -23,10 +23,6 @@ class User extends Authenticatable
         'email',
         'password',
         'nama',
-        'jenis_kelamin',
-        'nik',
-        'no_hp',
-        'perguruan_tinggi',
     ];
 
     /**
@@ -48,4 +44,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function pemesanan()
+    {
+        return $this->hasMany(Pemesanan::class);
+    }
 }

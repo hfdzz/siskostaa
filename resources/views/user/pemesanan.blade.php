@@ -58,7 +58,8 @@
       <div class="card mt-4" style="width: 70rem">
         <div class="card-body">
           <h3 class="card-title text-center">Pesan Kost Kami <span style="color: #84545A">Sekarang!</span></h3>
-          <form>
+          <form action="{{ route('pesan') }}" method="POST">
+            @csrf
             <div class="form-group">
               <label for="nama">Nama:</label>
               <input type="text" class="form-control" id="nama" name="nama" required />
@@ -73,7 +74,7 @@
             </div>
             <div class="form-group">
               <label for="kampus">Asal Kampus:</label>
-              <input type="text" class="form-control" id="kampus" name="kampus" required />
+              <input type="text" class="form-control" id="kampus" name="perguruan_tinggi" required />
             </div>
             <div class="form-group">
               <label for="nik">NIK:</label>
@@ -82,30 +83,39 @@
             <div class="form-group">
               <label for="jenis_kelamin">Jenis Kelamin:</label>
               <select class="form-control" id="jenis_kelamin" name="jenis_kelamin" required>
-                <option value="Laki-laki">Laki-laki</option>
-                <option value="Perempuan">Perempuan</option>
+                <option value="L">Laki-laki</option>
+                <option value="P">Perempuan</option>
               </select>
             </div>
             <div class="form-group">
               <label for="tgl_masuk">Tanggal Masuk Kost:</label>
-              <input type="date" class="form-control" id="tgl_masuk" name="tgl_masuk" required />
+              <input type="date" class="form-control" id="tgl_masuk" name="tanggal_masuk" required />
             </div>
             <div class="form-group">
               <label for="jenis_kamar">Jenis Kamar Kost:</label>
               <select class="form-control" id="jenis_kamar" name="jenis_kamar" required>
-                <option value="Kamar Mandi Dalam">AC</option>
-                <option value="Kamar Mandi Luar">Non AC</option>
+                <option value="ac">AC</option>
+                <option value="non_ac">Non AC</option>
               </select>
             </div>
             <div class="form-group">
               <label for="jenis_pembayaran">Jenis Pembayaran:</label>
               <select class="form-control" id="jenis_pembayaran" name="jenis_pembayaran" required>
-                <option value="Bulanan">Pembayaran Penuh</option>
-                <option value="Tahunan">Pembayaran DP</option>
+                <option value="penuh">Pembayaran Penuh</option>
+                <option value="dp">Pembayaran DP</option>
               </select>
             </div>
+            @if ($errors->any())
+              <div class="alert alert-danger">
+                <ul>
+                  @foreach ($errors->all() as $error)
+                      <li>{{ $error }}</li>
+                  @endforeach
+                </ul>
+              </div>
+            @endif
             <div class="button  text-center">
-                <a href="#" class="btn btn-primary btn-block" style="background-color: #84545a">Pesan Sekarang</a>
+                <button type="submit" class="btn btn-primary btn-block" style="background-color: #84545a">Pesan Sekarang</button>
             </div>
             <p>*Pembayaran dilakukan setelah pesanan divalidasi oleh admin</p>
           </form>
