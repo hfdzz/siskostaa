@@ -47,18 +47,16 @@
       <div class="col-10" style="min-height: 50vh">
         <h2 class="text-block">Edit Your Profile</h2>
 
-        <form>
+        <form action="{{ route('profile.update') }}" method="post">
+          @csrf
+          @method('PATCH')
           <div class="form-group">
             <label for="name">Name:</label>
-            <input type="text" class="form-control" id="name" name="name" />
-          </div>
-          <div class="form-group">
-            <label for="username">Username:</label>
-            <input type="text" class="form-control" id="username" name="username" />
+            <input type="text" class="form-control" id="name" name="nama" value="{{ $user->nama }}" />
           </div>
           <div class="form-group">
             <label for="email">Email:</label>
-            <input type="email" class="form-control" id="email" name="email" />
+            <input type="email" class="form-control" id="email" name="email" value="{{ $user->email }}" />
           </div>
           <div class="form-group">
             <label for="password">Password:</label>
@@ -66,8 +64,21 @@
           </div>
           <div class="form-group">
             <label for="retypePassword">Retype Password:</label>
-            <input type="password" class="form-control" id="retypePassword" name="retypePassword" />
+            <input type="password" class="form-control" id="retypePassword" name="password_confirmation" />
           </div>
+          @if ($errors->any())
+            <div class="alert alert-danger">
+              <ul class="m-0">
+                @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+                @endforeach
+              </ul>
+            </div>
+          @elseif (session('status'))
+            <div class="alert alert-success">
+              {{ session('status') }}
+            </div>
+          @endif
           <div class="button justify-content-end d-flex">
             <button type="button" class="btn">Cancel</button>
             <button type="submit" class="btn btn-primary">Save</button>
