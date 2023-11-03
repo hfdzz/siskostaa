@@ -26,14 +26,14 @@ class PesanController extends Controller
     {
         $request->validate([
             'nama' => 'required|string',
-            'email' => 'required|string',
-            'no_hp' => 'required|string',
+            'email' => 'required|email',
+            'no_hp' => 'required|string|regex:/^[0-9]+$/',
             'perguruan_tinggi' => 'required|string',
-            'nik' => 'required|string',
-            'jenis_kelamin' => 'required|string',
-            'tanggal_masuk' => 'required|string',
-            'jenis_kamar' => 'required|string',
-            'jenis_pembayaran' => 'required|string',
+            'nik' => 'required|string|size:16',
+            'jenis_kelamin' => 'required|string|in:L,P',
+            'tanggal_masuk' => 'required|date',
+            'jenis_kamar' => 'required|string|in:ac,non-ac',
+            'jenis_pembayaran' => 'required|string|in:penuh,dp',
         ]);
 
         // check if user already logged in
@@ -45,7 +45,7 @@ class PesanController extends Controller
         /** @var \App\Models\User $user **/
         $user = auth()->user();
         if ($user->pemesanan()->where('status_pemesanan', '!=', self::$status_pemesanan['selesai'])->exists()) {
-            return redirect()->route('pesan')->withErrors(['Anda sudah memiliki pemesanan yang belum selesai']);
+            return redirect()->route('pesan')->withErrors(['pemesanan' => 'Anda sudah memiliki pemesanan yang belum selesai']);
         }
 
         $pemesanan = Pemesanan::create([
