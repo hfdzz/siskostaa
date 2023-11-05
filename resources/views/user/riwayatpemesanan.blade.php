@@ -21,11 +21,17 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#">Beranda</a>
+          <a class="nav-link" href="/">Beranda</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Pemesanan</a>
+          <a class="nav-link" href="/pesan">Pemesanan</a>
         </li>
+        <li class="nav-item">
+            <a class="navbar-brand" href="#">
+              <img src="./Assets/profil.png" width="30" height="30" class="d-inline-block align-top" alt="">
+              Username
+            </a>
+          </li>
       </ul>
     </div>
   </nav>

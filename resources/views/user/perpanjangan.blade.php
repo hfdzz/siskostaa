@@ -21,11 +21,17 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#">Beranda</a>
+          <a class="nav-link" href="/">Beranda</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Pemesanan</a>
+          <a class="nav-link" href="/pesan">Pemesanan</a>
         </li>
+        <li class="nav-item">
+            <a class="navbar-brand" href="#">
+              <img src="./Assets/profil.png" width="30" height="30" class="d-inline-block align-top" alt="">
+              Username
+            </a>
+          </li>
       </ul>
     </div>
   </nav>
@@ -135,8 +141,8 @@
         <div class="col-2"></div>
         <div class="col-md-2 mt-4">
           <h4 class="text-bold">Tautan Cepat</h4>
-          <a class="d-block" href="#">Beranda</a>
-          <a class="d-block" href="#">Pemesanan</a>
+          <a class="d-block" href="/">Beranda</a>
+          <a class="d-block" href="/pesan">Pemesanan</a>
           <!-- <a class="d-block" href="#">Login</a>
           <a class="d-block" href="#">Register</a> -->
         </div>

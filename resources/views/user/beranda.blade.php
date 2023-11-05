@@ -6,29 +6,46 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
     <link rel="stylesheet" href="nav.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/iconoir-icons/iconoir@main/css/iconoir.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-    <title>Navbar Kost Abang Adek</title>
+    <title>Beranda Kost Abang Adek</title>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Kost Abang Adek</a>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="#">Beranda</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href='/pesan'>Pemesanan</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/login">Login</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" style="border-radius: 20px; background: #383950; color: white" href="/regis">Register</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
+        <a class="navbar-brand" href="#">Kost Abang Adek</a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Beranda</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href='/pesan'>Pemesanan</a>
+            </li>
+            @auth        
+            <li class="nav-item dropdown">
+              <button class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img src="./Assets/profil.png" width="30" height="30" class="d-inline-block align-top" alt="">
+                {{ Auth::user()->nama }}
+              </button>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="/editprofile">Edit Profil</a>
+                <a class="dropdown-item" href="/riwayat-pemesanan">Riwayat Pemesanan</a>
+                <a class="dropdown-item" href="/perpanjangan">Perpanjangan</a>
+              </div>
+            </li>
+
+            @else
+            <li class="nav-item">
+              <a class="nav-link" href="/register">Register</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" style="border-radius: 20px; background: #383950; color: white" href="/login">Login</a>
+            </li>
+            @endauth
+          </ul>
+        </div>
+      </nav>
+
     <div style="display: flex; justify-content: center">
       <div class="card custom-bg rounded" style="width: 70rem; height: 30rem">
         <div class="card-body">
@@ -38,6 +55,7 @@
             <strong>Asri</strong>
           </h1>
           <p>Kost Abang Adek Jawabanya</p>
+          <p>Welcome, {{ Auth::user()->nama ?? 'Guest' }}</p>
         </div>
       </div>
     </div>
@@ -215,10 +233,10 @@
           <div class="col-2"></div>
           <div class="col-md-2 mt-4">
             <h4 class="text-bold">Tautan Cepat</h4>
-            <a class="d-block" href="#">Beranda</a>
-            <a class="d-block" href="#">Pemesanan</a>
-            <a class="d-block" href="#">Login</a>
-            <a class="d-block" href="#">Register</a>
+            <a class="d-block" href="/">Beranda</a>
+            <a class="d-block" href="/pesan">Pemesanan</a>
+            <a class="d-block" href="/login">Login</a>
+            <a class="d-block" href="/regis">Register</a>
           </div>
         </div>
       </div>
@@ -226,5 +244,10 @@
         <p style="color: black">Copyright&copy 2023 Kost Abang Adek</p>
       </div>
     </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
   </body>
 </html>

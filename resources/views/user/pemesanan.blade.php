@@ -33,12 +33,31 @@
           <li class="nav-item">
             <a class="nav-link" href="/pesan">Pemesanan</a>
           </li>
+          @auth
+            <li class="nav-item">
+              <a class="nav-link" href="/dashboard">{{ Auth::user()->name }}</a>
+            </li>
+            <li class="nav-item">
+              <form action="{{ route('logout') }}" method="POST">
+                @csrf
+                <button type="submit" class="nav-link" style="border: none; background: none;">Logout</button>
+              </form>
+            </li>
+            @else
+            <li class="nav-item">
+              <a class="nav-link" href="/register">Register</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" style="border-radius: 20px; background: #383950; color: white" href="/login">Login</a>
+            </li>
+            @endauth
+<!--           
           <li class="nav-item">
             <a class="nav-link" href="/login">Login</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" style="border-radius: 20px; background: #383950; color: white" href="/regis">Register</a>
-          </li>
+          </li> -->
         </ul>
       </div>
     </nav>
