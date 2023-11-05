@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="nav.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 
-  <title>Riwayat Pemesanan</title>
+  <title>Bayar</title>
   <style>
     /* Custom CSS for the table to make it responsive */
     .table-responsive {
@@ -21,10 +21,10 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#">Beranda</a>
+          <a class="nav-link" href="/">Beranda</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Pemesanan</a>
+          <a class="nav-link" href="/pesan">Pemesanan</a>
         </li>
       </ul>
     </div>
@@ -77,9 +77,26 @@
       </div>
     </div>
 
-    
+    <div class="col-md-10">
+        <h3 class="modal-title ml-3" id="modalPembayaranLabel">Pembayaran</h3>
+        <div class="modal-body text-center" style="margin-top: 70px">
+          <p class="font-weight-bold">Silahkan Lakukan Pembayaran</p>
+          <p class="font-weight-bold">Ke Nomor Rekening Ini:</p>
+          <p class="font-weight-bold" style="margin-top: 70px">BNI xxxxxxxxxxxxxx</p>
+          <p class="font-weight-bold">Atas Nama:</p>
+          <p class="font-weight-bold">Syafrial</p>
+        </div>
+        <div class="modal-body text-center">
+          <p class="font-weight-bold">Masukkan Bukti Pembayaran:</p>
+          <input type="file"  name="bukti_pembayaran" id="bukti_pembayaran" class="form-control">
+        </div>
+        <div class="text-center mt-5"> <!-- Tambahkan div text-center -->
+          <button class="btn btn-primary">Submit Bukti Pembayaran</button>
+        </div>
+      </div>
+          
+</div>
 
-  </div>
   <footer class="text-white" style="background-color: #383950">
     <div class="container">
       <div class="row justify-content-center">
