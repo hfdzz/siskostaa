@@ -86,6 +86,19 @@
           <p class="font-weight-bold">Atas Nama:</p>
           <p class="font-weight-bold">Syafrial</p>
         </div>
+        <div class="modal-body text-center">
+          <p class="font-weight-bold">Masukkan Bukti Pembayaran:</p>
+          <div class="modal-body">
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" name="bukti_pembayaran" id="bukti_pembayaran" accept="image/*">
+              <label class="custom-file-label" for="bukti_pembayaran">Browse Image</label>
+            </div>
+          </div>
+          
+        </div>
+        <div class="text-center mt-5">
+          <button class="btn btn-primary">Submit Bukti Pembayaran</button>
+        </div>
       </div>
           
 </div>
@@ -127,21 +140,6 @@
   </footer>
 
 
-<!-- <script>
-  const perpanjanganBtn = document.getElementById("perpanjanganBtn");
-  perpanjanganBtn.addEventListener("click", function() {
-    if (confirm("Apakah Anda yakin untuk melanjutkan perpanjangan kos?")) {
-      alert("Anda memilih YA. Silahkan Melanjutkan Pembayaran");
-    } 
-  });
-
-  const tidakPerpanjanganBtn = document.getElementById("tidakPerpanjanganBtn");
-  tidakPerpanjanganBtn.addEventListener("click", function() {
-    if (confirm("Apakah Anda yakin untuk tidak melanjutkan perpanjangan kos?")) {
-      alert("Anda memilih YA.");
-    } 
-  });
-</script> -->
 
 
 </body>
