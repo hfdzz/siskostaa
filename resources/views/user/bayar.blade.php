@@ -88,7 +88,13 @@
         </div>
         <div class="modal-body text-center">
           <p class="font-weight-bold">Masukkan Bukti Pembayaran:</p>
-          <input type="file"  name="bukti_pembayaran" id="bukti_pembayaran" class="form-control">
+          <div class="modal-body">
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" name="bukti_pembayaran" id="bukti_pembayaran" accept="image/*">
+              <label class="custom-file-label" for="bukti_pembayaran">Browse Image</label>
+            </div>
+          </div>
+          
         </div>
         <div class="text-center mt-5">
           <button class="btn btn-primary">Submit Bukti Pembayaran</button>
