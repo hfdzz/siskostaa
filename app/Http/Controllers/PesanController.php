@@ -32,7 +32,7 @@ class PesanController extends Controller
             'nik' => 'required|string|size:16',
             'jenis_kelamin' => 'required|string|in:L,P',
             'tanggal_masuk' => 'required|date',
-            'jenis_kamar' => 'required|string|in:ac,non-ac',
+            'jenis_kamar' => 'required|string|in:ac,non_ac',
             'jenis_pembayaran' => 'required|string|in:penuh,dp',
         ]);
 
