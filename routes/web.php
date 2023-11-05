@@ -43,6 +43,21 @@ Route::middleware('auth')->group(function () {
     Route::get('/editprofile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/editprofile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/editprofile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    // Riwayat Pemesanan
+    Route::get('/riwayat-pemesanan', function () {
+        return view('user.riwayatpemesanan');
+    })->name('riwayat-pemesanan');
+
+    // Tagihan
+    Route::get('/tagihan', function () {
+        return view('user.tagihan');
+    })->name('tagihan');
+
+    //Perpanjangan
+    Route::get('/perpanjangan', function () {
+        return view('user.perpanjangan');
+    })->name('perpanjangan]');
     
     // artisan command line interface in laravel
     Route::get('/artisan-cli', function () {

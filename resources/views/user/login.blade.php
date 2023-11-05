@@ -134,10 +134,10 @@
           <a class="nav-link" href="/pesan">Pemesanan</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/login">Login</a>
+          <a class="nav-link" href="/regis">Registrasi</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" style="border-radius: 20px; background: #383950; color: white" href="/regis">Register</a>
+          <a class="nav-link" style="border-radius: 20px; background: #383950; color: white" href="/login">Login</a>
         </li>
       </ul>
     </div>
@@ -175,7 +175,7 @@
       </div>
       <div class="BelumPunyaAkunSignUp">
         <span>Belum punya akun?</span>
-        <a class="SignUpLink" href="#">Sign Up</a>
+        <a class="SignUpLink" href="/regis">Sign Up</a>
       </div>
     </form>
   </div>
@@ -204,10 +204,10 @@
         <div class="col-2"></div>
         <div class="col-md-2 mt-4">
           <h4 class="text-bold">Tautan Cepat</h4>
-          <a class="d-block" href="#">Beranda</a>
-          <a class="d-block" href="#">Pemesanan</a>
-          <a class="d-block" href="#">Login</a>
-          <a class="d-block" href="#">Register</a>
+          <a class="d-block" href="/">Beranda</a>
+          <a class="d-block" href="/pesan">Pemesanan</a>
+          <a class="d-block" href="/login">Login</a>
+          <a class="d-block" href="/regis">Register</a>
         </div>
       </div>
     </div>

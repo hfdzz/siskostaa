@@ -211,10 +211,10 @@
         <div class="col-2"></div>
         <div class="col-md-2 mt-4">
           <h4 class="text-bold">Tautan Cepat</h4>
-          <a class="d-block" href="#">Beranda</a>
-          <a class="d-block" href="#">Pemesanan</a>
-          <a class="d-block" href="#">Registrasi</a>
-          <a class="d-block" href="#">Login</a>
+          <a class="d-block" href="/">Beranda</a>
+          <a class="d-block" href="/pesan">Pemesanan</a>
+          <a class="d-block" href="/login">Registrasi</a>
+          <a class="d-block" href="/regis">Login</a>
         </div>
       </div>
     </div>

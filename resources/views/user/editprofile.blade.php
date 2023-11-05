@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="nav.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 
-    <title>Navbar Kost Abang Adek</title>
+    <title>Edit Profile</title>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Kost Abang Adek</a>
+      <a class="navbar-brand" href="/">Kost Abang Adek</a>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
@@ -19,12 +19,6 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Pemesanan</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Login</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" style="border-radius: 20px; background: #383950; color: white" href="#">Register</a>
           </li>
         </ul>
       </div>
@@ -119,8 +113,8 @@
             <h4 class="text-bold">Tautan Cepat</h4>
             <a class="d-block" href="#">Beranda</a>
             <a class="d-block" href="#">Pemesanan</a>
-            <a class="d-block" href="#">Login</a>
-            <a class="d-block" href="#">Register</a>
+            <!-- <a class="d-block" href="#">Login</a>
+            <a class="d-block" href="#">Register</a> -->
           </div>
         </div>
       </div>
