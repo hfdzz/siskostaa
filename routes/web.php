@@ -58,6 +58,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/perpanjangan', function () {
         return view('user.perpanjangan');
     })->name('perpanjangan]');
+
+    //Bayar
+    Route::get('/bayar', function () {
+        return view('user.bayar');
+    })->name('bayar]');
     
     // artisan command line interface in laravel
     Route::get('/artisan-cli', function () {
