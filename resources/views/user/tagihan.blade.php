@@ -35,18 +35,51 @@
         <img src="./Assets/profil.png" alt="" />
       </div>
       <p class="text-center">Username</p>
-      <div class="fitur mt-5">
-        <p style="color: #84545a"><i class="fas fa-user"></i> Edit Profil</p>
-        <p><i class="fas fa-history"></i> Riwayat Pemesanan</p>
-        <p><i class="fas fa-file-invoice"></i> Tagihan</p>
-        <p><i class="fas fa-sync"></i> Perpanjangan</p>
-        <p><i class="fas fa-sign-out-alt"></i> Logout</p>
+      <div class="container mt-5">
+        <div class="d-flex justify-content-center">
+          <div class="fitur text-center">
+            <div class="d-flex align-items-center">
+              <i class="fas fa-user" style="color: #84545a; margin-right: 20px;"></i>
+              <a href="/editprofile" class="text-danger">
+                <p style="margin-top: 15px;">Edit Profil</p>
+              </a>
+
+            </div>
+            <div class="d-flex align-items-center">
+              <i class="fas fa-history" style="color: #84545a; margin-right: 20px;"></i>
+              <a href="/riwayat-pemesanan" class="text-danger">
+                <p style="margin-top: 15px;">Riwayat Pemesanan</p>
+              </a>
+
+            </div>
+            <div class="d-flex align-items-center">
+              <i class="fas fa-file-invoice" style="color: #84545a; margin-right: 20px;"></i>
+              <a href="/tagihan" class="text-danger">
+                <p style="margin-top: 15px;">Tagihan</p>
+              </a>
+
+            </div>
+            <div class="d-flex align-items-center">
+              <i class="fas fa-sync" style="color: #84545a; margin-right: 20px;"></i>
+              <a href="/perpanjangan" class="text-danger">
+                <p style="margin-top: 15px;">Perpanjangan</p>
+              </a>
+
+            </div>
+            <div class="d-flex align-items-center">
+              <i class="fas fa-sign-out-alt" style="color: #84545a; margin-right: 20px;"></i>
+              <a href="#" class="text-danger">
+                <p style="margin-top: 15px;">Logout</p>
+              </a>            
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
     <!-- tabel -->
     <div class="col-10" style="min-height: 50vh">
-      <h2 class="text-block">Riwayat Pemesanan</h2>
+      <h2 class="text-block">Tagihan</h2>
       <div class="table-responsive">
         <table class="table table-striped">
           <thead class="thead-light">
@@ -67,8 +100,8 @@
               <td>Belum dibayar</td>
               <td>
                 <button type="button" class="btn btn-primary" id="bayarButton">Bayar</button>
-                
               </td>
+
               <td>7.000.000</td>
             </tr>
 
@@ -112,21 +145,16 @@
       <p style="color: black">Copyright&copy 2023 Kost Abang Adek</p>
     </div>
   </footer>
-</body>
-<!-- Menambahkan kode JavaScript untuk menampilkan pop-up konfirmasi -->
-<script>
-  // Mengambil tombol "Bayar" dengan ID "bayarButton"
-  const bayarButton = document.getElementById("bayarButton");
 
-  // Menambahkan event listener untuk menampilkan pop-up konfirmasi ketika tombol diklik
-  bayarButton.addEventListener("click", function() {
-    if (confirm("Apakah Anda yakin untuk melanjutkan perpanjangan kos?")) {
-      // Jika "YA" diklik, tambahkan tindakan yang ingin Anda lakukan di sini
-      alert("Anda memilih YA. Tindakan dilanjutkan...");
-    } else {
-      // Jika "Tidak" diklik, tambahkan tindakan yang sesuai di sini
-      alert("Anda memilih Tidak. Tindakan dibatalkan.");
-    }
-  });
-</script>
+  <script>
+    // Mengambil tombol "Bayar" dengan ID "bayarButton"
+    const bayarButton = document.getElementById("bayarButton");
+  
+    // Menambahkan event listener untuk mengarahkan pengguna ke halaman beranda saat tombol diklik
+    bayarButton.addEventListener("click", function() {
+      window.location.href = "/bayar"; // Mengarahkan ke halaman beranda (ganti URL dengan URL yang sesuai)
+    });
+  </script>
+
+</body>
 </html>

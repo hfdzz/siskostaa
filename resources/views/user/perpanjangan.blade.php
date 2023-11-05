@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="nav.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 
-  <title>Riwayat Pemesanan</title>
+  <title>Perpanjangan</title>
   <style>
     /* Custom CSS for the table to make it responsive */
     .table-responsive {
@@ -35,18 +35,51 @@
         <img src="./Assets/profil.png" alt="" />
       </div>
       <p class="text-center">Username</p>
-      <div class="fitur mt-5">
-        <p style="color: #84545a"><i class="fas fa-user"></i> Edit Profil</p>
-        <p><i class="fas fa-history"></i> Riwayat Pemesanan</p>
-        <p><i class="fas fa-file-invoice"></i> Tagihan</p>
-        <p><i class="fas fa-sync"></i> Perpanjangan</p>
-        <p><i class="fas fa-sign-out-alt"></i> Logout</p>
+      <div class="container mt-5">
+        <div class="d-flex justify-content-center">
+          <div class="fitur text-center">
+            <div class="d-flex align-items-center">
+              <i class="fas fa-user" style="color: #84545a; margin-right: 20px;"></i>
+              <a href="/editprofile" class="text-danger">
+                <p style="margin-top: 15px;">Edit Profil</p>
+              </a>
+
+            </div>
+            <div class="d-flex align-items-center">
+              <i class="fas fa-history" style="color: #84545a; margin-right: 20px;"></i>
+              <a href="/riwayat-pemesanan" class="text-danger">
+                <p style="margin-top: 15px;">Riwayat Pemesanan</p>
+              </a>
+
+            </div>
+            <div class="d-flex align-items-center">
+              <i class="fas fa-file-invoice" style="color: #84545a; margin-right: 20px;"></i>
+              <a href="/tagihan" class="text-danger">
+                <p style="margin-top: 15px;">Tagihan</p>
+              </a>
+
+            </div>
+            <div class="d-flex align-items-center">
+              <i class="fas fa-sync" style="color: #84545a; margin-right: 20px;"></i>
+              <a href="/perpanjangan" class="text-danger">
+                <p style="margin-top: 15px;">Perpanjangan</p>
+              </a>
+
+            </div>
+            <div class="d-flex align-items-center">
+              <i class="fas fa-sign-out-alt" style="color: #84545a; margin-right: 20px;"></i>
+              <a href="#" class="text-danger">
+                <p style="margin-top: 15px;">Logout</p>
+              </a>            
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
     <!-- tabel -->
     <div class="col-10" style="min-height: 50vh">
-      <h2 class="text-block">Riwayat Pemesanan</h2>
+      <h2 class="text-block">Perpanjangan</h2>
       <div class="table-responsive">
         <table class="table table-striped">
           <thead class="thead-light">
