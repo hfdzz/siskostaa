@@ -90,7 +90,7 @@
           <p class="font-weight-bold">Masukkan Bukti Pembayaran:</p>
           <input type="file"  name="bukti_pembayaran" id="bukti_pembayaran" class="form-control">
         </div>
-        <div class="text-center mt-5"> <!-- Tambahkan div text-center -->
+        <div class="text-center mt-5">
           <button class="btn btn-primary">Submit Bukti Pembayaran</button>
         </div>
       </div>
