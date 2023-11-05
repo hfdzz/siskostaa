@@ -17,24 +17,33 @@
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="/">Kost Abang Adek</a>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="/">Beranda</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/pesan">Pemesanan</a>
-        </li>
-        <li class="nav-item">
-            <a class="navbar-brand" href="#">
-              <img src="./Assets/profil.png" width="30" height="30" class="d-inline-block align-top" alt="">
-              Username
-            </a>
+      <a class="navbar-brand" href="/">Kost Abang Adek</a>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Beranda</a>
           </li>
-      </ul>
-    </div>
-  </nav>
+          <li class="nav-item">
+            <a class="nav-link" href="/pesan">Pemesanan</a>
+          </li>
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img src="./Assets/profil.png" width="30" height="30" class="d-inline-block align-top" alt="">
+                {{ Auth::user()->nama }}
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="/editprofile">Edit Profil</a>
+                <a class="dropdown-item" href="/riwayat-pemesanan">Riwayat Pemesanan</a>
+                <a class="dropdown-item" href="/tagihan">Tagihan</a>
+                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                      @csrf
+                  </form>
+              </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
   <div class="row">
     <div class="col-2" style="background-color: #ffcdba; min-height: 100vh">
       <div class="profil mt-3 d-flex justify-content-center" style="border-radius: 50%">
@@ -74,9 +83,14 @@
             </div>
             <div class="d-flex align-items-center">
               <i class="fas fa-sign-out-alt" style="color: #84545a; margin-right: 20px;"></i>
-              <a href="#" class="text-danger">
-                <p style="margin-top: 15px;">Logout</p>
-              </a>            
+              <p style="margin-top: 15px;">
+                <a href="{{ route('logout') }}" class="text-danger" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                  Logout
+                </a>
+              </p>
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+              </form>
             </div>
           </div>
         </div>
@@ -161,6 +175,9 @@
       window.location.href = "/bayar"; // Mengarahkan ke halaman beranda (ganti URL dengan URL yang sesuai)
     });
   </script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
 </html>

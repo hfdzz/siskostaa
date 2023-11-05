@@ -26,6 +26,21 @@
         <li class="nav-item">
           <a class="nav-link" href="/pesan">Pemesanan</a>
         </li>
+        <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img src="./Assets/profil.png" width="30" height="30" class="d-inline-block align-top" alt="">
+                {{ Auth::user()->nama }}
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="/editprofile">Edit Profil</a>
+                <a class="dropdown-item" href="/riwayat-pemesanan">Riwayat Pemesanan</a>
+                <a class="dropdown-item" href="/tagihan">Tagihan</a>
+                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                      @csrf
+                  </form>
+              </div>
+          </li>
       </ul>
     </div>
   </nav>
@@ -68,9 +83,14 @@
             </div>
             <div class="d-flex align-items-center">
               <i class="fas fa-sign-out-alt" style="color: #84545a; margin-right: 20px;"></i>
-              <a href="#" class="text-danger">
-                <p style="margin-top: 15px;">Logout</p>
-              </a>            
+              <p style="margin-top: 15px;">
+                <a href="{{ route('logout') }}" class="text-danger" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                  Logout
+                </a>
+              </p>
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+              </form>
             </div>
           </div>
         </div>
@@ -139,8 +159,8 @@
     </div>
   </footer>
 
-
-
-
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

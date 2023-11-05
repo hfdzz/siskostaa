@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
     <link rel="stylesheet" href="nav.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/iconoir-icons/iconoir@main/css/iconoir.css" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
 
     <title>Beranda Kost Abang Adek</title>
   </head>
@@ -23,20 +23,24 @@
             </li>
             @auth        
             <li class="nav-item dropdown">
-              <button class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <img src="./Assets/profil.png" width="30" height="30" class="d-inline-block align-top" alt="">
                 {{ Auth::user()->nama }}
-              </button>
+              </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <a class="dropdown-item" href="/editprofile">Edit Profil</a>
                 <a class="dropdown-item" href="/riwayat-pemesanan">Riwayat Pemesanan</a>
-                <a class="dropdown-item" href="/perpanjangan">Perpanjangan</a>
+                <a class="dropdown-item" href="/tagihan">Tagihan</a>
+                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                      @csrf
+                  </form>
               </div>
             </li>
 
             @else
             <li class="nav-item">
-              <a class="nav-link" href="/register">Register</a>
+              <a class="nav-link" href="/registrasi">Registrasi</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" style="border-radius: 20px; background: #383950; color: white" href="/login">Login</a>
@@ -55,7 +59,6 @@
             <strong>Asri</strong>
           </h1>
           <p>Kost Abang Adek Jawabanya</p>
-          <p>Welcome, {{ Auth::user()->nama ?? 'Guest' }}</p>
         </div>
       </div>
     </div>
@@ -203,7 +206,7 @@
         </div>
       </div>
     </div>
-    <footer class="text-white" style="background-color: #383950">
+    <footer class="text-white" style="background-color: #383950; margin-top: 50px;">
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-md-3 mt-4">
@@ -235,8 +238,11 @@
             <h4 class="text-bold">Tautan Cepat</h4>
             <a class="d-block" href="/">Beranda</a>
             <a class="d-block" href="/pesan">Pemesanan</a>
+            @auth
+            @else
             <a class="d-block" href="/login">Login</a>
             <a class="d-block" href="/regis">Register</a>
+            @endauth
           </div>
         </div>
       </div>
