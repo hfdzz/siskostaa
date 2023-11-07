@@ -45,9 +45,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/editprofile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     // Riwayat Pemesanan
-    Route::get('/riwayat-pemesanan', function () {
-        return view('user.riwayatpemesanan');
-    })->name('riwayat-pemesanan');
+    Route::get('/riwayat-pemesanan', [PesanController::class, 'riwayat'])->name('riwayat-pemesanan');
 
     // Tagihan
     Route::get('/tagihan', function () {

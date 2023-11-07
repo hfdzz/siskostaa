@@ -7,6 +7,20 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pemesanan extends Model
 {
+    public static $kode_status_pemesanan = [
+        'menunggu_validasi' => '0',
+        'menunggu_pembayaran' => '1',
+        'ditolak' => '2',
+        'selesai' => '3',
+    ];
+
+    public static $text_status_pemesanan = [
+        '0' => 'Menunggu Validasi',
+        '1' => 'Menunggu Pembayaran',
+        '2' => 'Ditolak',
+        '3' => 'Selesai',
+    ];
+
     use HasFactory;
 
     /**
@@ -41,5 +55,16 @@ class Pemesanan extends Model
         return $this->belongsTo(User::class);
     }
     
+    // status pemesanan text
+    public function getStatusPemesananText()
+    {
+        return self::$text_status_pemesanan[$this->status_pemesanan];
+    }
+
+    // jenis pembayaran text
+    public function getJenisPembayaranText()
+    {
+        return $this->jenis_pembayaran == 'penuh' ? 'Pembayaran Penuh' : 'Pembayaran DP';
+    }
 
 }

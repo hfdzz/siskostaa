@@ -114,15 +114,23 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>rafi</td>
-              <td>0812345678912</td>
-              <td>2023-09-11</td>
-              <td>Penuh</td>
-              <td>Divalidasi</td>
-              <td><a href="#">Lihat tagihan</a></td>
-              <td>7.000.000</td>
-            </tr>
+            @if (count($pemesananList) > 0)
+              @foreach ($pemesananList as $p)
+              <tr>
+                <td>{{ $p->nama }}</td>
+                <td>{{ $p->no_hp }}</td>
+                <td>{{ $p->tanggal_masuk }}</td>
+                <td>{{ $p->getJenisPembayaranText() }}</td>
+                <td>{{ $p->getStatusPemesananText() }}</td>
+                <td>{{ $p->keterangan }}</td>
+                <td>{{ $p->total_tagihan }}</td>
+              </tr>
+              @endforeach
+            @else
+              <tr>
+                <td colspan="7" class="text-center">Tidak ada data</td>
+              </tr>
+            @endif
           </tbody>
         </table>
       </div>

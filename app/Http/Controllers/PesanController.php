@@ -6,17 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Pemesanan;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class PesanController extends Controller
 {
-    static $status_pemesanan = [
-        'pending' => '0',
-        'menunggu_pembayaran' => '1',
-        'ditolak' => '2',
-        'selesai' => '3',
-    ];
-
     public function create()
     {
         return view('user.pemesanan');
@@ -41,14 +33,14 @@ class PesanController extends Controller
             return redirect()->route('login')->withErrors(['Silahkan login terlebih dahulu']);
         }
 
-        // check if user has pemesanan with status other than 'selesai' from 'pemesanan' table
+        // check if user has pemesanan with status other than 'selesai' or 'ditolak' from database
         /** @var \App\Models\User $user **/
         $user = auth()->user();
-        if ($user->pemesanan()->where('status_pemesanan', '!=', self::$status_pemesanan['selesai'])->exists()) {
-            return redirect()->route('pesan')->withErrors(['pemesanan' => 'Anda sudah memiliki pemesanan yang belum selesai']);
+        if ($user->pemesanan()->whereNotIn('status_pemesanan', [Pemesanan::$kode_status_pemesanan['selesai'], Pemesanan::$kode_status_pemesanan['ditolak']])->exists()) {
+            return redirect()->route('pesan')->withErrors(['Anda sudah memiliki pemesanan yang belum selesai']);
         }
 
-        $pemesanan = Pemesanan::create([
+        Pemesanan::create([
             'nama' => $request->input('nama'),
             'email' => $request->input('email'),
             'no_hp' => $request->input('no_hp'),
@@ -58,11 +50,20 @@ class PesanController extends Controller
             'tanggal_masuk' => $request->input('tanggal_masuk'),
             'jenis_kamar' => $request->input('jenis_kamar'),
             'jenis_pembayaran' => $request->input('jenis_pembayaran'),
-            'status_pemesanan' => self::$status_pemesanan['pending'],
+            'status_pemesanan' => Pemesanan::$kode_status_pemesanan['menunggu_validasi'],
             'nomor_kamar' => '0',
             'user_id' => $user->id,
         ]);
 
         return redirect('/statuspesan');
+    }
+
+    public function riwayat(Request $request)
+    {
+        $pemesananList = Pemesanan::where('user_id', $request->user()->id)->get();
+
+        return view('user.riwayatpemesanan', [
+            'pemesananList' => $pemesananList,
+        ]);
     }
 }
