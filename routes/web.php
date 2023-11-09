@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PesanController;
+use App\Http\Controllers\TagihanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,9 +49,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/riwayat-pemesanan', [PesanController::class, 'riwayat'])->name('riwayat-pemesanan');
 
     // Tagihan
-    Route::get('/tagihan', function () {
-        return view('user.tagihan');
-    })->name('tagihan');
+    Route::get('/tagihan', [TagihanController::class, 'get'])->name('tagihan');
+    
 
     //Perpanjangan
     Route::get('/perpanjangan', function () {

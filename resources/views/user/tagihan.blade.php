@@ -106,6 +106,7 @@
             <tr>
               <th scope="col">Nama</th>
               <th scope="col">Tanggal Masuk</th>
+              <th scope="col">Total Tagihan</th>
               <th scope="col">Jenis Pembayaran</th>
               <th scope="col">Status</th>
               <th scope="col">Aksi</th>
@@ -113,7 +114,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
+            {{-- <tr>
               <td>rafi</td>
               <td>2023-09-11</td>
               <td>Penuh</td>
@@ -123,7 +124,20 @@
               </td>
 
               <td>7.000.000</td>
-            </tr>
+            </tr> --}}
+            @foreach ($list_tagihan as $tagihan)
+              <tr>
+                <td>{{ $tagihan->pemesanan->nama }}</td>
+                <td>{{ $tagihan->pemesanan->tanggal_masuk }}</td>
+                <td>{{ $tagihan->pemesanan->total_tagihan }}</td>
+                <td>{{ $tagihan->pemesanan->jenis_pembayaran }}</td>
+                <td>{{ $tagihan->getStatusTagihanTextAttribute() }}</td>
+                <td>
+                  <button type="button" class="btn btn-primary" id="bayarButton">Bayar</button>
+                </td>
+                <td>{{ $tagihan->keterangan }}</td>
+              </tr>
+            @endforeach
 
           </tbody>
         </table>

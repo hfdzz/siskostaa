@@ -47,12 +47,19 @@ class Pemesanan extends Model
         'jenis_pembayaran',
         'status_pemesanan',
         'nomor_kamar',
+        'keterangan',
+        'total_tagihan',
         'user_id',
     ];
 
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function tagihan()
+    {
+        return $this->hasOne(Tagihan::class);
     }
     
     // status pemesanan text
