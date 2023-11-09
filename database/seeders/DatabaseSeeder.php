@@ -18,5 +18,28 @@ class DatabaseSeeder extends Seeder
             'nama' => 'Test User',
             'email' => 'test@test.com',
         ]);
+
+        \App\Models\Pemesanan::factory()->create([
+            'nama' => 'Test User',
+            'email' => 'test@test.com',
+            'no_hp' => '081234567890',
+            'perguruan_tinggi' => 'Universitas Test',
+            'nik' => '1234567890123456',
+            'jenis_kelamin' => 'L',
+            'tanggal_masuk' => '2021-11-01',
+            'jenis_kamar' => 'ac',
+            'jenis_pembayaran' => 'penuh',
+            'status_pemesanan' => '0',
+            'nomor_kamar' => '0',
+            'keterangan' => 'pmsn - ket',
+            'user_id' => '1',
+        ]);
+
+        \App\Models\Tagihan::factory()->create([
+            'status' => '0',
+            'keterangan' => 'tgh - ket',
+            'bukti_pembayaran' => 'test.jpg',
+            'pemesanan_id' => '1',
+        ]);
     }
 }
