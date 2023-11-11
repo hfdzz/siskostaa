@@ -94,7 +94,7 @@
               <label class="custom-file-label" for="bukti_pembayaran">Browse Image</label>
             </div>
           </div>
-          
+
         </div>
         <div class="text-center mt-5">
           <button class="btn btn-primary">Submit Bukti Pembayaran</button>
