@@ -29,6 +29,9 @@ Route::get('/regis', function () {
     return redirect()->route('registrasi');
 });
 
+Route::get('/admin', function () {
+    return view('admin.admin');
+})->name('admin');
 
 Route::middleware('auth')->group(function () {
     // Pemesanan
@@ -87,6 +90,8 @@ Route::middleware('auth')->group(function () {
 
     // laravel Example
     Route::get('/dashboard', function () {return view('dashboard');})->name('dashboard');
+
+
 });
 
 require __DIR__.'/auth.php';
