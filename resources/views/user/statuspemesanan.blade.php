@@ -6,22 +6,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="nav.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-    <title>Pemesanan</title>
+    <title>Status Pemesanan</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
       <a class="navbar-brand" href="#">Kost Abang Adek</a>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="#">Beranda</a>
+            <a class="nav-link" href="/">Beranda</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Pemesanan</a>
+            <a class="nav-link" href="/pesan">Pemesanan</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Username</a>
-        </li>
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img src="./Assets/profil.png" width="30" height="30" class="d-inline-block align-top" alt="">
+                {{ Auth::user()->nama }}
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="/editprofile">Edit Profil</a>
+                <a class="dropdown-item" href="/riwayat-pemesanan">Riwayat Pemesanan</a>
+                <a class="dropdown-item" href="/tagihan">Tagihan</a>
+                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                      @csrf
+                  </form>
+              </div>
+          </li>
         </ul>
       </div>
     </nav>
@@ -38,7 +50,7 @@
       </div>
     </div>
     <div class="content text-center justify-content-center d-flex mt-5 mb-5">
-        <p class="col-3" style="line-height: 2rem;font-weight:bold;">Terima Kasih Sudah Memesan Kamar Kost Kami! Cek Status Pemesanan Anda <a href="#" style="color:#ffcdba">di Sini</a></p>
+        <p class="col-3" style="line-height: 2rem;font-weight:bold;">Terima Kasih Sudah Memesan Kamar Kost Kami! Cek Status Pemesanan Anda <a href="/riwayat-pemesanan" style="color:#ffcdba">di Sini</a></p>
     </div>
     <footer class="text-white" style="background-color: #383950">
         <div class="container">
@@ -70,10 +82,8 @@
             <div class="col-2"></div>
             <div class="col-md-2 mt-4">
               <h4 class="text-bold">Tautan Cepat</h4>
-              <a class="d-block" href="#">Beranda</a>
-              <a class="d-block" href="#">Pemesanan</a>
-              <a class="d-block" href="#">Login</a>
-              <a class="d-block" href="#">Register</a>
+              <a class="d-block" href="/">Beranda</a>
+              <a class="d-block" href="/pesan">Pemesanan</a>
             </div>
           </div>
         </div>
@@ -81,5 +91,21 @@
           <p style="color: black">Copyright&copy 2023 Kost Abang Adek</p>
         </div>
       </footer>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>   
+  
+  <script>
+      // Menggunakan jQuery
+      $(window).on('scroll', function () {
+        if ($(this).scrollTop() > 50) {
+          $('.navbar').addClass('fixed-top');
+        } else {
+          $('.navbar').removeClass('fixed-top');
+        }
+      });
+    </script>
+    
   </body>
 </html>
