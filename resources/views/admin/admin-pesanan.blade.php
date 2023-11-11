@@ -111,8 +111,8 @@
                                         <td>2023-11-11</td>
                                         <td>Penuh</td>
                                         <td>
-                                          <button type="button" class="btn btn-primary" id="validasiBtn">Validasi</button>
-                                          <button type="button" class="btn btn-danger"id="tidakvalidasiBtn">Tidak Validasi</button>
+                                          <button type="button" class="btn btn-primary validasiBtn">Validasi</button>
+                                          <button type="button" class="btn btn-danger tidakvalidasiBtn">Tidak Validasi</button>
                                         </td>
                                     </tr>
                                     <tr>
@@ -125,15 +125,29 @@
                                         <td>2023-11-11</td>
                                         <td>Penuh</td>
                                         <td>
-                                          <button type="button" class="btn btn-primary" id="validasiBtn">Validasi</button>
-                                          <button type="button" class="btn btn-danger"id="tidakvalidasiBtn">Tidak Validasi</button>
+                                          <button type="button" class="btn btn-primary validasiBtn">Validasi</button>
+                                          <button type="button" class="btn btn-danger tidakvalidasiBtn">Tidak Validasi</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">3</th>
+                                        <td>rafi</td>
+                                        <td>rafi@mail</td>
+                                        <td>087812121212</td>
+                                        <td>1234123412341234</td>
+                                        <td>Pria</td>
+                                        <td>2023-11-11</td>
+                                        <td>Penuh</td>
+                                        <td>
+                                          <button type="button" class="btn btn-primary validasiBtn">Validasi</button>
+                                          <button type="button" class="btn btn-danger tidakvalidasiBtn">Tidak Validasi</button>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
 
                             <div class="d-flex justify-content-between align-items-center mt-2">
-                                    <div class="datatable-info">Showing 1 to 10 of 11 entries</div>
+                                    <div class="datatable-info">Showing 1 to 3 of 3 entries</div>
                                     <nav class="datatable-pagination">
                                         <ul class="datatable-pagination-list">
                                             <li class="datatable-pagination-list-item datatable-hidden datatable-disabled">
@@ -176,15 +190,27 @@
     // Fungsi untuk menangani validasi
     function handleValidasi() {
         // Lakukan sesuatu di sini sesuai dengan kebutuhan Anda
-
-        // Arahkan ke halaman /validasi-pesanan.blade.php
         window.location.href = "/validasi-pesanan";
     }
+    function handleTidakValidasi() {
+        // Lakukan sesuatu di sini sesuai dengan kebutuhan Anda
+        window.location.href = "/tidak-validasi-pesanan";
+    }
 
-    document.getElementById("validasiBtn").addEventListener("click", handleValidasi);
+
+    // Menambahkan event listener pada semua elemen dengan class "validasiBtn"
+    var buttons = document.querySelectorAll('.validasiBtn');
+    buttons.forEach(function(button) {
+        button.addEventListener('click', handleValidasi);
+    });
+
+    var buttons = document.querySelectorAll('.tidakvalidasiBtn');
+    buttons.forEach(function(button) {
+        button.addEventListener('click', handleTidakValidasi);
+
+
+    });
 </script>
-
-
 
 </body>
 

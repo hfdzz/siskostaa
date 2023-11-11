@@ -70,8 +70,8 @@
     <div class="row g-3 my-2">
         <div class="col-md-12">
 
-            <!-- Breadcrumb -->
-            <nav aria-label="breadcrumb">
+             <!-- Breadcrumb -->
+             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/admin-pesanan">Pesanan</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Data Pemesan</li>
@@ -119,10 +119,6 @@
                             <div class="mb-3">
                                 <label for="keterangan" class="form-label">Keterangan</label>
                                 <textarea class="form-control" id="keterangan"  placeholder="Masukkan keterangan"></textarea>
-                            </div>
-                            <div class="mb-3">
-                                <label for="tagihan" class="form-label">Tagihan</label>
-                                <input type="text" class="form-control" id="tagihan" placeholder="Masukkan tagihan">
                             </div>
                             <div class="mb-3">
                                 <button type="button" class="btn btn-primary" id="submitBtn">Submit</button>
