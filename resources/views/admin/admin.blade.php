@@ -22,8 +22,8 @@
                         class="fas fa-solid fa-house me-2"></i>Dashboard</a>
                 <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-solid fa-list me-2"></i>Profile Kost</a>
-                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                        class="fas fa-solid fa-shop me-2"></i>Pemesanan</a>
+                <a href="/admin-pesanan" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                        class="fas fa-solid fa-shop me-2"></i>Pesanan</a>
                 <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-solid fa-money-bills me-2"></i>Pembayaran</a>
                 <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
@@ -70,7 +70,7 @@
                 <div class="row g-3 my-2">
                     <div class="col-md-3">
                         <div class="p-3 secondary-bg shadow-sm d-flex justify-content-around align-items-center rounded">
-                            <i class="fas fa-gift fs-1 primary-text border rounded-full secondary-bg p-3"></i>
+                            <i class="fas fa-solid fa-house fs-1 primary-text border rounded-full secondary-bg p-3"></i>
                             <div>
                                 <h3 class="fs-2">720</h3>
                                 <p class="fs-5">Pesanan Kost</p>
@@ -81,7 +81,7 @@
                     <div class="col-md-3">
                         <div class="p-3 secondary-bg shadow-sm d-flex justify-content-around align-items-center rounded">
                             <i
-                                class="fas fa-hand-holding-usd fs-1 primary-text border rounded-full secondary-bg p-3"></i>
+                                class="fas fa-solid fa-money-bills fs-1 primary-text border rounded-full secondary-bg p-3"></i>
                             <div>
                                 <h3 class="fs-2">4920</h3>
                                 <p class="fs-5">Pembayaran</p>
@@ -92,7 +92,7 @@
                     <div class="col-md-3">
                         <div class="p-3 secondary-bg shadow-sm d-flex justify-content-around align-items-center rounded">
                             <i
-                                class="fas fa-hand-holding-usd fs-1 primary-text border rounded-full secondary-bg p-3"></i>
+                                class="fas fa-solid fa-user fs-1 primary-text border rounded-full secondary-bg p-3"></i>
                             <div>
                                 <h3 class="fs-2">4920</h3>
                                 <p class="fs-5">Penghuni</p>

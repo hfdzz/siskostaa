@@ -94,4 +94,42 @@
       margin-left: -15rem;
     }
   }
+
+    .datatable-pagination-list {
+        display: flex;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .datatable-pagination-list-item {
+        margin-right: 5px; /* Adjust the spacing between buttons */
+    }
+
+    .datatable-pagination-list-item-link {
+        display: inline-block;
+        padding: 6px 12px;
+        text-decoration: none;
+        color: #007bff;
+        border: 1px solid #007bff;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .datatable-pagination-list-item-link:hover {
+        background-color: #007bff;
+        color: #fff;
+    }
+
+    .datatable-pagination-list-item.datatable-active .datatable-pagination-list-item-link {
+        background-color: #007bff;
+        color: #fff;
+        pointer-events: none; /* Disable pointer events for the active button */
+    }
+
+    .datatable-pagination-list-item.datatable-disabled .datatable-pagination-list-item-link {
+        color: #6c757d;
+        pointer-events: none; /* Disable pointer events for the disabled button */
+    }
+
   

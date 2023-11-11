@@ -33,6 +33,14 @@ Route::get('/admin', function () {
     return view('admin.admin');
 })->name('admin');
 
+Route::get('/admin-pesanan', function () {
+    return view('admin.admin-pesanan');
+})->name('admin-pesanan');
+
+Route::get('/validasi-pesanan', function () {
+    return view('admin.validasi-pesanan');
+})->name('validasi-pesanan');
+
 Route::middleware('auth')->group(function () {
     // Pemesanan
     Route::get('/pesan', [PesanController::class, 'create'])->name('pesan');
