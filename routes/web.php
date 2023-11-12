@@ -30,6 +30,21 @@ Route::get('/regis', function () {
     return redirect()->route('registrasi');
 });
 
+Route::get('/admin', function () {
+    return view('admin.admin');
+})->name('admin');
+
+Route::get('/admin-pesanan', function () {
+    return view('admin.admin-pesanan');
+})->name('admin-pesanan');
+
+Route::get('/validasi-pesanan', function () {
+    return view('admin.validasi-pesanan');
+})->name('validasi-pesanan');
+
+Route::get('/tidak-validasi-pesanan', function () {
+    return view('admin.tidak-validasi-pesanan');
+})->name('tidak-validasi-pesanan');
 
 Route::middleware('auth')->group(function () {
     // Pemesanan
@@ -85,6 +100,8 @@ Route::middleware('auth')->group(function () {
 
     // laravel Example
     Route::get('/dashboard', function () {return view('dashboard');})->name('dashboard');
+
+
 });
 
 require __DIR__.'/auth.php';
