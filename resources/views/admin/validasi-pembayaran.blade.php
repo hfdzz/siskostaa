@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
     <link href="styleAdmin.css" rel="stylesheet">
-    <title>Pesanan Admin</title>
+    <title>Pembayaran Admin</title>
 </head>
 
 <body>
@@ -39,7 +39,7 @@
             <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
                 <div class="d-flex align-items-center">
                     <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
-                    <h2 class="fs-2 m-0">Pesanan</h2>
+                    <h2 class="fs-2 m-0">Pembayaran</h2>
                 </div>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -70,18 +70,18 @@
     <div class="row g-3 my-2">
         <div class="col-md-12">
 
-             <!-- Breadcrumb -->
-             <nav aria-label="breadcrumb">
+            <!-- Breadcrumb -->
+            <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="/admin-pesanan">Pesanan</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Data Pemesan</li>
+                    <li class="breadcrumb-item"><a href="/admin-pembayaran">Pembayaran</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Data Pembayar</li>
                 </ol>
             </nav>
 
             <!-- Card -->
             <div class="card">
                 <div class="card-header">
-                    <h4>Data Pemesan</h4>
+                    <h4>Data Pembayaran</h4>
                 </div>
                 <div class="card-body">
                     <div class="row">
@@ -102,12 +102,12 @@
                                 <label for="nik" class="form-label">NIK</label>
                                 <input type="text" class="form-control" id="nik" value="1234123412341234" readonly>
                             </div>
-                        </div>
-                        <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="jenisKelamin" class="form-label">Jenis Kelamin</label>
                                 <input type="text" class="form-control" id="jenisKelamin" value="Pria" readonly>
                             </div>
+                        </div>
+                        <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="tanggalMasuk" class="form-label">Tanggal Masuk</label>
                                 <input type="text" class="form-control" id="tanggalMasuk" value="2023-11-11" readonly>
@@ -115,6 +115,15 @@
                             <div class="mb-3">
                                 <label for="jenisPembayaran" class="form-label">Jenis Pembayaran</label>
                                 <input type="text" class="form-control" id="jenisPembayaran" value="Penuh" readonly>
+                            </div>
+                            <div class="mb-3">
+                                <label for="buktiPembayaran" class="form-label">Bukti Pembayaran</label>
+                                <div class="mb-3">
+                                    <img src="assets/tf1.jpg" alt="" width="100" class="img-thumbnail"> 
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#gambarModal">
+                                        Lihat Gambar
+                                    </button>
+                                </div>
                             </div>
                             <div class="mb-3">
                                 <label for="keterangan" class="form-label">Keterangan</label>
@@ -126,6 +135,24 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="gambarModal" tabindex="-1" aria-labelledby="gambarModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="gambarModalLabel">Bukti Pembayaran</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Isi modal dengan gambar -->
+                <img src="assets/tf1.jpg" alt="" class="img-fluid">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
             </div>
         </div>
     </div>
@@ -149,8 +176,8 @@
             // Lakukan sesuatu dengan data yang diambil, seperti mengirimkan ke server atau menyimpan ke database
             console.log("Keterangan: ", keteranganValue);
 
-            // Arahkan ke halaman /admin-pesanan
-            window.location.href = "/admin-pesanan";
+            // Arahkan ke halaman /admin-pembayaran
+            window.location.href = "/admin-pembayaran";
         });
     </script>
 </body>

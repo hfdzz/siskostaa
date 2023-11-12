@@ -46,6 +46,18 @@ Route::get('/tidak-validasi-pesanan', function () {
     return view('admin.tidak-validasi-pesanan');
 })->name('tidak-validasi-pesanan');
 
+Route::get('/admin-pembayaran', function () {
+    return view('admin.admin-pembayaran');
+})->name('admin-pembayaran');
+
+Route::get('/validasi-pembayaran', function () {
+    return view('admin.validasi-pembayaran');
+})->name('validasi-pembayaran');
+
+Route::get('/tidak-validasi-pembayaran', function () {
+    return view('admin.tidak-validasi-pembayaran');
+})->name('tidak-validasi-pembayaran');
+
 Route::middleware('auth')->group(function () {
     // Pemesanan
     Route::get('/pesan', [PesanController::class, 'create'])->name('pesan');

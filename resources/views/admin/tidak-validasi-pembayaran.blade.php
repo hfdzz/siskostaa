@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
     <link href="styleAdmin.css" rel="stylesheet">
-    <title>Pesanan Admin</title>
+    <title>Pembayaran Admin</title>
 </head>
 
 <body>
@@ -39,7 +39,7 @@
             <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
                 <div class="d-flex align-items-center">
                     <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
-                    <h2 class="fs-2 m-0">Pesanan</h2>
+                    <h2 class="fs-2 m-0">Pembayaran</h2>
                 </div>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -70,18 +70,18 @@
     <div class="row g-3 my-2">
         <div class="col-md-12">
 
-             <!-- Breadcrumb -->
-             <nav aria-label="breadcrumb">
+            <!-- Breadcrumb -->
+            <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="/admin-pesanan">Pesanan</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Data Pemesan</li>
+                    <li class="breadcrumb-item"><a href="/admin-pembayaran">Pembayaran</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Data Pembayar</li>
                 </ol>
             </nav>
 
             <!-- Card -->
             <div class="card">
                 <div class="card-header">
-                    <h4>Data Pemesan</h4>
+                    <h4>Data Pembayaran</h4>
                 </div>
                 <div class="card-body">
                     <div class="row">
@@ -120,6 +120,7 @@
                                 <label for="keterangan" class="form-label">Keterangan</label>
                                 <textarea class="form-control" id="keterangan"  placeholder="Masukkan keterangan"></textarea>
                             </div>
+
                             <div class="mb-3">
                                 <button type="button" class="btn btn-primary" id="submitBtn">Submit</button>
                             </div>
@@ -146,11 +147,12 @@
         document.getElementById("submitBtn").addEventListener("click", function () {
             var keteranganValue = document.getElementById("keterangan").value;
 
+
             // Lakukan sesuatu dengan data yang diambil, seperti mengirimkan ke server atau menyimpan ke database
             console.log("Keterangan: ", keteranganValue);
 
             // Arahkan ke halaman /admin-pesanan
-            window.location.href = "/admin-pesanan";
+            window.location.href = "/admin-pembayaran";
         });
     </script>
 </body>

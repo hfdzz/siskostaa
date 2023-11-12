@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
     <link href="styleAdmin.css" rel="stylesheet">
-    <title>Pesanan Admin</title>
+    <title>Pembayaran Admin</title>
 </head>
 
 <body>
@@ -39,7 +39,7 @@
             <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
                 <div class="d-flex align-items-center">
                     <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
-                    <h2 class="fs-2 m-0">Pesanan</h2>
+                    <h2 class="fs-2 m-0">Pembayaran</h2>
                 </div>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -97,6 +97,7 @@
                                         <th scope="col">Jenis Kelamin</th>
                                         <th scope="col">Tanggal Masuk</th>
                                         <th scope="col">Jenis Pembayaran</th>
+                                        <th scope="col">Bukti Pembayaran</th>
                                         <th scope="col">Aksi</th>
                                     </tr>
                                 </thead>
@@ -110,6 +111,7 @@
                                         <td>Pria</td>
                                         <td>2023-11-11</td>
                                         <td>Penuh</td>
+                                        <td><img src="assets/tf1.jpg" alt="" width="100"></td>
                                         <td>
                                           <button type="button" class="btn btn-primary validasiBtn">Validasi</button>
                                           <button type="button" class="btn btn-danger tidakvalidasiBtn">Tidak Validasi</button>
@@ -124,6 +126,7 @@
                                         <td>Pria</td>
                                         <td>2023-11-11</td>
                                         <td>Penuh</td>
+                                        <td><img src="assets/tf1.jpg" alt="" width="100"></td>
                                         <td>
                                           <button type="button" class="btn btn-primary validasiBtn">Validasi</button>
                                           <button type="button" class="btn btn-danger tidakvalidasiBtn">Tidak Validasi</button>
@@ -138,6 +141,7 @@
                                         <td>Pria</td>
                                         <td>2023-11-11</td>
                                         <td>Penuh</td>
+                                        <td><img src="assets/tf1.jpg" alt="" width="100"></td>
                                         <td>
                                           <button type="button" class="btn btn-primary validasiBtn">Validasi</button>
                                           <button type="button" class="btn btn-danger tidakvalidasiBtn">Tidak Validasi</button>
@@ -190,11 +194,11 @@
     // Fungsi untuk menangani validasi
     function handleValidasi() {
         // Lakukan sesuatu di sini sesuai dengan kebutuhan Anda
-        window.location.href = "/validasi-pesanan";
+        window.location.href = "/validasi-pembayaran";
     }
     function handleTidakValidasi() {
         // Lakukan sesuatu di sini sesuai dengan kebutuhan Anda
-        window.location.href = "/tidak-validasi-pesanan";
+        window.location.href = "/tidak-validasi-pembayaran";
     }
 
 
