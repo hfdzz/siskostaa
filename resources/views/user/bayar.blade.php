@@ -17,14 +17,14 @@
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-    <a class="navbar-brand" href="/">Kost Abang Adek</a>
+    <a class="navbar-brand font-weight-bold" href="/">Kost Abang Adek</a>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" href="/">Beranda</a>
+          <a class="nav-link font-weight-bold" href="/">Beranda</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/pesan">Pemesanan</a>
+          <a class="nav-link font-weight-bold" href="/pesan">Pemesanan</a>
         </li>
         <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -114,7 +114,7 @@
               <label class="custom-file-label" for="bukti_pembayaran">Browse Image</label>
             </div>
           </div>
-          
+
         </div>
         <div class="text-center mt-5">
           <button class="btn btn-primary">Submit Bukti Pembayaran</button>

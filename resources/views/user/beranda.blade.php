@@ -11,15 +11,15 @@
     <title>Beranda Kost Abang Adek</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-xl navbar-light bg-light fixed-top">
-        <a class="navbar-brand" href="#" style="margin-right: 100px;">Kost Abang Adek</a>
+    <nav class="navbar navbar-expand-xl navbar-light bg-info fixed-top">
+        <a class="navbar-brand font-weight-bold" href="#" style="margin-right: 100px;">Kost Abang Adek</a>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="/">Beranda</a>
+              <a class="nav-link font-weight-bold" href="/">Beranda</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href='/pesan'>Pemesanan</a>
+              <a class="nav-link font-weight-bold" href='/pesan'>Pemesanan</a>
             </li>
             @auth        
             <li class="nav-item dropdown">
