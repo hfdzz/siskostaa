@@ -106,19 +106,26 @@
           <p class="font-weight-bold">Atas Nama:</p>
           <p class="font-weight-bold">Syafrial</p>
         </div>
-        <div class="modal-body text-center">
-          <p class="font-weight-bold">Masukkan Bukti Pembayaran:</p>
-          <div class="modal-body">
-            <div class="custom-file">
-              <input type="file" class="custom-file-input" name="bukti_pembayaran" id="bukti_pembayaran" accept="image/*">
-              <label class="custom-file-label" for="bukti_pembayaran">Browse Image</label>
+        <form action={{ route('bayar') }} method="POST" enctype="multipart/form-data">
+          @csrf
+          <div class="modal-body text-center">
+            <p class="font-weight-bold">Masukkan Bukti Pembayaran:</p>
+            <div class="modal-body">
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" name="bukti_pembayaran" id="bukti_pembayaran" accept="image/*">
+                <label class="custom-file-label" for="bukti_pembayaran">Browse Image</label>
+              </div>
             </div>
+            @if ($errors->has('bukti_pembayaran'))
+              <div class="alert alert-danger" role="alert">
+                {{ $errors->first('bukti_pembayaran') }}
+              </div>
+            @endif
           </div>
-
-        </div>
-        <div class="text-center mt-5">
-          <button class="btn btn-primary">Submit Bukti Pembayaran</button>
-        </div>
+          <div class="text-center mt-5">
+            <button class="btn btn-primary">Submit Bukti Pembayaran</button>
+          </div>
+        </form>
       </div>
           
 </div>

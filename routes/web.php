@@ -63,19 +63,15 @@ Route::middleware('auth')->group(function () {
     // Riwayat Pemesanan
     Route::get('/riwayat-pemesanan', [PesanController::class, 'riwayat'])->name('riwayat-pemesanan');
 
-    // Tagihan
+    // Tagihan & Pembayaran
     Route::get('/tagihan', [TagihanController::class, 'get'])->name('tagihan');
-    
+    Route::get('/bayar', [TagihanController::class, 'getPembayaran'])->name('bayar');
+    Route::post('/bayar', [TagihanController::class, 'bayar']);
 
     //Perpanjangan
     Route::get('/perpanjangan', function () {
         return view('user.perpanjangan');
     })->name('perpanjangan]');
-
-    //Bayar
-    Route::get('/bayar', function () {
-        return view('user.bayar');
-    })->name('bayar]');
     
     // artisan command line interface in laravel
     Route::get('/artisan-cli', function () {

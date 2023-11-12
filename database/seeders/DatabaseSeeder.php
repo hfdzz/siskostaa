@@ -38,7 +38,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\Tagihan::factory()->create([
             'status' => '0',
             'keterangan' => 'tgh - ket',
-            'bukti_pembayaran' => 'test.jpg',
+            'bukti_pembayaran' => null,
             'pemesanan_id' => '1',
         ]);
     }

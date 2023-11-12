@@ -19,13 +19,13 @@ class Tagihan extends Model
     public static $kode_status_tagihan = [
         'menunggu_pembayaran' => '0',
         'menunggu_validasi' => '1',
-        'lunas' => '2',
+        'selesai' => '2',
     ];
     
     public static $text_status_tagihan = [
         '0' => 'Menunggu Pembayaran',
         '1' => 'Menunggu Validasi',
-        '2' => 'Lunas',
+        '2' => 'Selesai',
     ];
 
     protected $fillable = [

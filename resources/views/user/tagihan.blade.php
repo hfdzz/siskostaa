@@ -101,6 +101,11 @@
     <div class="col-10" style="min-height: 50vh">
       <h2 class="text-block">Tagihan</h2>
       <div class="table-responsive">
+        @if (session('already_menunggu_validasi'))
+          <div class="alert alert-warning">
+            {{ session('already_menunggu_validasi') }}
+          </div>
+        @endif
         <table class="table table-striped">
           <thead class="thead-light">
             <tr>
@@ -133,12 +138,19 @@
                 <td>{{ $tagihan->pemesanan->jenis_pembayaran }}</td>
                 <td>{{ $tagihan->getStatusTagihanTextAttribute() }}</td>
                 <td>
-                  <button type="button" class="btn btn-primary" id="bayarButton">Bayar</button>
+                  @if ($tagihan->status == 0)
+                    <button type="button" class="btn btn-primary" id="bayarButton">Bayar</button>
+                  {{-- else link to view bukti pembayaran --}}
+                  @else
+                    <a href="{{ url('storage/' . $tagihan->bukti_pembayaran) }}" target="_blank" class="btn btn-primary">Lihat Bukti Pembayaran</a>
+                  @endif
+                  {{-- <button type="button" class="btn btn-primary" id="bayarButton">Bayar</button> --}}
                 </td>
                 <td>{{ $tagihan->keterangan }}</td>
               </tr>
             @endforeach
 
+            
           </tbody>
         </table>
       </div>
