@@ -38,6 +38,10 @@ Route::get('/admin-pesanan', function () {
     return view('admin.admin-pesanan');
 })->name('admin-pesanan');
 
+Route::get('/admin-pesanan-sudah', function () {
+    return view('admin.admin-pesanan-sudah');
+})->name('admin-pesanan-sudah');
+
 Route::get('/validasi-pesanan', function () {
     return view('admin.validasi-pesanan');
 })->name('validasi-pesanan');
@@ -49,6 +53,10 @@ Route::get('/tidak-validasi-pesanan', function () {
 Route::get('/admin-pembayaran', function () {
     return view('admin.admin-pembayaran');
 })->name('admin-pembayaran');
+
+Route::get('/admin-pembayaran-sudah', function () {
+    return view('admin.admin-pembayaran-sudah');
+})->name('admin-pembayaran-sudah');
 
 Route::get('/validasi-pembayaran', function () {
     return view('admin.validasi-pembayaran');

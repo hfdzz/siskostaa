@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
     <link href="styleAdmin.css" rel="stylesheet">
-    <title>Pesanan Admin</title>
+    <title>Pembayaran Admin</title>
 </head>
 
 <body>
@@ -59,7 +59,7 @@
             <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
                 <div class="d-flex align-items-center">
                     <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
-                    <h2 class="fs-2 m-0">Pesanan</h2>
+                    <h2 class="fs-2 m-0">Pembayaran</h2>
                 </div>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -117,6 +117,7 @@
                                         <th scope="col">Jenis Kelamin</th>
                                         <th scope="col">Tanggal Masuk</th>
                                         <th scope="col">Jenis Pembayaran</th>
+                                        <th scope="col">Bukti Pembayaran</th>
                                         <th scope="col">Aksi</th>
                                     </tr>
                                 </thead>
@@ -131,43 +132,18 @@
                                         <td>2023-11-11</td>
                                         <td>Penuh</td>
                                         <td>
-                                          <button type="button" class="btn btn-primary validasiBtn">Validasi</button>
-                                          <button type="button" class="btn btn-danger tidakvalidasiBtn">Tidak Validasi</button>
+                                            <img src="assets/tf1.jpg" alt="" width="100">
+                                            <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#gambarModal">
+                                                Lihat Gambar
+                                            </button> -->
                                         </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>rafi</td>
-                                        <td>rafi@mail</td>
-                                        <td>087812121212</td>
-                                        <td>1234123412341234</td>
-                                        <td>Pria</td>
-                                        <td>2023-11-11</td>
-                                        <td>Penuh</td>
-                                        <td>
-                                          <button type="button" class="btn btn-primary validasiBtn">Validasi</button>
-                                          <button type="button" class="btn btn-danger tidakvalidasiBtn">Tidak Validasi</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td>rafi</td>
-                                        <td>rafi@mail</td>
-                                        <td>087812121212</td>
-                                        <td>1234123412341234</td>
-                                        <td>Pria</td>
-                                        <td>2023-11-11</td>
-                                        <td>Penuh</td>
-                                        <td>
-                                          <button type="button" class="btn btn-primary validasiBtn">Validasi</button>
-                                          <button type="button" class="btn btn-danger tidakvalidasiBtn">Tidak Validasi</button>
-                                        </td>
+                                        <td>divalidasi</td>
                                     </tr>
                                 </tbody>
                             </table>
 
                             <div class="d-flex justify-content-between align-items-center mt-2">
-                                    <div class="datatable-info">Showing 1 to 3 of 3 entries</div>
+                                    <div class="datatable-info">Showing 1 to 1 of 1 entries</div>
                                     <nav class="datatable-pagination">
                                         <ul class="datatable-pagination-list">
                                             <li class="datatable-pagination-list-item datatable-hidden datatable-disabled">
@@ -193,6 +169,24 @@
             </div>
         </div>
     </div>
+        <!-- Modal -->
+        <!-- <div class="modal fade" id="gambarModal" tabindex="-1" aria-labelledby="gambarModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="gambarModalLabel">Bukti Pembayaran</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body"> -->
+                        <!-- Isi modal dengan gambar -->
+                        <!-- <img src="assets/tf1.jpg" alt="" class="img-fluid">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                    </div>
+                </div>
+            </div>
+        </div> -->
     <!-- /#page-content-wrapper -->
     </div>
 
@@ -206,15 +200,15 @@
         };
     </script>
 
-<script>
+<!-- <script>
     // Fungsi untuk menangani validasi
     function handleValidasi() {
         // Lakukan sesuatu di sini sesuai dengan kebutuhan Anda
-        window.location.href = "/validasi-pesanan";
+        window.location.href = "/validasi-pembayaran";
     }
     function handleTidakValidasi() {
         // Lakukan sesuatu di sini sesuai dengan kebutuhan Anda
-        window.location.href = "/tidak-validasi-pesanan";
+        window.location.href = "/tidak-validasi-pembayaran";
     }
 
 
@@ -230,7 +224,7 @@
 
 
     });
-</script>
+</script> -->
 
 </body>
 

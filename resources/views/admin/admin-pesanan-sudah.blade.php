@@ -87,73 +87,81 @@
 
             <!-- Content -->
             <div class="container-fluid px-4">
-    <div class="row g-3 my-2">
-        <div class="col-md-12">
+                <div class="row g-3 my-2">
+                    <div class="row my-5">
+                    <div class="col-12 mb-3 text-end">
+                            <div class="datatable-dropdown d-inline-block me-3">
+                                    <label class="m-0">
+                                        <select class="datatable-selector">
+                                            <option value="5">5</option>
+                                            <option value="10" selected="">10</option>
+                                            <option value="15">15</option>
+                                            <option value="20">20</option>
+                                            <option value="25">25</option>
+                                        </select> entries per page
+                                    </label>
+                                </div>
+                                <div class="datatable-search d-inline-block">
+                                    <input class="datatable-input form-control rounded-pill" placeholder="Search..." type="search" title="Search within table">
+                                </div>
+                            </div>
+                        <div class="col">
+                            <table class="table bg-white rounded shadow-sm  table-hover datatable">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" width="50">#</th>
+                                        <th scope="col">Nama</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col">No Handphone</th>
+                                        <th scope="col">NIK</th>
+                                        <th scope="col">Jenis Kelamin</th>
+                                        <th scope="col">Tanggal Masuk</th>
+                                        <th scope="col">Jenis Pembayaran</th>
+                                        <th scope="col">Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>rafi</td>
+                                        <td>rafi@mail</td>
+                                        <td>087812121212</td>
+                                        <td>1234123412341234</td>
+                                        <td>Pria</td>
+                                        <td>2023-11-11</td>
+                                        <td>Penuh</td>
+                                        <td>Divalidasi</td>
+                                    </tr>
+                                </tbody>
+                            </table>
 
-            <!-- Breadcrumb -->
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="/admin-pesanan">Pesanan</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Data Pemesan</li>
-                </ol>
-            </nav>
-
-            <!-- Card -->
-            <div class="card">
-                <div class="card-header">
-                    <h4>Data Pemesan</h4>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="nama" class="form-label">Nama</label>
-                                <input type="text" class="form-control" id="nama" value="Rafi" readonly>
-                            </div>
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="email" value="rafi@mail" readonly>
-                            </div>
-                            <div class="mb-3">
-                                <label for="noHp" class="form-label">No Handphone</label>
-                                <input type="tel" class="form-control" id="noHp" value="087812121212" readonly>
-                            </div>
-                            <div class="mb-3">
-                                <label for="nik" class="form-label">NIK</label>
-                                <input type="text" class="form-control" id="nik" value="1234123412341234" readonly>
-                            </div>
+                            <div class="d-flex justify-content-between align-items-center mt-2">
+                                    <div class="datatable-info">Showing 1 to  of 1 entries</div>
+                                    <nav class="datatable-pagination">
+                                        <ul class="datatable-pagination-list">
+                                            <li class="datatable-pagination-list-item datatable-hidden datatable-disabled">
+                                                <button data-page="1" class="datatable-pagination-list-item-link" aria-label="Page 1">‹</button>
+                                            </li>
+                                            <li class="datatable-pagination-list-item datatable-active">
+                                                <button data-page="1" class="datatable-pagination-list-item-link" aria-label="Page 1">1</button>
+                                            </li>
+                                            <!-- <li class="datatable-pagination-list-item">
+                                                <button data-page="2" class="datatable-pagination-list-item-link" aria-label="Page 2">2</button>
+                                            </li> -->
+                                            <li class="datatable-pagination-list-item">
+                                                <button data-page="2" class="datatable-pagination-list-item-link" aria-label="Page 2">›</button>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>                            
                         </div>
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="jenisKelamin" class="form-label">Jenis Kelamin</label>
-                                <input type="text" class="form-control" id="jenisKelamin" value="Pria" readonly>
-                            </div>
-                            <div class="mb-3">
-                                <label for="tanggalMasuk" class="form-label">Tanggal Masuk</label>
-                                <input type="text" class="form-control" id="tanggalMasuk" value="2023-11-11" readonly>
-                            </div>
-                            <div class="mb-3">
-                                <label for="jenisPembayaran" class="form-label">Jenis Pembayaran</label>
-                                <input type="text" class="form-control" id="jenisPembayaran" value="Penuh" readonly>
-                            </div>
-                            <div class="mb-3">
-                                <label for="keterangan" class="form-label">Keterangan</label>
-                                <textarea class="form-control" id="keterangan"  placeholder="Masukkan keterangan"></textarea>
-                            </div>
-                            <div class="mb-3">
-                                <label for="tagihan" class="form-label">Tagihan</label>
-                                <input type="text" class="form-control" id="tagihan" placeholder="Masukkan tagihan">
-                            </div>
-                            <div class="mb-3">
-                                <button type="button" class="btn btn-primary" id="submitBtn">Submit</button>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
     <!-- /#page-content-wrapper -->
     </div>
 
@@ -166,19 +174,33 @@
             el.classList.toggle("toggled");
         };
     </script>
-    <script>
-        document.getElementById("submitBtn").addEventListener("click", function () {
-            var keteranganValue = document.getElementById("keterangan").value;
-            var tagihanValue = document.getElementById("tagihan").value;
 
-            // Lakukan sesuatu dengan data yang diambil, seperti mengirimkan ke server atau menyimpan ke database
-            console.log("Keterangan: ", keteranganValue);
-            console.log("Tagihan: ", tagihanValue);
+<!-- <script>
+    // Fungsi untuk menangani validasi
+    function handleValidasi() {
+        // Lakukan sesuatu di sini sesuai dengan kebutuhan Anda
+        window.location.href = "/validasi-pesanan";
+    }
+    function handleTidakValidasi() {
+        // Lakukan sesuatu di sini sesuai dengan kebutuhan Anda
+        window.location.href = "/tidak-validasi-pesanan";
+    }
 
-            // Arahkan ke halaman /admin-pesanan
-            window.location.href = "/admin-pesanan";
-        });
-    </script>
+
+    // Menambahkan event listener pada semua elemen dengan class "validasiBtn"
+    var buttons = document.querySelectorAll('.validasiBtn');
+    buttons.forEach(function(button) {
+        button.addEventListener('click', handleValidasi);
+    });
+
+    var buttons = document.querySelectorAll('.tidakvalidasiBtn');
+    buttons.forEach(function(button) {
+        button.addEventListener('click', handleTidakValidasi);
+
+
+    });
+</script> -->
+
 </body>
 
 </html>
