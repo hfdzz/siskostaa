@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
     <link href="styleAdmin.css" rel="stylesheet">
-    <title>Admin Dashboard</title>
+    <title>Lihat Detail</title>
 </head>
 
 <body>
@@ -59,7 +59,7 @@
             <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
                 <div class="d-flex align-items-center">
                     <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
-                    <h2 class="fs-2 m-0">Dashboard</h2>
+                    <h2 class="fs-2 m-0">Kelola Penghuni</h2>
                 </div>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -87,42 +87,84 @@
 
             <!-- Content -->
             <div class="container-fluid px-4">
-                <div class="row g-3 my-2 justify-content-center" >
-                    <div class="col-md-3">
-                        <div class="p-3 secondary-bg shadow-sm d-flex justify-content-around align-items-center rounded">
-                            <i class="fas fa-solid fa-house fs-1 primary-text border rounded-full secondary-bg p-3"></i>
-                            <div>
-                                <h3 class="fs-2">20</h3>
-                                <p class="fs-5">Pesanan Kost</p>
-                            </div>
-                        </div>
-                    </div>
+                <div class="row g-3 my-2">
+                    <div class="col-md-12">
 
-                    <div class="col-md-3">
-                        <div class="p-3 secondary-bg shadow-sm d-flex justify-content-around align-items-center rounded">
-                            <i
-                                class="fas fa-solid fa-money-bills fs-1 primary-text border rounded-full secondary-bg p-3"></i>
-                            <div>
-                                <h3 class="fs-2">10</h3>
-                                <p class="fs-5">Pembayaran</p>
-                            </div>
-                        </div>
-                    </div>
+                        <!-- Breadcrumb -->
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="/admin-kelolaPenghuni">Kelola Penghuni</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Lihat Detail</li>
+                            </ol>
+                        </nav>
 
-                    <div class="col-md-3">
-                        <div class="p-3 secondary-bg shadow-sm d-flex justify-content-around align-items-center rounded">
-                            <i
-                                class="fas fa-solid fa-user fs-1 primary-text border rounded-full secondary-bg p-3"></i>
-                            <div>
-                                <h3 class="fs-2">100</h3>
-                                <p class="fs-5">Penghuni</p>
+            <!-- Card -->
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                <div class="card">
+                <div class="card-header">
+                    <h4>Lihat Detail</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <!-- <div class="col-md-6"> -->
+                            <div class="mb-1">
+                                <label for="nama" class="form-label">Nama</label>
+                                <input type="text" class="form-control" id="nama" value="rafi" readonly>
+                            </div>
+                            <div class="mb-1">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" value="rafi@mail" readonly>
+                            </div>
+                            <div class="mb-1">
+                                <label for="noHp" class="form-label">No Handphone</label>
+                                <input type="tel" class="form-control" id="noHp" value="087812121212" readonly>
+                            </div>
+                            <div class="mb-1">
+                                <label for="nik" class="form-label">NIK</label>
+                                <input type="number" class="form-control" id="nik" value="1234123412341234" readonly>
+                            </div>
+                            <div class="mb-1">
+                                <label for="jenisKelamin" class="form-label">Jenis Kelamin</label>
+                                <input type="text" class="form-control" id="jenisKelamin" value="Pria" readonly>
+                                </select>
+                            </div>
+                            <div class="mb-1">
+                                <label for="tanggalMasuk" class="form-label">Tanggal Masuk</label>
+                                <input type="date" class="form-control" id="tanggalMasuk" value="2023-11-11" readonly>
+                            </div>
+                            <div class="mb-4">
+                                <label for="jenisPembayaran" class="form-label">Nomor Kamar</label>
+                                <input type="text" class="form-control" id="nomorKamar" value="30A" readonly>
                             </div>
                         </div>
                     </div>
                 </div>
+                </div>
+            </div>
+            
             </div>
         </div>
     </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="gambarModal" tabindex="-1" aria-labelledby="gambarModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="gambarModalLabel">Bukti Pembayaran</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Isi modal dengan gambar -->
+                <img src="assets/tf1.jpg" alt="" class="img-fluid">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+            </div>
+        </div>
+    </div>
+</div>
     <!-- /#page-content-wrapper -->
     </div>
 
@@ -135,6 +177,7 @@
             el.classList.toggle("toggled");
         };
     </script>
+
 </body>
 
 </html>

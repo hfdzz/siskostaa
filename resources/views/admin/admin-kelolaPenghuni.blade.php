@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
     <link href="styleAdmin.css" rel="stylesheet">
-    <title>Pembayaran Admin</title>
+    <title>Admin Kelola Penghuni</title>
 </head>
 
 <body>
@@ -59,7 +59,7 @@
             <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
                 <div class="d-flex align-items-center">
                     <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
-                    <h2 class="fs-2 m-0">Pembayaran</h2>
+                    <h2 class="fs-2 m-0">Kelola Penghuni</h2>
                 </div>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -116,8 +116,7 @@
                                         <th scope="col">NIK</th>
                                         <th scope="col">Jenis Kelamin</th>
                                         <th scope="col">Tanggal Masuk</th>
-                                        <th scope="col">Jenis Pembayaran</th>
-                                        <th scope="col">Bukti Pembayaran</th>
+                                        <th scope="col">Nomor Kamar</th>
                                         <th scope="col">Aksi</th>
                                     </tr>
                                 </thead>
@@ -130,11 +129,11 @@
                                         <td>1234123412341234</td>
                                         <td>Pria</td>
                                         <td>2023-11-11</td>
-                                        <td>Penuh</td>
-                                        <td><img src="assets/tf1.jpg" alt="" width="100"></td>
+                                        <td>30A</td>
                                         <td>
-                                          <button type="button" class="btn btn-primary validasiBtn">Validasi</button>
-                                          <button type="button" class="btn btn-danger tidakvalidasiBtn">Tidak Validasi</button>
+                                          <button type="button" class="btn btn-success lihatDetailBtn">Lihat Detail</button>
+                                          <button type="button" class="btn btn-primary editBtn">Edit</button>
+                                          <button type="button" class="btn btn-danger hapusBtn">Hapus</button>
                                         </td>
                                     </tr>
                                     <tr>
@@ -145,11 +144,11 @@
                                         <td>1234123412341234</td>
                                         <td>Pria</td>
                                         <td>2023-11-11</td>
-                                        <td>Penuh</td>
-                                        <td><img src="assets/tf1.jpg" alt="" width="100"></td>
+                                        <td>31A</td>
                                         <td>
-                                          <button type="button" class="btn btn-primary validasiBtn">Validasi</button>
-                                          <button type="button" class="btn btn-danger tidakvalidasiBtn">Tidak Validasi</button>
+                                          <button type="button" class="btn btn-success lihatDetailBtn">Lihat Detail</button>
+                                          <button type="button" class="btn btn-primary editBtn">Edit</button>
+                                          <button type="button" class="btn btn-danger hapusBtn">Hapus</button>
                                         </td>
                                     </tr>
                                     <tr>
@@ -160,18 +159,22 @@
                                         <td>1234123412341234</td>
                                         <td>Pria</td>
                                         <td>2023-11-11</td>
-                                        <td>Penuh</td>
-                                        <td><img src="assets/tf1.jpg" alt="" width="100"></td>
+                                        <td>32A</td>
                                         <td>
-                                          <button type="button" class="btn btn-primary validasiBtn">Validasi</button>
-                                          <button type="button" class="btn btn-danger tidakvalidasiBtn">Tidak Validasi</button>
+                                          <button type="button" class="btn btn-success lihatDetailBtn">Lihat Detail</button>
+                                          <button type="button" class="btn btn-primary editBtn">Edit</button>
+                                          <button type="button" class="btn btn-danger hapusBtn">Hapus</button>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
 
                             <div class="d-flex justify-content-between align-items-center mt-2">
-                                    <div class="datatable-info">Showing 1 to 3 of 3 entries</div>
+                                <!-- Tombol Tambah -->
+                                <button type="button" class="btn btn-info gap-5 tambahBtn" onclick="window.location.href='/tambah-penghuni'">
+                                    Tambah Data
+                                </button>
+                                <!-- <div class="datatable-info">Showing 1 to 3 of 3 entries</div> -->
                                     <nav class="datatable-pagination">
                                         <ul class="datatable-pagination-list">
                                             <li class="datatable-pagination-list-item datatable-hidden datatable-disabled">
@@ -212,27 +215,33 @@
 
 <script>
     // Fungsi untuk menangani validasi
-    function handleValidasi() {
+    function handleLihatDetail() {
         // Lakukan sesuatu di sini sesuai dengan kebutuhan Anda
-        window.location.href = "/validasi-pembayaran";
+        window.location.href = "/lihat-detail-kelolaPenghuni";
     }
-    function handleTidakValidasi() {
+    function handleEdit() {
         // Lakukan sesuatu di sini sesuai dengan kebutuhan Anda
-        window.location.href = "/tidak-validasi-pembayaran";
+        window.location.href = "/edit-kelolaPenghuni";
     }
-
+    function handleHapus() {
+        // Lakukan sesuatu di sini sesuai dengan kebutuhan Anda
+        window.location.href = "/admin-kelolaPenghuni";
+    }
 
     // Menambahkan event listener pada semua elemen dengan class "validasiBtn"
-    var buttons = document.querySelectorAll('.validasiBtn');
+    var buttons = document.querySelectorAll('.lihatDetailBtn');
     buttons.forEach(function(button) {
-        button.addEventListener('click', handleValidasi);
+        button.addEventListener('click', handleLihatDetail);
     });
 
-    var buttons = document.querySelectorAll('.tidakvalidasiBtn');
+    var buttons = document.querySelectorAll('.editBtn');
     buttons.forEach(function(button) {
-        button.addEventListener('click', handleTidakValidasi);
+        button.addEventListener('click', handleEdit);
+    });
 
-
+    var buttons = document.querySelectorAll('.hapusBtn');
+    buttons.forEach(function(button) {
+        button.addEventListener('click', handleHapus);
     });
 </script>
 
