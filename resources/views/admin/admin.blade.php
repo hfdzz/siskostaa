@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
     <link href="styleAdmin.css" rel="stylesheet">
-    <title>Admin Side Bar</title>
+    <title>Admin Dashboard</title>
 </head>
 
 <body>
@@ -18,7 +18,7 @@
             <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom">
                 Kost Abang Adek</div>
             <div class="list-group list-group-flush my-3">
-                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                <a href="/admin" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-solid fa-house me-2"></i>
                         <span class="ms-2">Dashboard</span>
                 </a>
@@ -87,7 +87,7 @@
 
             <!-- Content -->
             <div class="container-fluid px-4">
-                <div class="row g-3 my-2">
+                <div class="row g-3 my-2 justify-content-center" >
                     <div class="col-md-3">
                         <div class="p-3 secondary-bg shadow-sm d-flex justify-content-around align-items-center rounded">
                             <i class="fas fa-solid fa-house fs-1 primary-text border rounded-full secondary-bg p-3"></i>

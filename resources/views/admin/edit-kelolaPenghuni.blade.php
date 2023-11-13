@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
     <link href="styleAdmin.css" rel="stylesheet">
-    <title>Pesanan Admin</title>
+    <title>Lihat Detail</title>
 </head>
 
 <body>
@@ -59,7 +59,7 @@
             <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
                 <div class="d-flex align-items-center">
                     <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
-                    <h2 class="fs-2 m-0">Pesanan</h2>
+                    <h2 class="fs-2 m-0">Kelola Penghuni</h2>
                 </div>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -88,80 +88,87 @@
             <!-- Content -->
             <div class="container-fluid px-4">
                 <div class="row g-3 my-2">
-                    <div class="row my-5">
-                    <div class="col-12 mb-3 text-end">
-                            <div class="datatable-dropdown d-inline-block me-3">
-                                    <label class="m-0">
-                                        <select class="datatable-selector">
-                                            <option value="5">5</option>
-                                            <option value="10" selected="">10</option>
-                                            <option value="15">15</option>
-                                            <option value="20">20</option>
-                                            <option value="25">25</option>
-                                        </select> entries per page
-                                    </label>
-                                </div>
-                                <div class="datatable-search d-inline-block">
-                                    <input class="datatable-input form-control rounded-pill" placeholder="Search..." type="search" title="Search within table">
-                                </div>
-                            </div>
-                        <div class="col">
-                            <table class="table bg-white rounded shadow-sm  table-hover datatable">
-                                <thead>
-                                    <tr>
-                                        <th scope="col" width="50">#</th>
-                                        <th scope="col">Nama</th>
-                                        <th scope="col">Email</th>
-                                        <th scope="col">No Handphone</th>
-                                        <th scope="col">NIK</th>
-                                        <th scope="col">Jenis Kelamin</th>
-                                        <th scope="col">Tanggal Masuk</th>
-                                        <th scope="col">Jenis Pembayaran</th>
-                                        <th scope="col">Aksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>rafi</td>
-                                        <td>rafi@mail</td>
-                                        <td>087812121212</td>
-                                        <td>1234123412341234</td>
-                                        <td>Pria</td>
-                                        <td>2023-11-11</td>
-                                        <td>Penuh</td>
-                                        <td>Divalidasi</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                    <div class="col-md-12">
 
-                            <div class="d-flex justify-content-between align-items-center mt-2">
-                                    <div class="datatable-info">Showing 1 to  of 1 entries</div>
-                                    <nav class="datatable-pagination">
-                                        <ul class="datatable-pagination-list">
-                                            <li class="datatable-pagination-list-item datatable-hidden datatable-disabled">
-                                                <button data-page="1" class="datatable-pagination-list-item-link" aria-label="Page 1">‹</button>
-                                            </li>
-                                            <li class="datatable-pagination-list-item datatable-active">
-                                                <button data-page="1" class="datatable-pagination-list-item-link" aria-label="Page 1">1</button>
-                                            </li>
-                                            <!-- <li class="datatable-pagination-list-item">
-                                                <button data-page="2" class="datatable-pagination-list-item-link" aria-label="Page 2">2</button>
-                                            </li> -->
-                                            <li class="datatable-pagination-list-item">
-                                                <button data-page="2" class="datatable-pagination-list-item-link" aria-label="Page 2">›</button>
-                                            </li>
-                                        </ul>
-                                    </nav>
-                                </div>
-                            </div>                            
+                        <!-- Breadcrumb -->
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="/admin-kelolaPenghuni">Kelola Penghuni</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Edit Detail</li>
+                            </ol>
+                        </nav>
+
+            <!-- Card -->
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                <div class="card">
+                <div class="card-header">
+                    <h4>Edit</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <!-- <div class="col-md-6"> -->
+                            <div class="mb-1">
+                                <label for="nama" class="form-label">Nama</label>
+                                <input type="text" class="form-control" id="nama" value="rafi">
+                            </div>
+                            <div class="mb-1">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" value="rafi@mail">
+                            </div>
+                            <div class="mb-1">
+                                <label for="noHp" class="form-label">No Handphone</label>
+                                <input type="tel" class="form-control" id="noHp" value="087812121212">
+                            </div>
+                            <div class="mb-1">
+                                <label for="nik" class="form-label">NIK</label>
+                                <input type="number" class="form-control" id="nik" value="1234123412341234">
+                            </div>
+                            <div class="mb-1">
+                                <label for="jenisKelamin" class="form-label">Jenis Kelamin</label>
+                                <input type="text" class="form-control" id="jenisKelamin" value="Pria">
+                                </select>
+                            </div>
+                            <div class="mb-1">
+                                <label for="tanggalMasuk" class="form-label">Tanggal Masuk</label>
+                                <input type="date" class="form-control" id="tanggalMasuk" value="2023-11-11">
+                            </div>
+                            <div class="mb-4">
+                                <label for="jenisPembayaran" class="form-label">Nomor Kamar</label>
+                                <input type="text" class="form-control" id="nomorKamar" value="30A">
+                            </div>
+                            <div class="mb-1 d-flex gap-4">
+                                <button type="button" class="btn btn-primary" onclick="window.location.href='/admin-kelolaPenghuni'" id="editBtn">Edit</button>
+                                <button type="button" class="btn btn-secondary" onclick="window.location.href='/admin-kelolaPenghuni'" id="batalBtn">Batal</button>
+                            </div>
                         </div>
-                        
                     </div>
                 </div>
+                </div>
+            </div>
+            
             </div>
         </div>
     </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="gambarModal" tabindex="-1" aria-labelledby="gambarModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="gambarModalLabel">Bukti Pembayaran</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Isi modal dengan gambar -->
+                <img src="assets/tf1.jpg" alt="" class="img-fluid">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+            </div>
+        </div>
+    </div>
+</div>
     <!-- /#page-content-wrapper -->
     </div>
 
@@ -174,32 +181,6 @@
             el.classList.toggle("toggled");
         };
     </script>
-
-<!-- <script>
-    // Fungsi untuk menangani validasi
-    function handleValidasi() {
-        // Lakukan sesuatu di sini sesuai dengan kebutuhan Anda
-        window.location.href = "/validasi-pesanan";
-    }
-    function handleTidakValidasi() {
-        // Lakukan sesuatu di sini sesuai dengan kebutuhan Anda
-        window.location.href = "/tidak-validasi-pesanan";
-    }
-
-
-    // Menambahkan event listener pada semua elemen dengan class "validasiBtn"
-    var buttons = document.querySelectorAll('.validasiBtn');
-    buttons.forEach(function(button) {
-        button.addEventListener('click', handleValidasi);
-    });
-
-    var buttons = document.querySelectorAll('.tidakvalidasiBtn');
-    buttons.forEach(function(button) {
-        button.addEventListener('click', handleTidakValidasi);
-
-
-    });
-</script> -->
 
 </body>
 

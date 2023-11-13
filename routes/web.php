@@ -30,6 +30,7 @@ Route::get('/regis', function () {
     return redirect()->route('registrasi');
 });
 
+// beranda-admin
 Route::get('/admin', function () {
     return view('admin.admin');
 })->name('admin');
@@ -65,6 +66,22 @@ Route::get('/validasi-pembayaran', function () {
 Route::get('/tidak-validasi-pembayaran', function () {
     return view('admin.tidak-validasi-pembayaran');
 })->name('tidak-validasi-pembayaran');
+
+Route::get('/admin-kelolaPenghuni', function () {
+    return view('admin.admin-kelolaPenghuni');
+})->name('admin-kelolaPenghuni');
+
+Route::get('/tambah-penghuni', function () {
+    return view('admin.tambah-penghuni');
+})->name('tambah-penghuni');
+
+Route::get('/lihat-detail-kelolaPenghuni', function () {
+    return view('admin.lihat-detail-kelolaPenghuni');
+})->name('lihat-detail-kelolaPenghuni');
+
+Route::get('/edit-kelolaPenghuni', function () {
+    return view('admin.edit-kelolaPenghuni');
+})->name('edit-kelolaPenghuni');
 
 Route::middleware('auth')->group(function () {
     // Pemesanan
