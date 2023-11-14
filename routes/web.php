@@ -72,8 +72,10 @@ Route::middleware(['auth', 'can:admin'])->group(function () {
     Route::get('/admin-pesanan', [ValidasiPesananController::class, 'index'])->name('admin-pesanan');
 
     Route::get('/validasi-pesanan/{pesanan_id}', [ValidasiPesananController::class, 'getValidasiPesanan'])->name('validasi-pesanan');
+    Route::post('/validasi-pesanan/{pesanan_id}', [ValidasiPesananController::class, 'postValidasiPesanan']);
     
     Route::get('/tidak-validasi-pesanan/{pesanan_id}', [ValidasiPesananController::class, 'getTidakValidasiPesanan'])->name('tidak-validasi-pesanan');
+    Route::post('/tidak-validasi-pesanan/{pesanan_id}', [ValidasiPesananController::class, 'postTidakValidasiPesanan']);
     
     // Validasi Pembayaran
     Route::get('/admin-pembayaran', function () {

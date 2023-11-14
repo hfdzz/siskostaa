@@ -71,7 +71,13 @@ class Pemesanan extends Model
     // jenis pembayaran text
     public function getJenisPembayaranText()
     {
-        return $this->jenis_pembayaran == 'penuh' ? 'Pembayaran Penuh' : 'Pembayaran DP';
+        return $this->jenis_pembayaran == 'penuh' ? 'Penuh' : 'DP';
+    }
+
+    // jenis kelamin text
+    public function getJenisKelaminText()
+    {
+        return $this->jenis_kelamin == 'L' ? 'Laki-laki' : 'Perempuan';
     }
 
 }

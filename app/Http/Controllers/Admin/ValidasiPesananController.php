@@ -23,11 +23,55 @@ class ValidasiPesananController extends Controller
 
     public function getValidasiPesanan(Request $request)
     {
-        return view('admin.validasi-pesanan');
+        $pesanan_id = $request->route('pesanan_id');
+        $pesanan = Pemesanan::findOrFail($pesanan_id);
+        return view('admin.validasi-pesanan', ['pesanan' => $pesanan]);
     }
 
     public function getTidakValidasiPesanan(Request $request)
     {
-        return view('admin.tidak-validasi-pesanan');
+        $pesanan_id = $request->route('pesanan_id');
+        $pesanan = Pemesanan::findOrFail($pesanan_id);
+        return view('admin.tidak-validasi-pesanan', ['pesanan' => $pesanan]);
+    }
+
+    public function postValidasiPesanan(Request $request)
+    {
+        // get pesanan
+        $pesanan_id = $request->route('pesanan_id');
+        $pesanan = Pemesanan::findOrFail($pesanan_id);
+
+        // validate incoming request
+        $request->validate([
+            'keterangan' => 'string|max:255|nullable',
+            'total_tagihan' => 'required|numeric',
+        ]);
+
+        // update pesanan
+        $pesanan->keterangan = $request->input('keterangan');
+        $pesanan->total_tagihan = $request->input('total_tagihan');
+        $pesanan->status = '1';
+
+        $pesanan->save();
+        return redirect()->route('admin-pesanan');
+    }
+
+    public function postTidakValidasiPesanan(Request $request)
+    {
+        // get pesanan
+        $pesanan_id = $request->route('pesanan_id');
+        $pesanan = Pemesanan::findOrFail($pesanan_id);
+
+        // validate incoming request
+        $request->validate([
+            'keterangan' => 'string|max:255|nullable',
+        ]);
+
+        // update pesanan
+        $pesanan->keterangan = $request->input('keterangan');
+        $pesanan->status = '2';
+
+        $pesanan->save();
+        return redirect()->route('admin-pesanan');
     }
 }

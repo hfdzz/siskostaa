@@ -150,8 +150,8 @@
                                         <td>{{ $item->tanggal_masuk }}</td>
                                         <td>{{ $item->jenis_pembayaran }}</td>
                                         <td>
-                                          <button type="button" class="btn btn-primary validasiBtn">Validasi</button>
-                                          <button type="button" class="btn btn-danger tidakvalidasiBtn">Tidak Validasi</button>
+                                            <a href="/validasi-pesanan/{{ $item->id }}" class="btn btn-primary">Validasi</a>
+                                            <a href="/tidak-validasi-pesanan/{{ $item->id }}" class="btn btn-danger">Tidak Validasi</a>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -203,28 +203,28 @@
 
 <script>
     // Fungsi untuk menangani validasi
-    function handleValidasi() {
-        // Lakukan sesuatu di sini sesuai dengan kebutuhan Anda
-        window.location.href = "/validasi-pesanan";
-    }
-    function handleTidakValidasi() {
-        // Lakukan sesuatu di sini sesuai dengan kebutuhan Anda
-        window.location.href = "/tidak-validasi-pesanan";
-    }
+    // function handleValidasi() {
+    //     // Lakukan sesuatu di sini sesuai dengan kebutuhan Anda
+    //     window.location.href = "/validasi-pesanan";
+    // }
+    // function handleTidakValidasi() {
+    //     // Lakukan sesuatu di sini sesuai dengan kebutuhan Anda
+    //     window.location.href = "/tidak-validasi-pesanan";
+    // }
 
 
-    // Menambahkan event listener pada semua elemen dengan class "validasiBtn"
-    var buttons = document.querySelectorAll('.validasiBtn');
-    buttons.forEach(function(button) {
-        button.addEventListener('click', handleValidasi);
-    });
+    // // Menambahkan event listener pada semua elemen dengan class "validasiBtn"
+    // var buttons = document.querySelectorAll('.validasiBtn');
+    // buttons.forEach(function(button) {
+    //     button.addEventListener('click', handleValidasi);
+    // });
 
-    var buttons = document.querySelectorAll('.tidakvalidasiBtn');
-    buttons.forEach(function(button) {
-        button.addEventListener('click', handleTidakValidasi);
+    // var buttons = document.querySelectorAll('.tidakvalidasiBtn');
+    // buttons.forEach(function(button) {
+    //     button.addEventListener('click', handleTidakValidasi);
 
 
-    });
+    // });
 </script>
 
 </body>
