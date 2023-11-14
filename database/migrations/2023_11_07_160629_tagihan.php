@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('tagihan', function (Blueprint $table) {
             $table->id();
             $table->string('status');
-            $table->string('keterangan');
+            $table->string('keterangan')->nullable();
             $table->string('bukti_pembayaran')->nullable();
             $table->timestamps();
 

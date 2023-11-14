@@ -16,16 +16,18 @@ class Tagihan extends Model
      */
     protected $table = 'tagihan';
 
-    public static $kode_status_tagihan = [
+    public static $kode_status = [
         'menunggu_pembayaran' => '0',
         'menunggu_validasi' => '1',
-        'selesai' => '2',
+        'ditolak' => '2',
+        'selesai' => '3',
     ];
     
-    public static $text_status_tagihan = [
+    public static $text_status = [
         '0' => 'Menunggu Pembayaran',
         '1' => 'Menunggu Validasi',
-        '2' => 'Selesai',
+        '2' => 'Ditolak',
+        '3' => 'Selesai',
     ];
 
     protected $fillable = [
@@ -50,7 +52,7 @@ class Tagihan extends Model
 
     public function getStatusTagihanTextAttribute()
     {
-        return self::$text_status_tagihan[$this->status];
+        return self::$text_status[$this->status];
     }
     
 }

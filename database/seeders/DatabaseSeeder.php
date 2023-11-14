@@ -19,6 +19,13 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@test.com',
         ]);
 
+        \App\Models\User::factory()->create([
+            'nama' => 'admin',
+            'email' => 'admin@localhost',
+            'is_admin' => '1',
+            'password' => bcrypt('password'),
+        ]);
+
         \App\Models\Pemesanan::factory()->create([
             'nama' => 'Test User',
             'email' => 'test@test.com',
