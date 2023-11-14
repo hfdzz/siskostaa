@@ -92,12 +92,16 @@
                     <div class="col-12 mb-3 text-end">
                             <div class="datatable-dropdown d-inline-block me-3">
                                     <label class="m-0">
-                                        <select class="datatable-selector">
-                                            <option value="5">5</option>
+                                        <select class="datatable-selector" onchange="window.location.href='{{route('admin-pesanan')}}?entries=' + this.value;">
+                                            {{-- <option value="5">5</option>
                                             <option value="10" selected="">10</option>
                                             <option value="15">15</option>
                                             <option value="20">20</option>
-                                            <option value="25">25</option>
+                                            <option value="25">25</option> --}}
+                                            {{-- option from 5 t0 25 (step:+5) with loop --}}
+                                            @for ($i = 5; $i <= 25; $i+=5)
+                                                <option value="{{ $i }}" {{ ($entries == $i) ? 'selected' : '' }}>{{ $i }}</option>
+                                            @endfor
                                         </select> entries per page
                                     </label>
                                 </div>
@@ -109,7 +113,7 @@
                             <table class="table bg-white rounded shadow-sm  table-hover datatable">
                                 <thead>
                                     <tr>
-                                        <th scope="col" width="50">#</th>
+                                        <th scope="col" width="50">#</th>   
                                         <th scope="col">Nama</th>
                                         <th scope="col">Email</th>
                                         <th scope="col">No Handphone</th>
@@ -121,7 +125,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
+                                    {{-- <tr>
                                         <th scope="row">1</th>
                                         <td>rafi</td>
                                         <td>rafi@mail</td>
@@ -134,41 +138,32 @@
                                           <button type="button" class="btn btn-primary validasiBtn">Validasi</button>
                                           <button type="button" class="btn btn-danger tidakvalidasiBtn">Tidak Validasi</button>
                                         </td>
-                                    </tr>
+                                    </tr> --}}
+                                    @foreach ($pesanan as $item)
                                     <tr>
-                                        <th scope="row">2</th>
-                                        <td>rafi</td>
-                                        <td>rafi@mail</td>
-                                        <td>087812121212</td>
-                                        <td>1234123412341234</td>
-                                        <td>Pria</td>
-                                        <td>2023-11-11</td>
-                                        <td>Penuh</td>
+                                        <td>{{ $loop->iteration + $pesanan->firstItem() - 1 }}</td>
+                                        <td>{{ $item->nama }}</td>
+                                        <td>{{ $item->email }}</td>
+                                        <td>{{ $item->no_hp }}</td>
+                                        <td>{{ $item->nik }}</td>
+                                        <td>{{ $item->jenis_kelamin }}</td>
+                                        <td>{{ $item->tanggal_masuk }}</td>
+                                        <td>{{ $item->jenis_pembayaran }}</td>
                                         <td>
                                           <button type="button" class="btn btn-primary validasiBtn">Validasi</button>
                                           <button type="button" class="btn btn-danger tidakvalidasiBtn">Tidak Validasi</button>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td>rafi</td>
-                                        <td>rafi@mail</td>
-                                        <td>087812121212</td>
-                                        <td>1234123412341234</td>
-                                        <td>Pria</td>
-                                        <td>2023-11-11</td>
-                                        <td>Penuh</td>
-                                        <td>
-                                          <button type="button" class="btn btn-primary validasiBtn">Validasi</button>
-                                          <button type="button" class="btn btn-danger tidakvalidasiBtn">Tidak Validasi</button>
-                                        </td>
-                                    </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
 
+                            <div>
+                            </div>
                             <div class="d-flex justify-content-between align-items-center mt-2">
-                                    <div class="datatable-info">Showing 1 to 3 of 3 entries</div>
-                                    <nav class="datatable-pagination">
+                                <div class="datatable-info">Showing {{ $pesanan->firstItem() }} to {{ $pesanan->lastItem() }} of {{ $pesanan->total() }} entries</div>
+                                    {{ $pesanan->links() }}
+                                    {{-- <nav class="datatable-pagination">
                                         <ul class="datatable-pagination-list">
                                             <li class="datatable-pagination-list-item datatable-hidden datatable-disabled">
                                                 <button data-page="1" class="datatable-pagination-list-item-link" aria-label="Page 1">‹</button>
@@ -183,7 +178,7 @@
                                                 <button data-page="2" class="datatable-pagination-list-item-link" aria-label="Page 2">›</button>
                                             </li>
                                         </ul>
-                                    </nav>
+                                    </nav> --}}
                                 </div>
                             </div>                            
                         </div>

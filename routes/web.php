@@ -6,6 +6,8 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PesanController;
 use App\Http\Controllers\TagihanController;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\ValidasiPesananController;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,22 +65,17 @@ Route::middleware('auth')->group(function () {
 
 // Admin routes with 'can:admin' middleware
 Route::middleware(['auth', 'can:admin'])->group(function () {
-    Route::get('/admin', function () {
-        return view('admin.admin');
-    })->name('admin');
+    // Admin Dashboard
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin');
     
-    Route::get('/admin-pesanan', function () {
-        return view('admin.admin-pesanan');
-    })->name('admin-pesanan');
+    // Validasi Pesanan
+    Route::get('/admin-pesanan', [ValidasiPesananController::class, 'index'])->name('admin-pesanan');
+
+    Route::get('/validasi-pesanan/{pesanan_id}', [ValidasiPesananController::class, 'getValidasiPesanan'])->name('validasi-pesanan');
     
-    Route::get('/validasi-pesanan', function () {
-        return view('admin.validasi-pesanan');
-    })->name('validasi-pesanan');
+    Route::get('/tidak-validasi-pesanan/{pesanan_id}', [ValidasiPesananController::class, 'getTidakValidasiPesanan'])->name('tidak-validasi-pesanan');
     
-    Route::get('/tidak-validasi-pesanan', function () {
-        return view('admin.tidak-validasi-pesanan');
-    })->name('tidak-validasi-pesanan');
-    
+    // Validasi Pembayaran
     Route::get('/admin-pembayaran', function () {
         return view('admin.admin-pembayaran');
     })->name('admin-pembayaran');
@@ -91,6 +88,7 @@ Route::middleware(['auth', 'can:admin'])->group(function () {
         return view('admin.tidak-validasi-pembayaran');
     })->name('tidak-validasi-pembayaran');
 
+    // Kelola Penghuni
     Route::get('/admin-kelolaPenghuni', function () {
         return view('admin.admin-kelolaPenghuni');
     })->name('admin-kelolaPenghuni');

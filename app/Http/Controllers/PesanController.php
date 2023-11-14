@@ -36,9 +36,12 @@ class PesanController extends Controller
         // check if user has pemesanan with status other than 'selesai' or 'ditolak' from database
         /** @var \App\Models\User $user **/
         $user = auth()->user();
-        if ($user->pemesanan()->whereNotIn('status_pemesanan', [Pemesanan::$kode_status_pemesanan['selesai'], Pemesanan::$kode_status_pemesanan['ditolak']])->exists()) {
+        if ($user->pemesanan()->whereNotIn('status_pemesanan', [Pemesanan::$kode_status['selesai'], Pemesanan::$kode_status['ditolak']])->exists()) {
             return redirect()->route('pesan')->withErrors(['Anda sudah memiliki pemesanan yang belum selesai']);
         }
+
+        // check if kamar is full
+        // TODO: check if kamar is full
 
         Pemesanan::create([
             'nama' => $request->input('nama'),
@@ -50,7 +53,7 @@ class PesanController extends Controller
             'tanggal_masuk' => $request->input('tanggal_masuk'),
             'jenis_kamar' => $request->input('jenis_kamar'),
             'jenis_pembayaran' => $request->input('jenis_pembayaran'),
-            'status_pemesanan' => Pemesanan::$kode_status_pemesanan['menunggu_validasi'],
+            'status' => Pemesanan::$kode_status['menunggu_validasi'],
             'nomor_kamar' => '0',
             'user_id' => $user->id,
         ]);
