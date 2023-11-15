@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('tanggal_masuk');
             $table->string('jenis_kamar');
             $table->string('jenis_pembayaran');
-            $table->string('status_pemesanan');
+            $table->string('status');
             $table->string('nomor_kamar');
             $table->string('keterangan')->nullable();
             $table->string('total_tagihan')->nullable();

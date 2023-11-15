@@ -105,49 +105,61 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="nama" class="form-label">Nama</label>
-                                <input type="text" class="form-control" id="nama" value="Rafi" readonly>
+                        <form class="row" action={{ route('validasi-pesanan', $pesanan->id) }} method="POST">
+                            @csrf
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="nama" class="form-label">Nama</label>
+                                    <input type="text" class="form-control" id="nama" value={{ $pesanan->nama }} readonly>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="email" value={{ $pesanan->email }} readonly>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="noHp" class="form-label">No Handphone</label>
+                                    <input type="tel" class="form-control" id="noHp" value={{ $pesanan->no_hp }} readonly>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="nik" class="form-label">NIK</label>
+                                    <input type="text" class="form-control" id="nik" value={{ $pesanan->nik }} readonly>
+                                </div>
                             </div>
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="email" value="rafi@mail" readonly>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="jenisKelamin" class="form-label">Jenis Kelamin</label>
+                                    <input type="text" class="form-control" id="jenisKelamin" value={{ $pesanan->getJenisKelaminText() }} readonly>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="tanggalMasuk" class="form-label">Tanggal Masuk</label>
+                                    <input type="text" class="form-control" id="tanggalMasuk" value={{ $pesanan->tanggal_masuk }} readonly>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="jenisPembayaran" class="form-label">Jenis Pembayaran</label>
+                                    <input type="text" class="form-control" id="jenisPembayaran" value={{ $pesanan->getJenisPembayaranText() }} readonly>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="keterangan" class="form-label">Keterangan</label>
+                                    <textarea class="form-control" id="keterangan"  placeholder="Masukkan keterangan" name="keterangan"></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="tagihan" class="form-label">Tagihan</label>
+                                    <input type="text" class="form-control" id="tagihan" placeholder="Masukkan tagihan" required name="total_tagihan">
+                                </div>
+                                <div class="mb-3">
+                                    <button type="submit" class="btn btn-primary" id="submitBtn">Submit</button>
+                                </div>
                             </div>
-                            <div class="mb-3">
-                                <label for="noHp" class="form-label">No Handphone</label>
-                                <input type="tel" class="form-control" id="noHp" value="087812121212" readonly>
-                            </div>
-                            <div class="mb-3">
-                                <label for="nik" class="form-label">NIK</label>
-                                <input type="text" class="form-control" id="nik" value="1234123412341234" readonly>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="jenisKelamin" class="form-label">Jenis Kelamin</label>
-                                <input type="text" class="form-control" id="jenisKelamin" value="Pria" readonly>
-                            </div>
-                            <div class="mb-3">
-                                <label for="tanggalMasuk" class="form-label">Tanggal Masuk</label>
-                                <input type="text" class="form-control" id="tanggalMasuk" value="2023-11-11" readonly>
-                            </div>
-                            <div class="mb-3">
-                                <label for="jenisPembayaran" class="form-label">Jenis Pembayaran</label>
-                                <input type="text" class="form-control" id="jenisPembayaran" value="Penuh" readonly>
-                            </div>
-                            <div class="mb-3">
-                                <label for="keterangan" class="form-label">Keterangan</label>
-                                <textarea class="form-control" id="keterangan"  placeholder="Masukkan keterangan"></textarea>
-                            </div>
-                            <div class="mb-3">
-                                <label for="tagihan" class="form-label">Tagihan</label>
-                                <input type="text" class="form-control" id="tagihan" placeholder="Masukkan tagihan">
-                            </div>
-                            <div class="mb-3">
-                                <button type="button" class="btn btn-primary" id="submitBtn">Submit</button>
-                            </div>
-                        </div>
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                             @endif
+                        </form>
                     </div>
                 </div>
             </div>
@@ -167,17 +179,17 @@
         };
     </script>
     <script>
-        document.getElementById("submitBtn").addEventListener("click", function () {
-            var keteranganValue = document.getElementById("keterangan").value;
-            var tagihanValue = document.getElementById("tagihan").value;
+        // document.getElementById("submitBtn").addEventListener("click", function () {
+        //     var keteranganValue = document.getElementById("keterangan").value;
+        //     var tagihanValue = document.getElementById("tagihan").value;
 
-            // Lakukan sesuatu dengan data yang diambil, seperti mengirimkan ke server atau menyimpan ke database
-            console.log("Keterangan: ", keteranganValue);
-            console.log("Tagihan: ", tagihanValue);
+        //     // Lakukan sesuatu dengan data yang diambil, seperti mengirimkan ke server atau menyimpan ke database
+        //     console.log("Keterangan: ", keteranganValue);
+        //     console.log("Tagihan: ", tagihanValue);
 
-            // Arahkan ke halaman /admin-pesanan
-            window.location.href = "/admin-pesanan";
-        });
+        //     // Arahkan ke halaman /admin-pesanan
+        //     window.location.href = "/admin-pesanan";
+        // });
     </script>
 </body>
 

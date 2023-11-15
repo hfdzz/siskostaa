@@ -34,7 +34,7 @@ class TagihanController extends Controller
         $list_pemesanan = $user->pemesanan()->get();
         foreach ($list_pemesanan as $pemesanan) {
             $tagihan = $pemesanan->tagihan()->first();
-            if ($tagihan && $tagihan->status == Tagihan::$kode_status_tagihan['menunggu_validasi']) {
+            if ($tagihan && $tagihan->status == Tagihan::$kode_status['menunggu_validasi']) {
                 return redirect()->route('tagihan')->with('already_menunggu_validasi', 'Anda sudah mengirim bukti pembayaran. Silahkan tunggu validasi pembayaran.');
             }
         }
@@ -58,7 +58,7 @@ class TagihanController extends Controller
         $tagihan->bukti_pembayaran = $path;
 
         // change status to '1'
-        $tagihan->status = Tagihan::$kode_status_tagihan['menunggu_validasi'];
+        $tagihan->status = Tagihan::$kode_status['menunggu_validasi'];
 
         $tagihan->save();
 

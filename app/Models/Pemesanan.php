@@ -7,14 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pemesanan extends Model
 {
-    public static $kode_status_pemesanan = [
+    public static $kode_status = [
         'menunggu_validasi' => '0',
         'menunggu_pembayaran' => '1',
         'ditolak' => '2',
         'selesai' => '3',
     ];
 
-    public static $text_status_pemesanan = [
+    public static $text_status = [
         '0' => 'Menunggu Validasi',
         '1' => 'Menunggu Pembayaran',
         '2' => 'Ditolak',
@@ -45,7 +45,7 @@ class Pemesanan extends Model
         'tanggal_masuk',
         'jenis_kamar',
         'jenis_pembayaran',
-        'status_pemesanan',
+        'status',
         'nomor_kamar',
         'keterangan',
         'total_tagihan',
@@ -65,13 +65,19 @@ class Pemesanan extends Model
     // status pemesanan text
     public function getStatusPemesananText()
     {
-        return self::$text_status_pemesanan[$this->status_pemesanan];
+        return self::$text_status[$this->status];
     }
 
     // jenis pembayaran text
     public function getJenisPembayaranText()
     {
-        return $this->jenis_pembayaran == 'penuh' ? 'Pembayaran Penuh' : 'Pembayaran DP';
+        return $this->jenis_pembayaran == 'penuh' ? 'Penuh' : 'DP';
+    }
+
+    // jenis kelamin text
+    public function getJenisKelaminText()
+    {
+        return $this->jenis_kelamin == 'L' ? 'Laki-laki' : 'Perempuan';
     }
 
 }
