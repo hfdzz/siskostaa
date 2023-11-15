@@ -11,7 +11,7 @@
     <title>Beranda Kost Abang Adek</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-xl navbar-light bg-info fixed-top">
+    <nav class="navbar navbar-expand-xl navbar-light bg-light fixed-top">
         <a class="navbar-brand font-weight-bold" href="#" style="margin-right: 100px;">Kost Abang Adek</a>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ml-auto">
