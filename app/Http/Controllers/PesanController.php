@@ -36,7 +36,7 @@ class PesanController extends Controller
         // check if user has pemesanan with status other than 'selesai' or 'ditolak' from database
         /** @var \App\Models\User $user **/
         $user = auth()->user();
-        if ($user->pemesanan()->whereNotIn('status_pemesanan', [Pemesanan::$kode_status['selesai'], Pemesanan::$kode_status['ditolak']])->exists()) {
+        if ($user->pemesanan()->whereNotIn('status', [Pemesanan::$kode_status['selesai'], Pemesanan::$kode_status['ditolak']])->exists()) {
             return redirect()->route('pesan')->withErrors(['Anda sudah memiliki pemesanan yang belum selesai']);
         }
 
