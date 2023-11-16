@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Doctrine\DBAL\Schema\Sequence;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -27,43 +28,87 @@ class SampleDataSeeder extends Seeder
      */
     public function run(): void
     {
-        echo "Creating admin user...\n";
         // admin
         \App\Models\User::factory()->create([
             'nama' => 'admin',
             'email' => 'admin@localhost',
             'is_admin' => '1',
             'password' => bcrypt('password'),
-        ]);
-        echo 'Done: ' . \App\Models\User::count() . ' users' . "\n";
+        ]);    
 
-        echo "Creating 5 user without pemesanan...\n";
+        
+        /**
+         * 50 kamar with kode_gedung A
+         */
+        \App\Models\Kamar::factory()->count(50)->sequence(
+            function ($sequence) {
+                $kode_gedung = 'A';
+                $last_kamar = \App\Models\Kamar::where('kode_gedung', $kode_gedung)->orderBy('nomor_kamar', 'desc')->first();
+                $next_nomor_kamar = $last_kamar ? $last_kamar->nomor_kamar + 1 + $sequence->index : 1 + $sequence->index;
+                return [
+                    'nomor_kamar' => $next_nomor_kamar,
+                    'kode_gedung' => $kode_gedung,
+                ];
+            }
+        )->create();
+
+
+        /**
+         * 50 kamar with kode_gedung B
+         */
+        \App\Models\Kamar::factory()->count(50)->sequence(
+            function ($sequence) {
+                $kode_gedung = 'B';
+                $last_kamar = \App\Models\Kamar::where('kode_gedung', $kode_gedung)->orderBy('nomor_kamar', 'desc')->first();
+                $next_nomor_kamar = $last_kamar ? $last_kamar->nomor_kamar + 1 + $sequence->index : 1 + $sequence->index;
+                return [
+                    'nomor_kamar' => $next_nomor_kamar,
+                    'kode_gedung' => $kode_gedung,
+                ];
+            }
+        )->create();
+
+        
+        /**
+         * 50 kamar with kode_gedung C
+         */
+        \App\Models\Kamar::factory()->count(50)->sequence(
+            function ($sequence) {
+                $kode_gedung = 'C';
+                $last_kamar = \App\Models\Kamar::where('kode_gedung', $kode_gedung)->orderBy('nomor_kamar', 'desc')->first();
+                $next_nomor_kamar = $last_kamar ? $last_kamar->nomor_kamar + 1 + $sequence->index : 1 + $sequence->index;
+                return [
+                    'nomor_kamar' => $next_nomor_kamar,
+                    'kode_gedung' => $kode_gedung,
+                ];
+            }
+        )->create();
+
+
         /**
          * 5 user without pemesanan
-         */
+         */ 
         \App\Models\User::factory()->count(5)->create();
-        echo 'Done: ' . \App\Models\User::count() . ' users' . "\n";
+        
 
-        echo "Creating 30 user with pemesanan want to be validated...\n";
         /**
          * [p-0, null] 
          * 30 user with pemesanan want to be validated (statu = 0, total_tagihan = null, keterangan = null)
-         */
+         */ 
         \App\Models\User::factory()->count(30)->create()->each(function ($user) {
             $user->pemesanan()->save(\App\Models\Pemesanan::factory()->make([
                 'status' => '0',
                 'total_tagihan' => null,
                 'keterangan' => null,
-            ]));
-        });
-        echo 'Done: ' . \App\Models\User::count() . ' users, ' . \App\Models\Pemesanan::count() . ' pemesanan' . "\n";
+            ]));    
+        });    
+        
 
-        echo "Creating 35 user with validated pemesanan and tagihan to be paid...\n";
         /**
          * [p-1, t-0] 
          * 35 user with validated pemesanan (status = 1) with each pemesanan has tagihan
          * to be paid (status = 0, bukti_pembayaran = null, keterangan = null)
-         */
+         */ 
         \App\Models\User::factory()->count(35)->has(
             \App\Models\Pemesanan::factory()->state([
                 'status' => '1',
@@ -72,17 +117,16 @@ class SampleDataSeeder extends Seeder
                     'status' => '0',
                     'bukti_pembayaran' => null,
                     'keterangan' => null,
-                ])
-            )
-        )->create();
-        echo 'Done: ' . \App\Models\User::count() . ' users, ' . \App\Models\Pemesanan::count() . ' pemesanan, ' . \App\Models\Tagihan::count() . ' tagihan' . "\n";
+                ])    
+            )    
+        )->create();    
+        
 
-        echo "Creating 20 user with tagihan want to be validated...\n";
         /**
          * [p-1, t-1] 
          * 20 user with validated pemesanan (status = 1) with each pemesanan has tagihan
          * want to be validated (status = 1, bukti_pembayaran = null, keterangan = null)
-         */
+         */ 
         \App\Models\User::factory()->count(20)->has(
             \App\Models\Pemesanan::factory()->state([
                 'status' => '1',
@@ -90,31 +134,30 @@ class SampleDataSeeder extends Seeder
                 \App\Models\Tagihan::factory()->state([
                     'status' => '1',
                     'keterangan' => null,
-                ])
-            )
-        )->create();
-        echo 'Done: ' . \App\Models\User::count() . ' users, ' . \App\Models\Pemesanan::count() . ' pemesanan, ' . \App\Models\Tagihan::count() . ' tagihan' . "\n";
+                ])    
+            )    
+        )->create();    
+        
 
-        echo "Creating 15 user failed to be validated pemesanan...\n";
         /**
          * [p-2, null] 
          * 15 user failed to be validated pemesanan (status = 2, total_tagihan = null, keterangan = null)
-         */
+         */ 
         \App\Models\User::factory()->count(15)->create()->each(function ($user) {
             $user->pemesanan()->save(\App\Models\Pemesanan::factory()->make([
                 'status' => '2',
                 'total_tagihan' => null,
                 'keterangan' => null,
-            ]));
-        });
-        echo 'Done: ' . \App\Models\User::count() . ' users, ' . \App\Models\Pemesanan::count() . ' pemesanan' . "\n";
+            ]));    
+        });    
+        
 
-        echo "Creating 20 user with selesai pemesanan and selesai tagihan...\n";
         /**
          * [p-3, t-3] 
          * 20 user with selesai pemesanan (status = 3) with each pemesanan has tagihan
          * selesai (status = 3, bukti_pembayaran = null, keterangan = null)
-         */
+         * and create kamar for each pemesanan
+         */ 
         \App\Models\User::factory()->count(20)->has(
             \App\Models\Pemesanan::factory()->state([
                 'status' => '3',
@@ -123,14 +166,28 @@ class SampleDataSeeder extends Seeder
                     'status' => '3',
                     'bukti_pembayaran' => null,
                     'keterangan' => null,
-                ])
-            )
-        )->create();
-        echo 'Done: ' . \App\Models\User::count() . ' users, ' . \App\Models\Pemesanan::count() . ' pemesanan, ' . \App\Models\Tagihan::count() . ' tagihan' . "\n";
+                ])    
+            )    
+        )->create()->each(function ($user) {
+            // get pemesanan with user_id = $user->id
+            $pemesanan = \App\Models\Pemesanan::where('user_id', $user->id)->first();
+            
+            // create kamar
+            $kamar = \App\Models\Kamar::factory()->create([
+                'pemesanan_id' => $pemesanan->id,
+                'status_available' => '0',
+            ]);
+            // update pemesanan
+            $pemesanan->update([
+                'nomor_kamar' => $kamar->getKodeKamar(),
+            ]);
+        });
+
 
 
         echo "Total_users: " . \App\Models\User::count() . "\n";
         echo "Total_pemesanan: " . \App\Models\Pemesanan::count() . "\n";
         echo "Total_tagihan: " . \App\Models\Tagihan::count() . "\n";
+        echo "Total_kamar: " . \App\Models\Kamar::count() . "\n";
     }
 }
