@@ -105,54 +105,66 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="nama" class="form-label">Nama</label>
-                                <input type="text" class="form-control" id="nama" value="Rafi" readonly>
-                            </div>
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="email" value="rafi@mail" readonly>
-                            </div>
-                            <div class="mb-3">
-                                <label for="noHp" class="form-label">No Handphone</label>
-                                <input type="tel" class="form-control" id="noHp" value="087812121212" readonly>
-                            </div>
-                            <div class="mb-3">
-                                <label for="nik" class="form-label">NIK</label>
-                                <input type="text" class="form-control" id="nik" value="1234123412341234" readonly>
-                            </div>
-                            <div class="mb-3">
-                                <label for="jenisKelamin" class="form-label">Jenis Kelamin</label>
-                                <input type="text" class="form-control" id="jenisKelamin" value="Pria" readonly>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="tanggalMasuk" class="form-label">Tanggal Masuk</label>
-                                <input type="text" class="form-control" id="tanggalMasuk" value="2023-11-11" readonly>
-                            </div>
-                            <div class="mb-3">
-                                <label for="jenisPembayaran" class="form-label">Jenis Pembayaran</label>
-                                <input type="text" class="form-control" id="jenisPembayaran" value="Penuh" readonly>
-                            </div>
-                            <div class="mb-3">
-                                <label for="buktiPembayaran" class="form-label">Bukti Pembayaran</label>
+                        <form class="row" action={{ route('validasi-pembayaran', $tagihan->id) }} method="POST">
+                            @csrf
+                            <div class="col-md-6">
                                 <div class="mb-3">
-                                    <img src="assets/tf1.jpg" alt="" width="100" class="img-thumbnail"> 
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#gambarModal">
-                                        Lihat Gambar
-                                    </button>
+                                    <label for="nama" class="form-label">Nama</label>
+                                    <input type="text" class="form-control" id="nama" value="{{ $tagihan->pemesanan->nama }}" readonly>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="email" value="{{ $tagihan->pemesanan->email }}" readonly>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="noHp" class="form-label">No Handphone</label>
+                                    <input type="tel" class="form-control" id="noHp" value="{{ $tagihan->pemesanan->no_hp }}" readonly>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="nik" class="form-label">NIK</label>
+                                    <input type="text" class="form-control" id="nik" value="{{ $tagihan->pemesanan->nik }}" readonly>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="jenisKelamin" class="form-label">Jenis Kelamin</label>
+                                    <input type="text" class="form-control" id="jenisKelamin" value="{{ $tagihan->pemesanan->getJenisKelaminText() }}" readonly>
                                 </div>
                             </div>
-                            <div class="mb-3">
-                                <label for="keterangan" class="form-label">Keterangan</label>
-                                <textarea class="form-control" id="keterangan"  placeholder="Masukkan keterangan"></textarea>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="tanggalMasuk" class="form-label">Tanggal Masuk</label>
+                                    <input type="text" class="form-control" id="tanggalMasuk" value="{{ $tagihan->pemesanan->tanggal_masuk }}" readonly>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="jenisPembayaran" class="form-label">Jenis Pembayaran</label>
+                                    <input type="text" class="form-control" id="jenisPembayaran" value="{{ $tagihan->pemesanan->getJenisPembayaranText() }}" readonly>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="buktiPembayaran" class="form-label">Bukti Pembayaran</label>
+                                    <div class="mb-3">
+                                        <img src="{{ asset('storage/' . $tagihan->bukti_pembayaran) }}" alt="" width="100" class="img-thumbnail">
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#gambarModal">
+                                            Lihat Gambar
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="keterangan" class="form-label">Keterangan</label>
+                                    <textarea class="form-control" id="keterangan"  placeholder="Masukkan keterangan" name="keterangan" ></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <button type="submit" class="btn btn-primary" id="submitBtn">Submit</button>
+                                </div>
                             </div>
-                            <div class="mb-3">
-                                <button type="button" class="btn btn-primary" id="submitBtn">Submit</button>
-                            </div>
-                        </div>
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                             @endif
+                        </form>
                     </div>
                 </div>
             </div>
@@ -169,7 +181,7 @@
             </div>
             <div class="modal-body">
                 <!-- Isi modal dengan gambar -->
-                <img src="assets/tf1.jpg" alt="" class="img-fluid">
+                <img src="{{ asset('storage/' . $tagihan->bukti_pembayaran) }}" alt="" class="img-fluid">
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
@@ -190,15 +202,15 @@
         };
     </script>
     <script>
-        document.getElementById("submitBtn").addEventListener("click", function () {
-            var keteranganValue = document.getElementById("keterangan").value;
+        // document.getElementById("submitBtn").addEventListener("click", function () {
+        //     var keteranganValue = document.getElementById("keterangan").value;
 
-            // Lakukan sesuatu dengan data yang diambil, seperti mengirimkan ke server atau menyimpan ke database
-            console.log("Keterangan: ", keteranganValue);
+        //     // Lakukan sesuatu dengan data yang diambil, seperti mengirimkan ke server atau menyimpan ke database
+        //     console.log("Keterangan: ", keteranganValue);
 
-            // Arahkan ke halaman /admin-pembayaran
-            window.location.href = "/admin-pembayaran";
-        });
+        //     // Arahkan ke halaman /admin-pembayaran
+        //     window.location.href = "/admin-pembayaran";
+        // });
     </script>
 </body>
 

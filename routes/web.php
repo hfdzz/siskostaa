@@ -8,6 +8,8 @@ use App\Http\Controllers\PesanController;
 use App\Http\Controllers\TagihanController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ValidasiPesananController;
+use App\Http\Controllers\Admin\ValidasiPembayaranController;
+use App\Http\Controllers\Admin\KelolaPenghuniController;
 
 /*
 |--------------------------------------------------------------------------
@@ -78,19 +80,14 @@ Route::middleware(['auth', 'can:admin'])->group(function () {
     Route::post('/tidak-validasi-pesanan/{pesanan_id}', [ValidasiPesananController::class, 'postTidakValidasiPesanan']);
     
     // Validasi Pembayaran
-    Route::get('/admin-pembayaran', function () {
-        return view('admin.admin-pembayaran');
-    })->name('admin-pembayaran');
-    
-    Route::get('/validasi-pembayaran', function () {
-        return view('admin.validasi-pembayaran');
-    })->name('validasi-pembayaran');
-    
-    Route::get('/tidak-validasi-pembayaran', function () {
-        return view('admin.tidak-validasi-pembayaran');
-    })->name('tidak-validasi-pembayaran');
+    Route::get('/admin-pembayaran', [ValidasiPembayaranController::class, 'index'])->name('admin-pembayaran');
 
-    // Kelola Penghuni
+    Route::get('/validasi-pembayaran/{tagihan_id}', [ValidasiPembayaranController::class, 'getValidasiTagihan'])->name('validasi-pembayaran');
+    Route::post('/validasi-pembayaran/{tagihan_id}', [ValidasiPembayaranController::class, 'postValidasiTagihan']);
+
+    Route::get('/tidak-validasi-pembayaran/{tagihan_id}', [ValidasiPembayaranController::class, 'getTidakValidasiTagihan'])->name('tidak-validasi-pembayaran');
+    Route::post('/tidak-validasi-pembayaran/{tagihan_id}', [ValidasiPembayaranController::class, 'postTidakValidasiTagihan']);
+
     Route::get('/admin-kelolaPenghuni', function () {
         return view('admin.admin-kelolaPenghuni');
     })->name('admin-kelolaPenghuni');

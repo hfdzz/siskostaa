@@ -122,37 +122,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>rafi</td>
-                                        <td>rafi@mail</td>
-                                        <td>087812121212</td>
-                                        <td>1234123412341234</td>
-                                        <td>Pria</td>
-                                        <td>2023-11-11</td>
-                                        <td>Penuh</td>
-                                        <td><img src="assets/tf1.jpg" alt="" width="100"></td>
-                                        <td>
-                                          <button type="button" class="btn btn-primary validasiBtn">Validasi</button>
-                                          <button type="button" class="btn btn-danger tidakvalidasiBtn">Tidak Validasi</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>rafi</td>
-                                        <td>rafi@mail</td>
-                                        <td>087812121212</td>
-                                        <td>1234123412341234</td>
-                                        <td>Pria</td>
-                                        <td>2023-11-11</td>
-                                        <td>Penuh</td>
-                                        <td><img src="assets/tf1.jpg" alt="" width="100"></td>
-                                        <td>
-                                          <button type="button" class="btn btn-primary validasiBtn">Validasi</button>
-                                          <button type="button" class="btn btn-danger tidakvalidasiBtn">Tidak Validasi</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
+                                    {{-- <tr>
                                         <th scope="row">3</th>
                                         <td>rafi</td>
                                         <td>rafi@mail</td>
@@ -166,28 +136,32 @@
                                           <button type="button" class="btn btn-primary validasiBtn">Validasi</button>
                                           <button type="button" class="btn btn-danger tidakvalidasiBtn">Tidak Validasi</button>
                                         </td>
+                                    </tr> --}}
+                                    @foreach ($tagihan as $item)
+                                    <tr>
+                                        <td>{{ $loop->iteration + $tagihan->firstItem() - 1 }}</td>
+                                        <td>{{ $item->pemesanan->nama }}</td>
+                                        <td>{{ $item->pemesanan->email }}</td>
+                                        <td>{{ $item->pemesanan->no_hp }}</td>
+                                        <td>{{ $item->pemesanan->nik }}</td>
+                                        <td>{{ $item->pemesanan->jenis_kelamin }}</td>
+                                        <td>{{ $item->pemesanan->tanggal_Masuk }}</td>
+                                        <td>{{ $item->pemesanan->jenis_pembayaran }}</td>
+                                        <td><img src="{{ asset('storage/' . $item->bukti_pembayaran) }}" alt="" width="100"></td>
+                                        <td>
+                                            <a href="/validasi-pembayaran/{{ $item->id }}" class="btn btn-primary">Validasi</a>
+                                            <a href="/tidak-validasi-pembayaran/{{ $item->id }}" class="btn btn-danger">Tidak Validasi</a>
+                                        </td>
                                     </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
 
                             <div class="d-flex justify-content-between align-items-center mt-2">
-                                    <div class="datatable-info">Showing 1 to 3 of 3 entries</div>
-                                    <nav class="datatable-pagination">
-                                        <ul class="datatable-pagination-list">
-                                            <li class="datatable-pagination-list-item datatable-hidden datatable-disabled">
-                                                <button data-page="1" class="datatable-pagination-list-item-link" aria-label="Page 1">‹</button>
-                                            </li>
-                                            <li class="datatable-pagination-list-item datatable-active">
-                                                <button data-page="1" class="datatable-pagination-list-item-link" aria-label="Page 1">1</button>
-                                            </li>
-                                            <!-- <li class="datatable-pagination-list-item">
-                                                <button data-page="2" class="datatable-pagination-list-item-link" aria-label="Page 2">2</button>
-                                            </li> -->
-                                            <li class="datatable-pagination-list-item">
-                                                <button data-page="2" class="datatable-pagination-list-item-link" aria-label="Page 2">›</button>
-                                            </li>
-                                        </ul>
-                                    </nav>
+                                <div class="datatable-info">
+                                    Showing {{ $tagihan->firstItem() }} to {{ $tagihan->lastItem() }} of {{ $tagihan->total() }} entries
+                                </div>
+                                    {{ $tagihan->links() }}
                                 </div>
                             </div>                            
                         </div>
