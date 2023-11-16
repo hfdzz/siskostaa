@@ -89,6 +89,7 @@ class SampleDataSeeder extends Seeder
             ])->has(
                 \App\Models\Tagihan::factory()->state([
                     'status' => '1',
+                    'keterangan' => null,
                 ])
             )
         )->create();
