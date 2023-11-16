@@ -125,20 +125,6 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {{-- <tr>
-                                        <th scope="row">1</th>
-                                        <td>rafi</td>
-                                        <td>rafi@mail</td>
-                                        <td>087812121212</td>
-                                        <td>1234123412341234</td>
-                                        <td>Pria</td>
-                                        <td>2023-11-11</td>
-                                        <td>Penuh</td>
-                                        <td>
-                                          <button type="button" class="btn btn-primary validasiBtn">Validasi</button>
-                                          <button type="button" class="btn btn-danger tidakvalidasiBtn">Tidak Validasi</button>
-                                        </td>
-                                    </tr> --}}
                                     @foreach ($pesanan as $item)
                                     <tr>
                                         <td>{{ $loop->iteration + $pesanan->firstItem() - 1 }}</td>
@@ -161,7 +147,9 @@
                             <div>
                             </div>
                             <div class="d-flex justify-content-between align-items-center mt-2">
-                                <div class="datatable-info">Showing {{ $pesanan->firstItem() }} to {{ $pesanan->lastItem() }} of {{ $pesanan->total() }} entries</div>
+                                <div class="datatable-info">
+                                    Showing {{ $pesanan->firstItem() }} to {{ $pesanan->lastItem() }} of {{ $pesanan->total() }} entries
+                                </div>
                                     {{ $pesanan->links() }}
                                     {{-- <nav class="datatable-pagination">
                                         <ul class="datatable-pagination-list">

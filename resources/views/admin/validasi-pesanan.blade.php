@@ -110,33 +110,33 @@
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="nama" class="form-label">Nama</label>
-                                    <input type="text" class="form-control" id="nama" value={{ $pesanan->nama }} readonly>
+                                    <input type="text" class="form-control" id="nama" value="{{ $pesanan->nama }}" readonly>
                                 </div>
                                 <div class="mb-3">
                                     <label for="email" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="email" value={{ $pesanan->email }} readonly>
+                                    <input type="email" class="form-control" id="email" value="{{ $pesanan->email }}" readonly>
                                 </div>
                                 <div class="mb-3">
                                     <label for="noHp" class="form-label">No Handphone</label>
-                                    <input type="tel" class="form-control" id="noHp" value={{ $pesanan->no_hp }} readonly>
+                                    <input type="tel" class="form-control" id="noHp" value="{{ $pesanan->no_hp }}" readonly>
                                 </div>
                                 <div class="mb-3">
                                     <label for="nik" class="form-label">NIK</label>
-                                    <input type="text" class="form-control" id="nik" value={{ $pesanan->nik }} readonly>
+                                    <input type="text" class="form-control" id="nik" value="{{ $pesanan->nik }}" readonly>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="jenisKelamin" class="form-label">Jenis Kelamin</label>
-                                    <input type="text" class="form-control" id="jenisKelamin" value={{ $pesanan->getJenisKelaminText() }} readonly>
+                                    <input type="text" class="form-control" id="jenisKelamin" value="{{ $pesanan->getJenisKelaminText() }}" readonly>
                                 </div>
                                 <div class="mb-3">
                                     <label for="tanggalMasuk" class="form-label">Tanggal Masuk</label>
-                                    <input type="text" class="form-control" id="tanggalMasuk" value={{ $pesanan->tanggal_masuk }} readonly>
+                                    <input type="text" class="form-control" id="tanggalMasuk" value="{{ $pesanan->tanggal_masuk }}" readonly>
                                 </div>
                                 <div class="mb-3">
                                     <label for="jenisPembayaran" class="form-label">Jenis Pembayaran</label>
-                                    <input type="text" class="form-control" id="jenisPembayaran" value={{ $pesanan->getJenisPembayaranText() }} readonly>
+                                    <input type="text" class="form-control" id="jenisPembayaran" value="{{ $pesanan->getJenisPembayaranText() }}" readonly>
                                 </div>
                                 <div class="mb-3">
                                     <label for="keterangan" class="form-label">Keterangan</label>
