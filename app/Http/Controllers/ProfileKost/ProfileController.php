@@ -17,7 +17,7 @@ class ProfileController extends Controller
     {
         // root route
         return view('user.beranda', [
-            'profile' => Tentang::first(),
+            'tentang' => Tentang::first(),
             'fasilitas' => Fasilitas::all(),
             'faq' => Faq::all(),
         ]);
@@ -29,9 +29,10 @@ class ProfileController extends Controller
      */
     public function index()
     {
+        // dd(Tentang::first());
         // admin index
         return view('profile-kost.index', [
-            'profile' => Tentang::first(),
+            'tentang' => Tentang::first(),
             'fasilitas' => Fasilitas::all(),
             'faq' => Faq::all(),
         ]);

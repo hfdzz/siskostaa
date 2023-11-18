@@ -12,7 +12,16 @@ class Tentang extends Model
     protected $table = 'profile_kost_tentang';
 
     protected $fillable = [
-        'foto_kost',
-        'deskripsi_kost',
+        'foto_tentang',
+        'deskripsi_tentang',
     ];
+
+    public function getFotoTentangAttribute()
+    {
+        // if null return default image
+        if (!$this->attributes['foto_tentang']) {
+            return 'default_img/default_tentang.png';
+        }
+        return asset('storage/profile-kost/' . $this->attributes['foto_tentang']);
+    }
 }

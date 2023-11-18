@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('profile_kost_tentang', function (Blueprint $table) {
             $table->id();
-            $table->string('foto_kost');
-            $table->string('deskripsi_kost');
+            $table->string('foto_tentang')->nullable();
+            $table->string('deskripsi_tentang');
             $table->timestamps();
         });
     }
