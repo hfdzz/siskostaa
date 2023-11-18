@@ -15,4 +15,12 @@ class Fasilitas extends Model
         'deskripsi_fasilitas',
         'foto_fasilitas',
     ];
+
+    public function getFotoFasilitasAttribute()
+    {
+        if ($this->attributes['foto_fasilitas'] == 'fake') {
+            return asset('default_img/placeholder_fasilitas.jpg');
+        }
+        return asset('storage/' . $this->attributes['foto_fasilitas']);
+    }
 }

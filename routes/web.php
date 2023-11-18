@@ -112,9 +112,14 @@ Route::middleware(['auth', 'can:admin'])->group(function () {
 
     Route::resource('profile-kost-fasilitas', FasilitasController::class)->except([
         'index', 'show'
+    ])->parameters([
+        'profile-kost-fasilitas' => 'fasilitas'
     ]);
+
     Route::resource('profile-kost-faq', FaqController::class)->except([
         'index', 'show'
+    ])->parameters([
+        'profile-kost-faq' => 'faq'
     ]);
 
     Route::get('profile-kost-tentang/edit', [TentangController::class, 'edit'])->name('profile-kost-tentang.edit');
