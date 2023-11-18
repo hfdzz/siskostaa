@@ -26,7 +26,7 @@ use App\Http\Controllers\ProfileKost\ProfileController as ProfileKostController;
 |
 */
 
-Route::get('/', [ProfileKostController::class, 'index'])->name('beranda');
+Route::get('/', [ProfileKostController::class, 'beranda'])->name('beranda');
 
 /**
  * 
@@ -117,9 +117,8 @@ Route::middleware(['auth', 'can:admin'])->group(function () {
         'index', 'show'
     ]);
 
-    Route::resource('profile-kost-tentang', TentangController::class)->only([
-        'edit', 'update'
-    ]);
+    Route::get('profile-kost-tentang/edit', [TentangController::class, 'edit'])->name('profile-kost-tentang.edit');
+    Route::patch('profile-kost-tentang/edit', [TentangController::class, 'update'])->name('profile-kost-tentang.update');
     
     // artisan command line interface in laravel
     Route::get('/artisan-cli', function () {

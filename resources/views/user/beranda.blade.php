@@ -68,7 +68,7 @@
         <div class="row no-gutters">
           <div class="col-md-4">
             
-            <img src="{{asset('/Assets/tampilan.png')}}" class="card-img-top" alt="Gambar" />
+            <img src="{{$tentang->getFotoTentangAttribute()}}" class="card-img-top" alt="Gambar" />
           </div>
           <div class="col-md-8">
             <div class="card-body">
@@ -100,6 +100,19 @@
 
         <div class="col-8">
           <div class="mt-3 d-flex justify-content-end">
+            {{-- @foreach ($fasilitas as $item)
+            <div class="card mr-5" style="width: 7rem; height: 7rem">
+              <img src="{{asset($item->foto_fasilitas)}}" class="card-img-top m-auto" style="width: 2rem" alt="..." />
+              <div class="card-body m-auto text-center">
+                <p class="card-text" style="font-size: 10px">{{$item->deskripsi_fasilitas}}</p>
+              </div>
+            </div>
+            @endforeach --}}
+
+            {{-- 
+              [!] FIX STYLING (coba uncomment foreachnya)
+              --}}
+            
             <div class="card mr-5" style="width: 7rem; height: 7rem">
               <img src="./Assets/shower.svg" class="card-img-top m-auto" style="width: 2rem" alt="..." />
               <div class="card-body m-auto text-center">
@@ -161,7 +174,18 @@
           <h3 class="title">Frequently Asked <span style="color: #84545a">Question</span></h3>
         </div>
         <div class="row">
+          @foreach ($faq as $item)
           <div class="col-6">
+            <div class="card mb-3 mx-auto" style="width: 15rem; height: 8rem">
+              <div class="card-body border m-auto text-center">
+                <h2 class="card-text small">{{$item->pertanyaan}}</h2>
+                <p style="font-size: 10px">{{$item->jawaban}}</p>
+              </div>
+            </div>
+          </div>
+          @endforeach
+          
+          {{-- <div class="col-6">
             <div class="card mb-3 mx-auto" style="width: 15rem; height: 8rem">
               <div class="card-body border m-auto text-center">
                 <h2 class="card-text small">lorem ipsum dolor sit amet?</h2>
@@ -193,7 +217,7 @@
                 <p style="font-size: 10px">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
               </div>
             </div>
-          </div>
+          </div> --}}
         </div>
       </div>
     </div>

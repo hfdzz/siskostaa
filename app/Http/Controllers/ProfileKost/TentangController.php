@@ -4,6 +4,7 @@ namespace App\Http\Controllers\ProfileKost;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\ProfileKost\Tentang;
 
 class TentangController extends Controller
 {
@@ -36,7 +37,10 @@ class TentangController extends Controller
      */
     public function edit()
     {
-        dd('edit');
+        // admin edit
+        return view('profile-kost.tentang.edit', [
+            'tentang' => Tentang::first(),
+        ]);
     }
 
     /**
@@ -44,7 +48,29 @@ class TentangController extends Controller
      */
     public function update(Request $request)
     {
-        dd('update');
+        // admin update
+        $request->validate([
+            'deskripsi' => 'nullable|string',
+            'foto' => 'nullable|image|mimes:jpg,jpeg,png|max:5120',
+        ]);
+        
+        if ($request->deskripsi) {
+            Tentang::first()->update([
+                'deskripsi' => $request->deskripsi,
+            ]);
+        }
+
+        if ($request->hasFile('foto')) {
+            $foto = $request->file('foto');
+            $namaFoto = 'tentang.' . $foto->getClientOriginalExtension();
+            $foto->storeAs('public/profile-kost', $namaFoto);
+
+            Tentang::first()->update([
+                'foto_tentang' => $namaFoto,
+            ]);
+        }
+
+        return redirect()->route('admin-profile-kost')->with('success', 'Deskripsi berhasil diubah');
     }
 
     /**
