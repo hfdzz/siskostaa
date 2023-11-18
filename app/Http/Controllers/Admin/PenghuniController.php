@@ -172,6 +172,7 @@ class PenghuniController extends Controller
         $pemesanan->nik = $request->nik;
         $pemesanan->jenis_kelamin = $request->jenis_kelamin;
         $pemesanan->tanggal_masuk = $request->tanggal_masuk;
+        $pemesanan->nomor_kamar = $request->nomor_kamar;
         
         // dd($new_kamar, $pemesanan, $kamar);
 
