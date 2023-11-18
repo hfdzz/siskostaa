@@ -20,7 +20,7 @@ class PemesananFactory extends Factory
         return [
             'nama' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
-            'no_hp' => $this->faker->phoneNumber(),
+            'no_hp' => $this->faker->regexify('^08[0-9]{10}$'),
             'perguruan_tinggi' => $this->faker->company(),
             'nik' => $this->faker->randomNumber(8).''.$this->faker->randomNumber(8),
             'jenis_kelamin' => $this->faker->randomElement(['L', 'P']),

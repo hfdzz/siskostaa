@@ -101,52 +101,64 @@
             <!-- Card -->
             <div class="row justify-content-center">
                 <div class="col-md-8">
-                <div class="card">
-                <div class="card-header">
-                    <h4>Edit</h4>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <!-- <div class="col-md-6"> -->
-                            <div class="mb-1">
-                                <label for="nama" class="form-label">Nama</label>
-                                <input type="text" class="form-control" id="nama" value="rafi">
-                            </div>
-                            <div class="mb-1">
-                                <label for="email" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="email" value="rafi@mail">
-                            </div>
-                            <div class="mb-1">
-                                <label for="noHp" class="form-label">No Handphone</label>
-                                <input type="tel" class="form-control" id="noHp" value="087812121212">
-                            </div>
-                            <div class="mb-1">
-                                <label for="nik" class="form-label">NIK</label>
-                                <input type="number" class="form-control" id="nik" value="1234123412341234">
-                            </div>
-                            <div class="mb-1">
-                                <label for="jenisKelamin" class="form-label">Jenis Kelamin</label>
-                                <input type="text" class="form-control" id="jenisKelamin" value="Pria">
-                                </select>
-                            </div>
-                            <div class="mb-1">
-                                <label for="tanggalMasuk" class="form-label">Tanggal Masuk</label>
-                                <input type="date" class="form-control" id="tanggalMasuk" value="2023-11-11">
-                            </div>
-                            <div class="mb-4">
-                                <label for="jenisPembayaran" class="form-label">Nomor Kamar</label>
-                                <input type="text" class="form-control" id="nomorKamar" value="30A">
-                            </div>
-                            <div class="mb-1 d-flex gap-4">
-                                <button type="button" class="btn btn-primary" onclick="window.location.href='/admin-kelolaPenghuni'" id="editBtn">Edit</button>
-                                <button type="button" class="btn btn-secondary" onclick="window.location.href='/admin-kelolaPenghuni'" id="batalBtn">Batal</button>
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Edit</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <form action={{ route('edit-kelolaPenghuni', $kamar->id) }} method="POST">
+                                    @csrf
+                                    @method('PATCH')
+                                    <div class="col-md-6">
+                                        <div class="mb-1">
+                                            <label for="nama" class="form-label">Nama</label>
+                                            <input type="text" class="form-control" id="nama" value="{{ $kamar->pemesanan->nama }}" name="nama">
+                                        </div>
+                                        <div class="mb-1">
+                                            <label for="email" class="form-label">Email</label>
+                                            <input type="email" class="form-control" id="email" value="{{ $kamar->pemesanan->email }}" name="email">
+                                        </div>
+                                        <div class="mb-1">
+                                            <label for="noHp" class="form-label">No Handphone</label>
+                                            <input type="tel" class="form-control" id="noHp" value="{{ $kamar->pemesanan->no_hp }}" name="no_hp">
+                                        </div>
+                                        <div class="mb-1">
+                                            <label for="nik" class="form-label">NIK</label>
+                                            <input type="number" class="form-control" id="nik" value="{{ $kamar->pemesanan->nik }}" name="nik">
+                                        </div>
+                                        <div class="mb-1">
+                                            <label for="jenisKelamin" class="form-label">Jenis Kelamin</label>
+                                            <input type="text" class="form-control" id="jenisKelamin" value="{{ $kamar->pemesanan->jenis_kelamin }}" name="jenis_kelamin">
+                                            </select>
+                                        </div>
+                                        <div class="mb-1">
+                                            <label for="tanggalMasuk" class="form-label">Tanggal Masuk</label>
+                                            <input type="date" class="form-control" id="tanggalMasuk" value="{{ $kamar->pemesanan->tanggal_masuk }}" name="tanggal_masuk">
+                                        </div>
+                                        <div class="mb-4">
+                                            <label for="jenisPembayaran" class="form-label">Nomor Kamar</label>
+                                            <input type="text" class="form-control" id="nomorKamar" value="{{ $kamar->getKodeKamar() }}" name="nomor_kamar">
+                                        </div>
+                                        <div class="mb-1 d-flex gap-4">
+                                            <button type="submit" class="btn btn-primary" id="editBtn">Edit</button>
+                                            <button type="button" class="btn btn-secondary" onclick="window.location.href='/admin-kelolaPenghuni'" id="batalBtn">Batal</button>
+                                        </div>
+                                    </div>
+                                    @if ($errors->any())
+                                        <div class="alert alert-danger col-md-6">
+                                            <ul>
+                                                @foreach ($errors->all() as $error)
+                                                    <li>{{ $error }}</li>
+                                                @endforeach 
+                                            </ul>
+                                        </div>
+                                    @endif
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
-                </div>
-            </div>
-            
             </div>
         </div>
     </div>

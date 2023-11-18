@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('status_available');
             $table->timestamps();
 
-            $table->foreignId('pemesanan_id')->nullable()->constrained('pemesanan')->onDelete('cascade');
+            $table->foreignId('pemesanan_id')->nullable()->constrained('pemesanan');
         });
     }
 

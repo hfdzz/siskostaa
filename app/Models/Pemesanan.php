@@ -61,6 +61,14 @@ class Pemesanan extends Model
     {
         return $this->hasOne(Tagihan::class);
     }
+
+    public function getKamar()
+    {
+        // split nomor_kamar to [nomo_kamar, kode_gedung] by splitting at last character
+        $nomor_kamar = substr($this->nomor_kamar, 0, -1);
+        $kode_gedung = substr($this->nomor_kamar, -1);
+        return Kamar::where('nomor_kamar', $nomor_kamar)->where('kode_gedung', $kode_gedung)->first();
+    }
     
     // status pemesanan text
     public function getStatusPemesananText()

@@ -91,15 +91,13 @@
                     <div class="row my-5">
                     <div class="col-12 mb-3 text-end">
                             <div class="datatable-dropdown d-inline-block me-3">
-                                    <label class="m-0">
-                                        <select class="datatable-selector">
-                                            <option value="5">5</option>
-                                            <option value="10" selected="">10</option>
-                                            <option value="15">15</option>
-                                            <option value="20">20</option>
-                                            <option value="25">25</option>
-                                        </select> entries per page
-                                    </label>
+                                <label class="m-0">
+                                    <select class="datatable-selector" onchange="window.location.href='{{route('admin-kelolaPenghuni')}}?entries=' + this.value;">
+                                        @for ($i = 5; $i <= 25; $i+=5)
+                                            <option value="{{ $i }}" {{ ($entries == $i) ? 'selected' : '' }}>{{ $i }}</option>
+                                        @endfor
+                                    </select> entries per page
+                                </label>
                                 </div>
                                 <div class="datatable-search d-inline-block">
                                     <input class="datatable-input form-control rounded-pill" placeholder="Search..." type="search" title="Search within table">
@@ -121,7 +119,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
+                                    {{-- <tr>
                                         <th scope="row">1</th>
                                         <td>rafi</td>
                                         <td>rafi@mail</td>
@@ -135,37 +133,31 @@
                                           <button type="button" class="btn btn-primary editBtn">Edit</button>
                                           <button type="button" class="btn btn-danger hapusBtn">Hapus</button>
                                         </td>
-                                    </tr>
+                                    </tr> --}}
+                                    @foreach ($kamar as $item)
                                     <tr>
-                                        <th scope="row">2</th>
-                                        <td>rafi</td>
-                                        <td>rafi@mail</td>
-                                        <td>087812121212</td>
-                                        <td>1234123412341234</td>
-                                        <td>Pria</td>
-                                        <td>2023-11-11</td>
-                                        <td>31A</td>
+                                        <th scope="row">{{ $loop->iteration + $kamar->firstItem() - 1 }}</th>
+                                        <td>{{ $item->pemesanan->nama }}</td>
+                                        <td>{{ $item->pemesanan->email }}</td>
+                                        <td>{{ $item->pemesanan->no_hp }}</td>
+                                        <td>{{ $item->pemesanan->nik }}</td>
+                                        <td>{{ $item->pemesanan->jenis_kelamin }}</td>
+                                        <td>{{ $item->pemesanan->tanggal_masuk }}</td>
+                                        <td>{{ $item->getKodeKamar() }}</td>
                                         <td>
-                                          <button type="button" class="btn btn-success lihatDetailBtn">Lihat Detail</button>
+                                          {{-- <button type="button" class="btn btn-success lihatDetailBtn">Lihat Detail</button>
                                           <button type="button" class="btn btn-primary editBtn">Edit</button>
-                                          <button type="button" class="btn btn-danger hapusBtn">Hapus</button>
+                                          <button type="button" class="btn btn-danger hapusBtn">Hapus</button> --}}
+                                            <a href="/lihat-detail-kelolaPenghuni/{{ $item->id }}" class="btn btn-success lihatDetailBtn">Lihat Detail</a>
+                                            <a href="/edit-kelolaPenghuni/{{ $item->id }}" class="btn btn-primary editBtn">Edit</a>
+                                            <form action="/delete-kelolaPenghuni/{{ $item->id }}" method="POST" class="d-inline">
+                                                @method('delete')
+                                                @csrf
+                                                <button type="submit" class="btn btn-danger hapusBtn">Hapus</button>
+                                            </form>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td>rafi</td>
-                                        <td>rafi@mail</td>
-                                        <td>087812121212</td>
-                                        <td>1234123412341234</td>
-                                        <td>Pria</td>
-                                        <td>2023-11-11</td>
-                                        <td>32A</td>
-                                        <td>
-                                          <button type="button" class="btn btn-success lihatDetailBtn">Lihat Detail</button>
-                                          <button type="button" class="btn btn-primary editBtn">Edit</button>
-                                          <button type="button" class="btn btn-danger hapusBtn">Hapus</button>
-                                        </td>
-                                    </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
 
@@ -175,22 +167,7 @@
                                     Tambah Data
                                 </button>
                                 <!-- <div class="datatable-info">Showing 1 to 3 of 3 entries</div> -->
-                                    <nav class="datatable-pagination">
-                                        <ul class="datatable-pagination-list">
-                                            <li class="datatable-pagination-list-item datatable-hidden datatable-disabled">
-                                                <button data-page="1" class="datatable-pagination-list-item-link" aria-label="Page 1">‹</button>
-                                            </li>
-                                            <li class="datatable-pagination-list-item datatable-active">
-                                                <button data-page="1" class="datatable-pagination-list-item-link" aria-label="Page 1">1</button>
-                                            </li>
-                                            <!-- <li class="datatable-pagination-list-item">
-                                                <button data-page="2" class="datatable-pagination-list-item-link" aria-label="Page 2">2</button>
-                                            </li> -->
-                                            <li class="datatable-pagination-list-item">
-                                                <button data-page="2" class="datatable-pagination-list-item-link" aria-label="Page 2">›</button>
-                                            </li>
-                                        </ul>
-                                    </nav>
+                                    {{ $kamar->links() }}
                                 </div>
                             </div>                            
                         </div>
@@ -214,35 +191,35 @@
     </script>
 
 <script>
-    // Fungsi untuk menangani validasi
-    function handleLihatDetail() {
-        // Lakukan sesuatu di sini sesuai dengan kebutuhan Anda
-        window.location.href = "/lihat-detail-kelolaPenghuni";
-    }
-    function handleEdit() {
-        // Lakukan sesuatu di sini sesuai dengan kebutuhan Anda
-        window.location.href = "/edit-kelolaPenghuni";
-    }
-    function handleHapus() {
-        // Lakukan sesuatu di sini sesuai dengan kebutuhan Anda
-        window.location.href = "/admin-kelolaPenghuni";
-    }
+    // // Fungsi untuk menangani validasi
+    // function handleLihatDetail() {
+    //     // Lakukan sesuatu di sini sesuai dengan kebutuhan Anda
+    //     window.location.href = "/lihat-detail-kelolaPenghuni";
+    // }
+    // function handleEdit() {
+    //     // Lakukan sesuatu di sini sesuai dengan kebutuhan Anda
+    //     window.location.href = "/edit-kelolaPenghuni";
+    // }
+    // function handleHapus() {
+    //     // Lakukan sesuatu di sini sesuai dengan kebutuhan Anda
+    //     window.location.href = "/admin-kelolaPenghuni";
+    // }
 
-    // Menambahkan event listener pada semua elemen dengan class "validasiBtn"
-    var buttons = document.querySelectorAll('.lihatDetailBtn');
-    buttons.forEach(function(button) {
-        button.addEventListener('click', handleLihatDetail);
-    });
+    // // Menambahkan event listener pada semua elemen dengan class "validasiBtn"
+    // var buttons = document.querySelectorAll('.lihatDetailBtn');
+    // buttons.forEach(function(button) {
+    //     button.addEventListener('click', handleLihatDetail);
+    // });
 
-    var buttons = document.querySelectorAll('.editBtn');
-    buttons.forEach(function(button) {
-        button.addEventListener('click', handleEdit);
-    });
+    // var buttons = document.querySelectorAll('.editBtn');
+    // buttons.forEach(function(button) {
+    //     button.addEventListener('click', handleEdit);
+    // });
 
-    var buttons = document.querySelectorAll('.hapusBtn');
-    buttons.forEach(function(button) {
-        button.addEventListener('click', handleHapus);
-    });
+    // var buttons = document.querySelectorAll('.hapusBtn');
+    // buttons.forEach(function(button) {
+    //     button.addEventListener('click', handleHapus);
+    // });
 </script>
 
 </body>

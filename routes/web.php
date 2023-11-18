@@ -9,7 +9,7 @@ use App\Http\Controllers\TagihanController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ValidasiPesananController;
 use App\Http\Controllers\Admin\ValidasiPembayaranController;
-use App\Http\Controllers\Admin\KelolaPenghuniController;
+use App\Http\Controllers\Admin\PenghuniController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,13 +60,17 @@ Route::middleware('auth')->group(function () {
         return view('user.perpanjangan');
     })->name('perpanjangan');
     
-    
     // laravel Example
     Route::get('/dashboard', function () {return view('dashboard');})->name('dashboard');
 });
 
 // Admin routes with 'can:admin' middleware
 Route::middleware(['auth', 'can:admin'])->group(function () {
+    /**
+     * TODO:
+     * - use Route::resource() for CRUD routes
+     */
+
     // Admin Dashboard
     Route::get('/admin', [AdminController::class, 'index'])->name('admin');
     
@@ -88,22 +92,19 @@ Route::middleware(['auth', 'can:admin'])->group(function () {
     Route::get('/tidak-validasi-pembayaran/{tagihan_id}', [ValidasiPembayaranController::class, 'getTidakValidasiTagihan'])->name('tidak-validasi-pembayaran');
     Route::post('/tidak-validasi-pembayaran/{tagihan_id}', [ValidasiPembayaranController::class, 'postTidakValidasiTagihan']);
 
-    Route::get('/admin-kelolaPenghuni', function () {
-        return view('admin.admin-kelolaPenghuni');
-    })->name('admin-kelolaPenghuni');
-    
-    Route::get('/tambah-penghuni', function () {
-        return view('admin.tambah-penghuni');
-    })->name('tambah-penghuni');
-    
-    Route::get('/lihat-detail-kelolaPenghuni', function () {
-        return view('admin.lihat-detail-kelolaPenghuni');
-    })->name('lihat-detail-kelolaPenghuni');
-    
-    Route::get('/edit-kelolaPenghuni', function () {
-        return view('admin.edit-kelolaPenghuni');
-    })->name('edit-kelolaPenghuni');
+    // Kelola Penghuni
+    Route::get('/admin-kelolaPenghuni', [PenghuniController::class, 'index'])->name('admin-kelolaPenghuni');
 
+    Route::get('/tambah-penghuni', [PenghuniController::class, 'create'])->name('tambah-penghuni');
+    Route::post('/tambah-penghuni', [PenghuniController::class, 'store']);
+
+    Route::get('/lihat-detail-kelolaPenghuni/{kamar}', [PenghuniController::class, 'show'])->name('lihat-detail-kelolaPenghuni');
+
+    Route::get('/edit-kelolaPenghuni/{kamar}', [PenghuniController::class, 'edit'])->name('edit-kelolaPenghuni');
+    Route::patch('/edit-kelolaPenghuni/{kamar}', [PenghuniController::class, 'update']);
+
+    Route::delete('/delete-kelolaPenghuni/{kamar}', [PenghuniController::class, 'destroy']);
+    
     // artisan command line interface in laravel
     Route::get('/artisan-cli', function () {
         return view('artisan-cli');

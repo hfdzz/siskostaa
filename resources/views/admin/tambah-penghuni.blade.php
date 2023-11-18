@@ -101,54 +101,65 @@
             <!-- Card -->
             <div class="row justify-content-center">
                 <div class="col-md-8">
-                <div class="card">
-                <div class="card-header">
-                    <h4>Data Penghuni</h4>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <!-- <div class="col-md-6"> -->
-                            <div class="mb-1">
-                                <label for="nama" class="form-label">Nama</label>
-                                <input type="text" class="form-control" id="nama" value="">
-                            </div>
-                            <div class="mb-1">
-                                <label for="email" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="email" value="">
-                            </div>
-                            <div class="mb-1">
-                                <label for="noHp" class="form-label">No Handphone</label>
-                                <input type="tel" class="form-control" id="noHp" value="">
-                            </div>
-                            <div class="mb-1">
-                                <label for="nik" class="form-label">NIK</label>
-                                <input type="number" class="form-control" id="nik" value="">
-                            </div>
-                            <div class="mb-1">
-                                <label for="jenisKelamin" class="form-label">Jenis Kelamin</label>
-                                <select class="form-select" id="jenisKelamin">
-                                    <option value="Laki-laki">Laki-laki</option>
-                                    <option value="Perempuan">Perempuan</option>
-                                </select>
-                            </div>
-                            <div class="mb-1">
-                                <label for="tanggalMasuk" class="form-label">Tanggal Masuk</label>
-                                <input type="date" class="form-control" id="tanggalMasuk" value="">
-                            </div>
-                            <div class="mb-4">
-                                <label for="jenisPembayaran" class="form-label">Nomor Kamar</label>
-                                <input type="text" class="form-control" id="nomorKamar" value="">
-                            </div>
-                            <div class="mb-1 d-flex gap-4">
-                                <button type="button" class="btn btn-primary" onclick="window.location.href='/admin-kelolaPenghuni'" id="tambahBtn">Tambah</button>
-                                <button type="button" class="btn btn-secondary" onclick="window.location.href='/admin-kelolaPenghuni'" id="batalBtn">Batal</button>
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Data Penghuni</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <form action="/tambah-penghuni" method="POST">
+                                    @csrf
+                                    <div class="col-md-12">
+                                        <div class="mb-1">
+                                            <label for="nama" class="form-label">Nama</label>
+                                            <input type="text" class="form-control" id="nama" value="" name="nama">
+                                        </div>
+                                        <div class="mb-1">
+                                            <label for="email" class="form-label">Email</label>
+                                            <input type="email" class="form-control" id="email" value="" name="email">
+                                        </div>
+                                        <div class="mb-1">
+                                            <label for="noHp" class="form-label">No Handphone</label>
+                                            <input type="tel" class="form-control" id="noHp" value="" name="no_hp">
+                                        </div>
+                                        <div class="mb-1">
+                                            <label for="nik" class="form-label">NIK</label>
+                                            <input type="number" class="form-control" id="nik" value="" name="nik">
+                                        </div>
+                                        <div class="mb-1">
+                                            <label for="jenisKelamin" class="form-label">Jenis Kelamin</label>
+                                            <select class="form-select" id="jenisKelamin" name="jenis_kelamin">
+                                                <option value="L">Laki-laki</option>
+                                                <option value="P">Perempuan</option>
+                                            </select>
+                                        </div>
+                                        <div class="mb-1">
+                                            <label for="tanggalMasuk" class="form-label">Tanggal Masuk</label>
+                                            <input type="date" class="form-control" id="tanggalMasuk" value="" name="tanggal_masuk">
+                                        </div>
+                                        <div class="mb-4">
+                                            <label for="jenisPembayaran" class="form-label">Nomor Kamar</label>
+                                            <input type="text" class="form-control" id="nomorKamar" value="" name="nomor_kamar">
+                                        </div>
+                                        <div class="mb-1 d-flex gap-4">
+                                            <button type="submit" class="btn btn-primary" id="tambahBtn">Tambah</button>
+                                            <a href="/admin-kelolaPenghuni" class="btn btn-secondary">Batal</a>
+                                        </div>
+                                    </div>
+                                    @if ($errors->any())
+                                        <div class="alert alert-danger mt-3">
+                                            <ul>
+                                                @foreach ($errors->all() as $error)
+                                                    <li>{{$error}}</li>
+                                                @endforeach
+                                            </ul> 
+                                        </div>
+                                    @endif
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
-                </div>
-            </div>
-            
             </div>
         </div>
     </div>

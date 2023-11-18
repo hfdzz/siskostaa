@@ -97,6 +97,8 @@ class SampleDataSeeder extends Seeder
          */ 
         \App\Models\User::factory()->count(30)->create()->each(function ($user) {
             $user->pemesanan()->save(\App\Models\Pemesanan::factory()->make([
+                'nama' => $user->nama,
+                'email' => $user->email,
                 'status' => '0',
                 'total_tagihan' => null,
                 'keterangan' => null,
