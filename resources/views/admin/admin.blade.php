@@ -93,7 +93,7 @@
                         <div class="p-3 secondary-bg shadow-sm d-flex justify-content-around align-items-center rounded">
                             <i class="fas fa-solid fa-house fs-1 primary-text border rounded-full secondary-bg p-3"></i>
                             <div>
-                                <h3 class="fs-2">20</h3>
+                                <h3 class="fs-2">{{ $pemesanan }}</h3>
                                 <p class="fs-5">Pesanan Kost</p>
                             </div>
                         </div>
@@ -104,7 +104,7 @@
                             <i
                                 class="fas fa-solid fa-money-bills fs-1 primary-text border rounded-full secondary-bg p-3"></i>
                             <div>
-                                <h3 class="fs-2">10</h3>
+                                <h3 class="fs-2">{{ $tagihan }}</h3>
                                 <p class="fs-5">Pembayaran</p>
                             </div>
                         </div>
@@ -115,7 +115,7 @@
                             <i
                                 class="fas fa-solid fa-user fs-1 primary-text border rounded-full secondary-bg p-3"></i>
                             <div>
-                                <h3 class="fs-2">100</h3>
+                                <h3 class="fs-2">{{ $kamar }}</h3>
                                 <p class="fs-5">Penghuni</p>
                             </div>
                         </div>
