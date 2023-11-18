@@ -28,6 +28,12 @@ class SampleDataSeeder extends Seeder
      */
     public function run(): void
     {
+        // Profile Kost
+        \App\Models\ProfileKost\Tentang::factory()->create();
+        \App\Models\ProfileKost\Fasilitas::factory()->count(8)->create();
+        \App\Models\ProfileKost\Faq::factory()->count(8)->create();
+
+
         // admin
         \App\Models\User::factory()->create([
             'nama' => 'admin',
