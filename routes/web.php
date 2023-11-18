@@ -2,14 +2,18 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PesanController;
 use App\Http\Controllers\TagihanController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ValidasiPesananController;
 use App\Http\Controllers\Admin\ValidasiPembayaranController;
 use App\Http\Controllers\Admin\PenghuniController;
+use App\Http\Controllers\ProfileKost\FasilitasController;
+use App\Http\Controllers\ProfileKost\FaqController;
+use App\Http\Controllers\ProfileKost\TentangController;
+use App\Http\Controllers\ProfileKost\ProfileController as ProfileKostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,9 +26,7 @@ use App\Http\Controllers\Admin\PenghuniController;
 |
 */
 
-Route::get('/', function () {
-    return view('user.beranda');
-});
+Route::get('/', [ProfileKostController::class, 'index'])->name('beranda');
 
 /**
  * 
@@ -104,6 +106,20 @@ Route::middleware(['auth', 'can:admin'])->group(function () {
     Route::patch('/edit-kelolaPenghuni/{kamar}', [PenghuniController::class, 'update']);
 
     Route::delete('/delete-kelolaPenghuni/{kamar}', [PenghuniController::class, 'destroy']);
+
+    // Profile Kost
+    Route::get('/profile-kost', [ProfileKostController::class, 'index'])->name('admin-profile-kost');
+
+    Route::resource('profile-kost-fasilitas', FasilitasController::class)->except([
+        'index', 'show'
+    ]);
+    Route::resource('profile-kost-faq', FaqController::class)->except([
+        'index', 'show'
+    ]);
+
+    Route::resource('profile-kost-tentang', TentangController::class)->only([
+        'edit', 'update'
+    ]);
     
     // artisan command line interface in laravel
     Route::get('/artisan-cli', function () {
@@ -117,6 +133,7 @@ Route::middleware(['auth', 'can:admin'])->group(function () {
         }
         return view('artisan-cli', ['output' => Artisan::output()]);
     });
+
 });
 
 require __DIR__.'/auth.php';
