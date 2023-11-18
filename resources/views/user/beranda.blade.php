@@ -100,14 +100,14 @@
 
         <div class="col-8">
           <div class="mt-3 d-flex justify-content-end">
-            {{-- @foreach ($fasilitas as $item)
+            @foreach ($fasilitas as $item)
             <div class="card mr-5" style="width: 7rem; height: 7rem">
-              <img src="{{asset($item->foto_fasilitas)}}" class="card-img-top m-auto" style="width: 2rem" alt="..." />
+              <img src="{{asset('storage/'.$item->foto_fasilitas)}}" class="card-img-top m-auto" style="width: 2rem" alt="..." />
               <div class="card-body m-auto text-center">
                 <p class="card-text" style="font-size: 10px">{{$item->deskripsi_fasilitas}}</p>
               </div>
             </div>
-            @endforeach --}}
+            @endforeach
 
             {{-- 
               [!] FIX STYLING (coba uncomment foreachnya)

@@ -29,7 +29,15 @@ class FasilitasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'deskripsi_fasilitas' => 'required',
+            'foto_fasilitas' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+        Fasilitas::create([
+            'deskripsi_fasilitas' => $request->deskripsi_fasilitas,
+            'foto_fasilitas' => $request->foto_fasilitas->store('fasilitas', 'public'),
+        ]);
+        return redirect()->route('admin-profile-kost')->with('success', 'Fasilitas berhasil ditambahkan');
     }
 
     /**
@@ -61,6 +69,7 @@ class FasilitasController extends Controller
      */
     public function destroy(Fasilitas $fasilitas)
     {
-        //
+        $fasilitas->delete();
+        return redirect()->route('admin-profile-kost')->with('success', 'Fasilitas berhasil dihapus');
     }
 }

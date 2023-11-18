@@ -18,7 +18,7 @@ class FasilitasFactory extends Factory
     {
         return [
             'deskripsi_fasilitas' => $this->faker->sentence(),
-            'foto_fasilitas' => '../Assets/placeholder_fasilitas.jpg',
+            'foto_fasilitas' => 'fasilitas/placeholder_fasilitas.jpg',
         ];
     }
 }

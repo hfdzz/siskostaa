@@ -14,19 +14,19 @@
         <button type="submit">Simpan</button>
     </div>
 
-    <script>
-        // preview image untuk foto yang akan diupload
-        function previewImage() {
-            const foto = document.querySelector('#foto');
-            const imgFoto = document.querySelector('#img-foto');
-
-            const fileFoto = new FileReader();
-            fileFoto.readAsDataURL(foto.files[0]);
-
-            fileFoto.onload = function(e) {
-                imgFoto.src = e.target.result;
-            }
-        }
-    </script>
 
 </form>
+<script>
+    // preview image untuk foto yang akan diupload
+    function previewImage() {
+        const foto = document.querySelector('#foto');
+        const imgFoto = document.querySelector('#img-foto');
+
+        const fileFoto = new FileReader();
+        fileFoto.readAsDataURL(foto.files[0]);
+
+        fileFoto.onload = function(e) {
+            imgFoto.src = e.target.result;
+        }
+    }
+</script>

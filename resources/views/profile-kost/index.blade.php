@@ -44,7 +44,7 @@
                 @foreach ($fasilitas as $item)
                     <tr>
                         <td>{{$item->deskripsi_fasilitas}}</td>
-                        <td><img src="{{asset($item->foto_fasilitas)}}" alt="" width="100px" height="100px"></td>
+                        <td><img src="{{asset('storage/'.$item->foto_fasilitas)}}" alt="" width="100px" height="100px"></td>
                         <td>
                             <a href="{{route('profile-kost-fasilitas.edit', $item->id)}}">Edit</a>
                             <form action="{{route('profile-kost-fasilitas.destroy', $item->id)}}" method="POST">
