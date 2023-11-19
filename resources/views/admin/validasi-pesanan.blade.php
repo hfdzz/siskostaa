@@ -178,19 +178,6 @@
             el.classList.toggle("toggled");
         };
     </script>
-    <script>
-        // document.getElementById("submitBtn").addEventListener("click", function () {
-        //     var keteranganValue = document.getElementById("keterangan").value;
-        //     var tagihanValue = document.getElementById("tagihan").value;
-
-        //     // Lakukan sesuatu dengan data yang diambil, seperti mengirimkan ke server atau menyimpan ke database
-        //     console.log("Keterangan: ", keteranganValue);
-        //     console.log("Tagihan: ", tagihanValue);
-
-        //     // Arahkan ke halaman /admin-pesanan
-        //     window.location.href = "/admin-pesanan";
-        // });
-    </script>
 </body>
 
 </html>
