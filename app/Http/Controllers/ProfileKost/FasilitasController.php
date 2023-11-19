@@ -5,6 +5,7 @@ namespace App\Http\Controllers\ProfileKost;
 use App\Http\Controllers\Controller;
 use App\Models\ProfileKost\Fasilitas;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class FasilitasController extends Controller
 {
@@ -31,7 +32,7 @@ class FasilitasController extends Controller
     {
         $request->validate([
             'deskripsi_fasilitas' => 'required',
-            'foto_fasilitas' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'foto_fasilitas' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1024',
         ]);
         Fasilitas::create([
             'deskripsi_fasilitas' => $request->deskripsi_fasilitas,
@@ -53,15 +54,36 @@ class FasilitasController extends Controller
      */
     public function edit(Fasilitas $fasilitas)
     {
-        //
+        return view('profile-kost.fasilitas.edit', compact('fasilitas'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Fasilitas $fasilitas)
     {
-        //
+        $request->validate([
+            'deskripsi_fasilitas' => 'required',
+            'foto_fasilitas' => 'image|mimes:jpeg,png,jpg,gif,svg|max:1024',
+        ]);
+
+        $fasilitas->update([
+            'deskripsi_fasilitas' => $request->deskripsi_fasilitas,
+        ]);
+        
+        // if user upload new image, delete old image from storage
+        if ($request->hasFile('foto_fasilitas')) {
+            try {
+                Storage::disk('public')->delete($fasilitas->foto_fasilitas);
+            } catch (\Throwable $th) {
+                //throw $th;
+            }
+            $fasilitas->update([
+                'foto_fasilitas' => $request->foto_fasilitas->store('fasilitas', 'public'),
+            ]);
+        }
+
+        return redirect()->route('admin-profile-kost')->with('success', 'Fasilitas berhasil diubah');
     }
 
     /**
@@ -70,6 +92,11 @@ class FasilitasController extends Controller
     public function destroy(Fasilitas $fasilitas)
     {
         $fasilitas->delete();
+        try {
+            Storage::disk('public')->delete($fasilitas->foto_fasilitas);
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
         return redirect()->route('admin-profile-kost')->with('success', 'Fasilitas berhasil dihapus');
     }
 }
