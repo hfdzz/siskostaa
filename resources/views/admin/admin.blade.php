@@ -22,7 +22,7 @@
                         class="fas fa-solid fa-house me-2"></i>
                         <span class="ms-2">Dashboard</span>
                 </a>
-                <a href="/admin-profilKost" class="list-group-item list-group-item-action bg-transparent second-text text-dark fw-bold"><i
+                <a href="/profile-kost" class="list-group-item list-group-item-action bg-transparent second-text text-dark fw-bold"><i
                         class="fas fa-solid fa-list me-2"></i>
                         <span class="ms-2">Profile Kost</span>
                 </a>

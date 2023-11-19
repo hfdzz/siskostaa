@@ -1,6 +1,6 @@
 {{-- tentang --}}
 <div>
-    <table border="1px">
+    <table border="3px">
         <thead>
             <tr>
                 <th>Tentang Kost</th>
