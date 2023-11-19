@@ -90,6 +90,11 @@ class ValidasiPembayaranController extends Controller
         $pemesanan->status = '2';
         $pemesanan->save();
 
+        // remove occuppant from kamar
+        /** @var \App\Models\Kamar $kamar **/
+        $kamar = $pemesanan->getKamar();
+        $kamar->removeOcupant();
+
         // dd($tagihan, $pemesanan);
 
         return redirect()->route('admin-pembayaran');

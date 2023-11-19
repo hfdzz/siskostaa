@@ -71,6 +71,11 @@ class ValidasiPesananController extends Controller
         $pesanan->keterangan = $request->input('keterangan');
         $pesanan->status = '2';
 
+        // remove occuppant from kamar
+        /** @var \App\Models\Kamar $kamar **/
+        $kamar = $pesanan->getKamar();
+        $kamar->removeOcupant();
+
         $pesanan->save();
         return redirect()->route('admin-pesanan');
     }
