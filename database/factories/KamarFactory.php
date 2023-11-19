@@ -26,7 +26,7 @@ class KamarFactory extends Factory
         return [
             'nomor_kamar' => $this->getNextNomorKamar($kode_gedung),
             'kode_gedung' => $kode_gedung,
-            'jenis_kamar' => $this->faker->randomElement(['ac', 'non-ac']),
+            'jenis_kamar' => $this->faker->randomElement(['ac', 'non_ac']),
             'status_available' => '1',
             'pemesanan_id' => null,
         ];
