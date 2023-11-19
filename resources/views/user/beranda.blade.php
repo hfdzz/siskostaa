@@ -68,7 +68,7 @@
         <div class="row no-gutters">
           <div class="col-md-4">
             
-            <img src="{{$tentang->getFotoTentangAttribute()}}" class="card-img-top" alt="Gambar" />
+            <img src="{{$tentang->foto_tentang}}" class="card-img-top" alt="Gambar" />
           </div>
           <div class="col-md-8">
             <div class="card-body">
@@ -86,7 +86,7 @@
     </div>
 
     <div class="row">
-      <div class="row m-5 d-flex justify-content-center border rounded" style="background-color: #ffcdba">
+      <div class="row m-5 d-flex justify-content-between border rounded" style="background-color: #ffcdba">
         <div class="col-md-4" style="width: 70rem">
           <div class="card-body">
             <h5 class="card-title">Fasilitas Kami</h5>
@@ -98,21 +98,23 @@
           </div>
         </div>
 
-        <div class="col-8">
-          <div class="mt-3 d-flex justify-content-end">
+        <div class="col-6">
+          <div class="my-3 d-flex justify-content-center flex-wrap">
             @foreach ($fasilitas as $item)
-            <div class="card mr-5" style="width: 7rem; height: 7rem">
+            <div class="card mx-3 my-1" style="width: 7rem; height: 7rem">
               <img src="{{asset('storage/'.$item->foto_fasilitas)}}" class="card-img-top m-auto" style="width: 2rem" alt="..." />
               <div class="card-body m-auto text-center">
                 <p class="card-text" style="font-size: 10px">{{$item->deskripsi_fasilitas}}</p>
               </div>
             </div>
             @endforeach
+          </div>
 
-            {{-- 
-              [!] FIX STYLING (coba uncomment foreachnya)
-              --}}
-            
+          {{-- 
+            [!] FIX STYLING (coba uncomment foreachnya)
+            --}}
+
+          {{-- <div class="mt-3 d-flex justify-content-end">
             <div class="card mr-5" style="width: 7rem; height: 7rem">
               <img src="./Assets/shower.svg" class="card-img-top m-auto" style="width: 2rem" alt="..." />
               <div class="card-body m-auto text-center">
@@ -163,7 +165,7 @@
                 <p class="card-text" style="font-size: 10px">Dan Lainya</p>
               </div>
             </div>
-          </div>
+          </div> --}}
         </div>
       </div>
     </div>
