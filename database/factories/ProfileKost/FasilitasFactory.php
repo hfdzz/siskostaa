@@ -17,8 +17,9 @@ class FasilitasFactory extends Factory
     public function definition(): array
     {
         return [
-            'deskripsi_fasilitas' => $this->faker->sentence(),
-            'foto_fasilitas' => 'fake',
+            // one to three words in a sentence
+            'deskripsi_fasilitas' => $this->faker->sentence($nbWords = 2, $variableNbWords = true),
+            'foto_fasilitas' => '../Assets/default_img/placeholder_fasilitas.png',
         ];
     }
 }

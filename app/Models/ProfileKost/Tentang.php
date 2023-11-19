@@ -15,13 +15,4 @@ class Tentang extends Model
         'foto_tentang',
         'deskripsi_tentang',
     ];
-
-    public function getFotoTentangAttribute()
-    {
-        // if null return default image
-        if (!$this->attributes['foto_tentang']) {
-            return 'default_img/default_tentang.png';
-        }
-        return asset('storage/profile-kost/' . $this->attributes['foto_tentang']);
-    }
 }

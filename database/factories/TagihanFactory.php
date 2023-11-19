@@ -18,7 +18,7 @@ class TagihanFactory extends Factory
         return [
             'status' => $this->faker->randomElement(['0', '1', '2']),
             'keterangan' => $this->faker->text(),
-            'bukti_pembayaran' => '../Assets/placeholder_bukti_pembayaran.png',
+            'bukti_pembayaran' => '../Assets/default_img/placeholder_bukti_pembayaran.png',
             'pemesanan_id' => $this->faker->randomNumber(),
         ];
     }

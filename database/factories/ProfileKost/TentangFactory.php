@@ -18,6 +18,7 @@ class TentangFactory extends Factory
     {
         return [
             'deskripsi_tentang' => $this->faker->sentence(),
+            'foto_tentang' => '../Assets/default_img/default_tentang.png',
         ];
     }
 }

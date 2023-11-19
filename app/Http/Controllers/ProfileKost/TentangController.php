@@ -5,6 +5,7 @@ namespace App\Http\Controllers\ProfileKost;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\ProfileKost\Tentang;
+use Illuminate\Support\Facades\Storage;
 
 class TentangController extends Controller
 {
@@ -46,27 +47,27 @@ class TentangController extends Controller
     /**
      * Update the resource in storage.
      */
-    public function update(Request $request)
+    public function update(Request $request, Tentang $tentang)
     {
         // admin update
         $request->validate([
-            'deskripsi' => 'nullable|string',
+            'deskripsi' => 'required|string',
             'foto' => 'nullable|image|mimes:jpg,jpeg,png|max:5120',
         ]);
-        
-        if ($request->deskripsi) {
-            Tentang::first()->update([
-                'deskripsi' => $request->deskripsi,
-            ]);
-        }
+
+        Tentang::first()->update([
+            'deskripsi_tentang' => $request->deskripsi,
+        ]);
 
         if ($request->hasFile('foto')) {
-            $foto = $request->file('foto');
-            $namaFoto = 'tentang.' . $foto->getClientOriginalExtension();
-            $foto->storeAs('public/profile-kost', $namaFoto);
+            try {
+                Storage::disk('public')->delete($tentang->foto_tentang);
+            } catch (\Throwable $th) {
+                throw $th;
+            }
 
             Tentang::first()->update([
-                'foto_tentang' => $namaFoto,
+                'foto_tentang' => $request->file('foto')->store('profile-kost', 'public'),
             ]);
         }
 

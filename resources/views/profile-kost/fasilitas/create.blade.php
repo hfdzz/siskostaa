@@ -3,12 +3,12 @@
     <div>
         <label for="deskripsi_fasilitas">Deskripsi Fasilitas</label>
         {{-- disable suggestion --}}
-        <input type="text" name="deskripsi_fasilitas" id="deskripsi_fasilitas" autocomplete="off" value="{{old('deskripsi_fasilitas')}}">
+        <input type="text" name="deskripsi_fasilitas" id="deskripsi_fasilitas" autocomplete="off" value="{{old('deskripsi_fasilitas')}}" required>
     </div>
     <div>
         <img src="" alt="" id="img-foto">
         <label for="foto_fasilitas">Foto Fasilitas</label>
-        <input type="file" name="foto_fasilitas" id="foto_fasilitas" accept="image/*" onchange="previewImage()">
+        <input type="file" name="foto_fasilitas" id="foto_fasilitas" accept="image/*" onchange="previewImage()" required>
     </div>
     <div>
         <button type="submit">Simpan</button>
