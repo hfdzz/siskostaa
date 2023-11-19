@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Kamar;
 use App\Models\Pemesanan;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -40,10 +41,25 @@ class PesanController extends Controller
             return redirect()->route('pesan')->withErrors(['Anda sudah memiliki pemesanan yang belum selesai']);
         }
 
-        // check if kamar is full
-        // TODO: check if kamar is full
+        // check availability of kamar
+        // check if any kamar with jenis_kamar = $request->input('jenis_kamar), status_available = 1, kode_gedung 'A' or 'B' for 
+        // jenis_kelamin = 'L', kode_gedung 'C' for jenis_kelamin = 'P'
+        //  exists, get the first one ordered by nomor_kamar
+        /** @var \App\Models\Kamar $kamar **/
+        $kamar = Kamar::where('jenis_kamar', $request->input('jenis_kamar'))->where('status_available', 1)->where(function ($query) use ($request) {
+            if ($request->input('jenis_kelamin') == 'L'){
+                $query->where('kode_gedung', 'A')->orWhere('kode_gedung', 'B');
+            } else {
+                $query->where('kode_gedung', 'C');
+            }
+        })->orderBy('nomor_kamar')->first();
 
-        Pemesanan::create([
+        if (!$kamar) {
+            return redirect()->route('pesan')->withErrors(['Kamar tidak tersedia']);
+        }
+
+        // create new pemesanan
+        $pemesanan = Pemesanan::create([
             'nama' => $request->input('nama'),
             'email' => $request->input('email'),
             'no_hp' => $request->input('no_hp'),
@@ -54,10 +70,13 @@ class PesanController extends Controller
             'jenis_kamar' => $request->input('jenis_kamar'),
             'jenis_pembayaran' => $request->input('jenis_pembayaran'),
             'status' => Pemesanan::$kode_status['menunggu_validasi'],
-            'nomor_kamar' => '0',
+            'nomor_kamar' => $kamar->getKodeKamar(),
             'user_id' => $user->id,
         ]);
 
+        // add pemesanan_id to kamar
+        $kamar->addOcupant($pemesanan->id);
+        
         return redirect('/statuspesan');
     }
 
