@@ -1,12 +1,56 @@
 @extends('layouts.admin.app')
 
-@section('title', 'Tidak Validasi')
+@section('title', 'Edit Fasilitas Kost')
 
 @section('content')
 
 
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0">Form Edit Fasilitas Kost</h4>
+                </div>
+                <div class="card-body">
+                    <form action="{{ route('profile-kost-fasilitas.update', $fasilitas->id) }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        @method('PATCH')
 
-<form action="{{route('profile-kost-fasilitas.update', $fasilitas->id)}}" method="POST" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label for="deskripsi_fasilitas" class="form-label">Deskripsi Fasilitas</label>
+                            {{-- Disable suggestion --}}
+                            <input type="text" name="deskripsi_fasilitas" id="deskripsi_fasilitas" class="form-control" autocomplete="off" value="{{ $fasilitas->deskripsi_fasilitas }}" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="foto_fasilitas" class="form-label">Foto Fasilitas</label>
+                            <input type="file" name="foto_fasilitas" id="foto_fasilitas" class="form-control" accept="image/*" onchange="previewImage()">
+                            <img src="{{ asset('storage/'.$fasilitas->foto_fasilitas) }}" alt="" id="img-foto" class="mt-3 img-fluid" style="max-height: 200px;">
+                        </div>
+
+                        <div>
+                            <button type="submit" class="btn btn-primary">Simpan</button>
+                        </div>
+
+                        @if ($errors->any())
+                            <div class="mt-3">
+                                <ul class="alert alert-danger">
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- <form action="{{route('profile-kost-fasilitas.update', $fasilitas->id)}}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PATCH')
     <div>
@@ -31,7 +75,7 @@
             </ul>
         </div>
     @endif
-</form>
+</form> -->
 
 @endsection
 
@@ -62,5 +106,14 @@
         }
     }
 </script>
+
+<script>
+        var el = document.getElementById("wrapper");
+        var toggleButton = document.getElementById("menu-toggle");
+
+        toggleButton.onclick = function () {
+            el.classList.toggle("toggled");
+        };
+    </script>
 
 @endsection

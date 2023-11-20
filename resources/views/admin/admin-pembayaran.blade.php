@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-    <link href="styleAdmin.css" rel="stylesheet">
+    <link href="/styleAdmin.css" rel="stylesheet">
     <title>Pembayaran Admin</title>
 </head>
 
@@ -22,7 +22,7 @@
                         class="fas fa-solid fa-house me-2"></i>
                         <span class="ms-2">Dashboard</span>
                 </a>
-                <a href="/admin-profilKost" class="list-group-item list-group-item-action bg-transparent second-text text-dark fw-bold"><i
+                <a href="/profile-kost" class="list-group-item list-group-item-action bg-transparent second-text text-dark fw-bold"><i
                         class="fas fa-solid fa-list me-2"></i>
                         <span class="ms-2">Profile Kost</span>
                 </a>
@@ -90,7 +90,7 @@
                 <div class="row g-3 my-2">
                     <div class="row my-5">
                     <div class="col-12 mb-3 text-end">
-                            <div class="datatable-dropdown d-inline-block me-3">
+                            <div class="datatable-dropdown d-inline-block me-5">
                                     <label class="m-0">
                                         <select class="datatable-selector">
                                             <option value="5">5</option>
@@ -101,9 +101,16 @@
                                         </select> entries per page
                                     </label>
                                 </div>
-                                <div class="datatable-search d-inline-block">
-                                    <input class="datatable-input form-control rounded-pill" placeholder="Search..." type="search" title="Search within table">
-                                </div>
+
+                                <form class="datatable-search d-inline-block ms-auto me-2 ">
+                                    <div class="datatable-search d-inline-block"> 
+                                        <div class="input-group">
+                                            <input class="datatable-input form-control rounded-pill" placeholder="Search..." type="search" title="Search within table">
+                                            <button class="btn btn-primary rounded-pill" type="button"><i class="fas fa-search"></i></button>
+                                        </div>
+                                    </div>
+                                </form>
+                                                                 
                             </div>
                         <div class="col">
                             <table class="table bg-white rounded shadow-sm  table-hover datatable">

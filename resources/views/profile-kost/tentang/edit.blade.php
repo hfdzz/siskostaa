@@ -1,12 +1,43 @@
 @extends('layouts.admin.app')
 
-@section('title', 'Tidak Validasi')
+@section('title', 'Edit Tentang Kost')
 
 @section('content')
 
+<div class="container-fluid">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0">Form Update Tentang Kost</h4>
+                </div>
+                <div class="card-body">
+                    <form action="{{ route('profile-kost-tentang.update', $tentang->id) }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        @method('PATCH')
 
+                        <div class="mb-3">
+                            <label for="deskripsi" class="form-label">Deskripsi</label>
+                            <textarea class="form-control" name="deskripsi" id="deskripsi" rows="5">{{ $tentang->deskripsi_tentang }}</textarea>
+                        </div>
 
-<form action="{{route('profile-kost-tentang.update', $tentang->id)}}" method="POST" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label for="foto" class="form-label">Foto</label>
+                            <input class="form-control" type="file" name="foto" id="foto" onchange="previewImage()" accept="image/*">
+                            <img src="{{ asset($tentang->foto_tentang) }}" alt="" id="img-foto" class="mt-3 img-fluid" style="max-height: 200px;">
+                        </div>
+
+                        <div>
+                            <button type="submit" class="btn btn-primary">Simpan</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <form action="{{route('profile-kost-tentang.update', $tentang->id)}}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PATCH')
     <div>
@@ -23,7 +54,7 @@
     </div>
 
 
-</form>
+</form> -->
 
 @endsection
 
@@ -54,5 +85,14 @@
         }
     }
 </script>
+
+<script>
+        var el = document.getElementById("wrapper");
+        var toggleButton = document.getElementById("menu-toggle");
+
+        toggleButton.onclick = function () {
+            el.classList.toggle("toggled");
+        };
+    </script>
 
 @endsection
