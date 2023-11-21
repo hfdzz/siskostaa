@@ -82,7 +82,8 @@ class PesanController extends Controller
 
     public function riwayat(Request $request)
     {
-        $pemesananList = Pemesanan::where('user_id', $request->user()->id)->get();
+        // get user's all pemesanan ordered by tanggal_masuk
+        $pemesananList = Pemesanan::where('user_id', $request->user()->id)->orderBy('tanggal_masuk', 'desc')->get();
 
         return view('user.riwayatpemesanan', [
             'pemesananList' => $pemesananList,

@@ -31,7 +31,7 @@ class TagihanController extends Controller
         // check if user has tagihan with status '1' (menunggu validasi). if yes, return to tagihan page with message
         /** @var \App\Models\User $user **/
         $user = auth()->user();
-        $list_pemesanan = $user->pemesanan()->get();
+        $list_pemesanan = $user->pemesanan()->orderBy('created_at', 'desc')->get();
         foreach ($list_pemesanan as $pemesanan) {
             $tagihan = $pemesanan->tagihan()->first();
             if ($tagihan && $tagihan->status == Tagihan::$kode_status['menunggu_validasi']) {
@@ -47,10 +47,17 @@ class TagihanController extends Controller
             'bukti_pembayaran' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        // get tagihan with status '0', else return to tagihan page
-        $tagihan = Tagihan::where('status', '0')->first();
-        if (!$tagihan) {
+        // check if user has pemesanan with status '1' (menunggu pembayaran).
+        /** @var \App\Models\User $user **/
+        $user = auth()->user();
+        $pemesanan = $user->pemesanan()->where('status', '1')->first();
+        if (!$pemesanan) {
             return redirect()->route('tagihan');
+        }
+        /** @var \App\Models\Tagihan $tagihan **/
+        $tagihan = $pemesanan->tagihan;
+        if ($tagihan && $tagihan->status == Tagihan::$kode_status['menunggu_validasi']) {
+            return redirect()->route('tagihan')->with('already_menunggu_validasi', 'Anda sudah mengirim bukti pembayaran. Silahkan tunggu validasi pembayaran.');
         }
         
         // save bukti pembayaran to storage

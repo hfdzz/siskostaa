@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Pemesanan;
+use App\Models\Tagihan;
 
 class ValidasiPesananController extends Controller
 {
@@ -53,6 +54,14 @@ class ValidasiPesananController extends Controller
         $pesanan->status = '1';
 
         $pesanan->save();
+
+        // create tagihan
+        tagihan::create([
+            'pemesanan_id' => $pesanan->id,
+            'total_tagihan' => $pesanan->total_tagihan,
+            'status' => '0',
+        ]);
+
         return redirect()->route('admin-pesanan');
     }
 
