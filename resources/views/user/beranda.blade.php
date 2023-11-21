@@ -78,7 +78,7 @@
                 consequat.
               </p>
               <br /><br /><br />
-              <a href="#" class="btn btn-primary" style="background-color: #84545a">Selengkapnya</a>
+              <!-- <a href="#" class="btn btn-primary" style="background-color: #84545a">Selengkapnya</a> -->
             </div>
           </div>
         </div>
@@ -94,7 +94,7 @@
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
               consequat.
             </p>
-            <a href="#" class="btn btn-primary" style="background-color: #84545a">Selengkapnya</a>
+            <!-- <a href="#" class="btn btn-primary" style="background-color: #84545a">Selengkapnya</a> -->
           </div>
         </div>
 

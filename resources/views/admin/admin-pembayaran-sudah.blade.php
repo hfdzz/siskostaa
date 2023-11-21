@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-    <link href="styleAdmin.css" rel="stylesheet">
+    <link href="/styleAdmin.css" rel="stylesheet">
     <title>Pembayaran Admin</title>
 </head>
 
@@ -22,7 +22,7 @@
                         class="fas fa-solid fa-house me-2"></i>
                         <span class="ms-2">Dashboard</span>
                 </a>
-                <a href="/admin-profilKost" class="list-group-item list-group-item-action bg-transparent second-text text-dark fw-bold"><i
+                <a href="/profile-kost" class="list-group-item list-group-item-action bg-transparent second-text text-dark fw-bold"><i
                         class="fas fa-solid fa-list me-2"></i>
                         <span class="ms-2">Profile Kost</span>
                 </a>
@@ -199,32 +199,6 @@
             el.classList.toggle("toggled");
         };
     </script>
-
-<!-- <script>
-    // Fungsi untuk menangani validasi
-    function handleValidasi() {
-        // Lakukan sesuatu di sini sesuai dengan kebutuhan Anda
-        window.location.href = "/validasi-pembayaran";
-    }
-    function handleTidakValidasi() {
-        // Lakukan sesuatu di sini sesuai dengan kebutuhan Anda
-        window.location.href = "/tidak-validasi-pembayaran";
-    }
-
-
-    // Menambahkan event listener pada semua elemen dengan class "validasiBtn"
-    var buttons = document.querySelectorAll('.validasiBtn');
-    buttons.forEach(function(button) {
-        button.addEventListener('click', handleValidasi);
-    });
-
-    var buttons = document.querySelectorAll('.tidakvalidasiBtn');
-    buttons.forEach(function(button) {
-        button.addEventListener('click', handleTidakValidasi);
-
-
-    });
-</script> -->
 
 </body>
 

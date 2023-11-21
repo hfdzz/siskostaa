@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-    <link href="styleAdmin.css" rel="stylesheet">
+    <link href="/styleAdmin.css" rel="stylesheet">
     <title>Tambah Penghuni Admin</title>
 </head>
 
@@ -22,7 +22,7 @@
                         class="fas fa-solid fa-house me-2"></i>
                         <span class="ms-2">Dashboard</span>
                 </a>
-                <a href="/admin-profilKost" class="list-group-item list-group-item-action bg-transparent second-text text-dark fw-bold"><i
+                <a href="/profile-kost" class="list-group-item list-group-item-action bg-transparent second-text text-dark fw-bold"><i
                         class="fas fa-solid fa-list me-2"></i>
                         <span class="ms-2">Profile Kost</span>
                 </a>
