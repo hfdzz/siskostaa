@@ -28,9 +28,16 @@
                             <input type="file" name="foto_fasilitas" id="foto_fasilitas" class="form-control" accept="image/*" onchange="previewImage()">
                             <img src="{{ asset('storage/'.$fasilitas->foto_fasilitas) }}" alt="" id="img-foto" class="mt-3 img-fluid" style="max-height: 200px;">
                         </div>
+                        <!-- Add this button where you want to trigger the modal -->
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#fotoModal">
+                            Preview Foto Fasilitas
+                        </button>
 
-                        <div>
+                        <br><br><br>
+
+                        <div >
                             <button type="submit" class="btn btn-primary">Simpan</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                         </div>
 
                         @if ($errors->any())
@@ -42,6 +49,12 @@
                                 </ul>
                             </div>
                         @endif
+
+                        @if(session('success'))
+                            <div class="mt-3 alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
                     </form>
                 </div>
             </div>
@@ -50,32 +63,43 @@
 </div>
 
 
-<!-- <form action="{{route('profile-kost-fasilitas.update', $fasilitas->id)}}" method="POST" enctype="multipart/form-data">
-    @csrf
-    @method('PATCH')
-    <div>
-        <label for="deskripsi_fasilitas">Deskripsi Fasilitas</label>
-        {{-- disable suggestion --}}
-        <input type="text" name="deskripsi_fasilitas" id="deskripsi_fasilitas" autocomplete="off" value="{{$fasilitas->deskripsi_fasilitas}}" required>
-    </div>
-    <div>
-        <img src="{{asset('storage/'.$fasilitas->foto_fasilitas)}}" alt="" id="img-foto">
-        <label for="foto_fasilitas">Foto Fasilitas</label>
-        <input type="file" name="foto_fasilitas" id="foto_fasilitas" accept="image/*" onchange="previewImage()">
-    </div>
-    <div>
-        <button type="submit">Simpan</button>
-    </div>
-    @if ($errors->any())
-        <div>
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{$error}}</li>    
-                @endforeach
-            </ul>
+<!-- Add this modal code at the end of your HTML, just before the closing </body> tag -->
+<!-- <div class="modal fade" id="fotoModal" tabindex="-1" aria-labelledby="fotoModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="fotoModalLabel">Foto Fasilitas Preview</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img src="{{ asset('storage/'.$fasilitas->foto_fasilitas) }}" alt="" class="img-fluid" style="max-height: 400px;">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
         </div>
-    @endif
-</form> -->
+    </div>
+</div> -->
+
+<!-- Add this modal code at the end of your HTML, just before the closing </body> tag -->
+<div class="modal fade" id="fotoModal" tabindex="-1" aria-labelledby="fotoModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="fotoModalLabel">Foto Fasilitas Preview</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center"> 
+                <img src="{{ asset('storage/'.$fasilitas->foto_fasilitas) }}" alt="" class="img-fluid mx-auto d-block" style="max-height: 400px;"> <!-- Center the image -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 @endsection
 

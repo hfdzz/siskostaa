@@ -138,7 +138,12 @@
                                         <td>Pria</td>
                                         <td>2023-11-11</td>
                                         <td>Penuh</td>
-                                        <td><img src="assets/tf1.jpg" alt="" width="100"></td>
+                                        <td>
+                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#gambarModal{{ $item->id }}">
+                                                Lihat Gambar
+                                            </button>
+                                        </td>
+                                        <!-- <td><img src="assets/tf1.jpg" alt="" width="100"></td> -->
                                         <td>
                                           <button type="button" class="btn btn-primary validasiBtn">Validasi</button>
                                           <button type="button" class="btn btn-danger tidakvalidasiBtn">Tidak Validasi</button>
@@ -154,7 +159,12 @@
                                         <td>{{ $item->pemesanan->jenis_kelamin }}</td>
                                         <td>{{ $item->pemesanan->tanggal_Masuk }}</td>
                                         <td>{{ $item->pemesanan->jenis_pembayaran }}</td>
-                                        <td><img src="{{ asset('storage/' . $item->bukti_pembayaran) }}" alt="" width="100"></td>
+                                        <td>
+                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#gambarModal{{ $item->id }}">
+                                                Lihat Gambar
+                                            </button>
+                                        </td>
+                                        <!-- <td><img src="{{ asset('storage/' . $item->bukti_pembayaran) }}" alt="" width="100"></td> -->
                                         <td>
                                             <a href="/validasi-pembayaran/{{ $item->id }}" class="btn btn-primary">Validasi</a>
                                             <a href="/tidak-validasi-pembayaran/{{ $item->id }}" class="btn btn-danger">Tidak Validasi</a>
@@ -163,6 +173,26 @@
                                     @endforeach
                                 </tbody>
                             </table>
+
+                            <!-- Modal -->
+                            @foreach ($tagihan as $item)
+                            <div class="modal fade" id="gambarModal{{ $item->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Bukti Pembayaran</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body text-center">
+                                            <img src="{{ asset('storage/' . $item->bukti_pembayaran) }}" alt="Bukti Pembayaran" class="img-fluid">
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
 
                             <div class="d-flex justify-content-between align-items-center mt-2">
                                 <div class="datatable-info">

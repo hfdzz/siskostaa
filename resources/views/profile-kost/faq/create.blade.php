@@ -1,6 +1,6 @@
 @extends('layouts.admin.app')
 
-@section('title', 'Tidak Validasi')
+@section('title', 'Create New FAQ')
 
 @section('content')
 
