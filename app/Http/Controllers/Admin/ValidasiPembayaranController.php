@@ -25,6 +25,23 @@ class ValidasiPembayaranController extends Controller
         return view('admin.admin-pembayaran', ['tagihan' => $tagihan, 'entries' => $entries]);
     }
 
+    public function indexSudah(Request $request)
+    {
+        $entries = $request->input('entries', 10);
+        $filter = $request->input('filter');
+        $tagihan = Tagihan::where('status', '=', '3')->paginate($entries);
+        
+        if ($filter) {
+            // filter by tagihan's pemesanan's nama, email, no_hp, jenis_kelamin, tanggal_masuk, jenis_pembayaran
+            $tagihan = Tagihan::where('status', '=', '3')->whereHas('pemesanan', function($query) use ($filter) {
+                $query->where('nama', 'like', "%$filter%")->orWhere('email', 'like', "%$filter%")->orWhere('no_hp', 'like', "%$filter%")->orWhere('jenis_kelamin', 'like', "%$filter%")->orWhere('tanggal_masuk', 'like', "%$filter%")->orWhere('jenis_pembayaran', 'like', "%$filter%");
+            })->paginate($entries);
+        }
+        $tagihan->withPath($request->getUri());
+
+        return view('admin.admin-pembayaran-sudah', ['tagihan' => $tagihan, 'entries' => $entries]);
+    }
+
     public function getValidasiTagihan(Request $request)
     {
         $tagihan_id = $request->route('tagihan_id');
