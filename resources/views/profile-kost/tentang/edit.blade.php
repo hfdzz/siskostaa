@@ -4,6 +4,20 @@
 
 @section('content')
 
+<div class="container-fluid px-4">
+    <div class="row g-3 my-2">
+        <div class="col-md-12">
+            <!-- Breadcrumb -->
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/profile-kost">Profile Kost</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"> Edit Tentang Kost</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</div>
+
 <div class="container-fluid">
     <div class="row justify-content-center mt-5">
         <div class="col-md-6">
@@ -29,6 +43,7 @@
 
                         <div>
                             <button type="submit" class="btn btn-primary">Simpan</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                         </div>
                     </form>
                 </div>

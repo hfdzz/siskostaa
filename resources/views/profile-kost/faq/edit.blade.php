@@ -31,6 +31,7 @@
                         </div>
                 
                         <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                     </form>
                 </div>
                 <!-- ... -->
