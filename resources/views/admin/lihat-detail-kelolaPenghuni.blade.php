@@ -81,7 +81,7 @@
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="#">Profile</a></li>
                                 <li><a class="dropdown-item" href="#">Settings</a></li>
-<li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                                <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             @csrf
                                         </form>        
@@ -115,35 +115,48 @@
                 <div class="card-body">
                     <div class="row">
                         <!-- <div class="col-md-6"> -->
+                        <form action={{ route('edit-kelolaPenghuni', $kamar->id) }} method="POST">
+                            @csrf
+                            @method('PATCH')
                             <div class="mb-1">
                                 <label for="nama" class="form-label">Nama</label>
-                                <input type="text" class="form-control" id="nama" value="rafi" readonly>
+                                <input type="text" class="form-control" id="nama" value="{{ $kamar->pemesanan->nama }}" readonly>
                             </div>
                             <div class="mb-1">
                                 <label for="email" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="email" value="rafi@mail" readonly>
+                                <input type="email" class="form-control" id="email" value="{{ $kamar->pemesanan->email }}" readonly>
                             </div>
                             <div class="mb-1">
                                 <label for="noHp" class="form-label">No Handphone</label>
-                                <input type="tel" class="form-control" id="noHp" value="087812121212" readonly>
+                                <input type="tel" class="form-control" id="noHp" value="{{ $kamar->pemesanan->no_hp }}" readonly>
                             </div>
                             <div class="mb-1">
                                 <label for="nik" class="form-label">NIK</label>
-                                <input type="number" class="form-control" id="nik" value="1234123412341234" readonly>
+                                <input type="number" class="form-control" id="nik" value="{{ $kamar->pemesanan->nik }}" readonly>
                             </div>
                             <div class="mb-1">
                                 <label for="jenisKelamin" class="form-label">Jenis Kelamin</label>
-                                <input type="text" class="form-control" id="jenisKelamin" value="Pria" readonly>
+                                <input type="text" class="form-control" id="jenisKelamin" value="{{ $kamar->pemesanan->jenis_kelamin }}" readonly>
                                 </select>
                             </div>
                             <div class="mb-1">
                                 <label for="tanggalMasuk" class="form-label">Tanggal Masuk</label>
-                                <input type="date" class="form-control" id="tanggalMasuk" value="2023-11-11" readonly>
+                                <input type="date" class="form-control" id="tanggalMasuk" value="{{ $kamar->pemesanan->tanggal_masuk }}" readonly>
                             </div>
                             <div class="mb-4">
                                 <label for="jenisPembayaran" class="form-label">Nomor Kamar</label>
-                                <input type="text" class="form-control" id="nomorKamar" value="30A" readonly>
+                                <input type="text" class="form-control" id="nomorKamar" value="{{ $kamar->getKodeKamar() }}" readonly>
                             </div>
+                            @if ($errors->any())
+                                        <div class="alert alert-danger col-md-6">
+                                            <ul>
+                                                @foreach ($errors->all() as $error)
+                                                    <li>{{ $error }}</li>
+                                                @endforeach 
+                                            </ul>
+                                        </div>
+                                    @endif
+                        </form>
                         </div>
                     </div>
                 </div>
