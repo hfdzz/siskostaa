@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\ProfileKost;
 
 use App\Http\Controllers\Controller;
+use App\Models\ProfileKost\Faq; // Sesuaikan dengan model Faq yang Anda gunakan
 use Illuminate\Http\Request;
 
 class FaqController extends Controller
@@ -12,7 +13,9 @@ class FaqController extends Controller
      */
     public function index()
     {
-        //
+        // Ambil data FAQ dari model Faq dan kirim ke view
+        $faq = Faq::all();
+        return view('profile-kost-faq', compact('faq'));
     }
 
     /**
@@ -20,7 +23,8 @@ class FaqController extends Controller
      */
     public function create()
     {
-        //
+        // Tampilkan form untuk membuat FAQ baru
+        return view('profile-kost-faq.create');
     }
 
     /**
@@ -28,7 +32,17 @@ class FaqController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validasi data yang diterima dari form
+        $request->validate([
+            'pertanyaan' => 'required',
+            'jawaban' => 'required',
+        ]);
+
+        // Simpan data FAQ baru ke dalam database menggunakan model Faq
+        Faq::create($request->all());
+
+        // Redirect ke halaman FAQ index dengan pesan sukses
+        return redirect()->route('profile-kost-faq')->with('success', 'FAQ berhasil ditambahkan');
     }
 
     /**
@@ -36,7 +50,9 @@ class FaqController extends Controller
      */
     public function show(string $id)
     {
-        //
+        // Tampilkan halaman detail FAQ
+        $faqItem = Faq::findOrFail($id);
+        return view('profile-kost-faq.show', compact('faqItem'));
     }
 
     /**
@@ -44,7 +60,9 @@ class FaqController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        // Tampilkan form untuk mengedit FAQ
+        $faqItem = Faq::findOrFail($id);
+        return view('profile-kost\faq\edit', compact('faqItem'));
     }
 
     /**
@@ -52,7 +70,20 @@ class FaqController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // Validasi data yang diterima dari form
+        $request->validate([
+            'pertanyaan' => 'required',
+            'jawaban' => 'required',
+        ]);
+
+        // Ambil data FAQ yang akan diupdate
+        $faqItem = Faq::findOrFail($id);
+
+        // Update data FAQ
+        $faqItem->update($request->all());
+
+        // Redirect ke halaman FAQ index dengan pesan sukses
+        return redirect()->route('profile-kost')->with('success', 'FAQ berhasil diperbarui');
     }
 
     /**
@@ -60,6 +91,10 @@ class FaqController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        // Hapus data FAQ
+        Faq::destroy($id);
+
+        // Redirect ke halaman FAQ index dengan pesan sukses
+        return redirect()->route('profile-kost-faq')->with('success', 'FAQ berhasil dihapus');
     }
 }

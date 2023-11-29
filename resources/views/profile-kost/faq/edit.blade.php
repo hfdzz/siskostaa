@@ -18,7 +18,7 @@
                     <h4>Edit FAQ</h4>
                     <form action="{{route('profile-kost-faq.update', $faqItem->id)}}" method="POST">
                         @csrf
-                        @method('PUT')
+                        @method('PATCH')
                 
                         <div class="mb-3">
                             <label for="pertanyaan" class="form-label">Pertanyaan:</label>
@@ -27,34 +27,15 @@
                 
                         <div class="mb-3">
                             <label for="jawaban" class="form-label">Jawaban:</label>
-                            <textarea class="form-control" id="jawaban" name="jawaban" rows="3">{{$faqItem->jawaban}}</textarea>
+                            <input type="text" class="form-control" id="jawaban" name="jawaban" value="{{$faqItem->jawaban}}">
                         </div>
                 
                         <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <a href="{{route('admin-profile-kost')}}" class="btn btn-secondary">Cancel</a>
+                        <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button> -->
                     </form>
                 </div>
-                <!-- ... -->
 
-                <!-- <div class="card-body">
-                    <h4>Edit FAQ</h4>
-                    <form action="" method="POST">
-                        @csrf
-                        @method('PUT')
-
-                        <div class="mb-3">
-                            <label for="pertanyaan" class="form-label">Pertanyaan:</label>
-                            <input type="text" class="form-control" id="pertanyaan" name="pertanyaan" value="">
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="jawaban" class="form-label">Jawaban:</label>
-                            <textarea class="form-control" id="jawaban" name="jawaban" rows="3"></textarea>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
-                    </form>
-                </div> -->
             </div>
         </div>
     </div>

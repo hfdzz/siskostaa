@@ -74,9 +74,14 @@
             <div class="card-body">
               <h5 class="card-title">Tentang Kami</h5>
               <p class="card-text">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat.
+              Kost Abang Adek merupakan kosan khusus mahasiswa dengan konsep apartemen yang terletak di Jl. Pangeran Senopati Raya, Sukarame, Bandar Lampung. Lokasi kost ini sangat strategis, dekat dengan kampus, masjid, toko swalayan, rumah makan, laundry, dan penyedia layanan lainnya yang dibutukan oleh penghuni.
+              <br/><br/>
+              Kalau Anda mencari kosan yang nyaman, aman, tentram, dan asri : Kost Abang Adek solusinya!
               </p>
+
+              <!-- <p class="card-text">
+              Kalau Anda mencari kosan yang nyaman, aman, tentram, dan asri : Kost Abang Adek solusinya!
+              </p> -->
               <br /><br /><br />
               <!-- <a href="#" class="btn btn-primary" style="background-color: #84545a">Selengkapnya</a> -->
             </div>
@@ -91,8 +96,9 @@
           <div class="card-body">
             <h5 class="card-title">Fasilitas Kami</h5>
             <p class="card-text">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat.
+            Kami memberikan fasilitas terbaik untuk setiap kamar yang akan dihuni. Setiap kamar kami menggunakan lantai granit dan menggunakan plafon PVC.
+            <br/><br/>
+            Ada pula fasilitas yang dapat dinikmati bersama seperti WiFi, Ruang Belajar, Kantin, Parkiran Luas, dll.
             </p>
             <!-- <a href="#" class="btn btn-primary" style="background-color: #84545a">Selengkapnya</a> -->
           </div>
