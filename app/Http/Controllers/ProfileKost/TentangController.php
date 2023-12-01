@@ -47,7 +47,7 @@ class TentangController extends Controller
     /**
      * Update the resource in storage.
      */
-    public function update(Request $request, Tentang $tentang)
+    public function update(Request $request)
     {
         // admin update
         $request->validate([
@@ -55,18 +55,22 @@ class TentangController extends Controller
             'foto' => 'nullable|image|mimes:jpg,jpeg,png|max:5120',
         ]);
 
-        Tentang::first()->update([
+        $tentang = Tentang::first();
+
+        $tentang->update([
             'deskripsi_tentang' => $request->deskripsi,
         ]);
 
         if ($request->hasFile('foto')) {
-            try {
-                Storage::disk('public')->delete($tentang->foto_tentang);
-            } catch (\Throwable $th) {
-                throw $th;
+            if($tentang->foto_tentang != null){
+                try {
+                    Storage::disk('public')->delete($tentang->foto_tentang);
+                } catch (\Throwable $th) {
+                    throw $th;
+                }
             }
 
-            Tentang::first()->update([
+            $tentang->update([
                 'foto_tentang' => $request->file('foto')->store('profile-kost', 'public'),
             ]);
         }

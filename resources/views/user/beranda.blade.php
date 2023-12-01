@@ -67,16 +67,16 @@
       <div class="card mt-4" style="width: 70rem">
         <div class="row no-gutters">
           <div class="col-md-4">
-            
             <img src="{{$tentang->foto_tentang}}" class="card-img-top" alt="Gambar" />
           </div>
           <div class="col-md-8">
             <div class="card-body">
               <h5 class="card-title">Tentang Kami</h5>
               <p class="card-text">
-              Kost Abang Adek merupakan kosan khusus mahasiswa dengan konsep apartemen yang terletak di Jl. Pangeran Senopati Raya, Sukarame, Bandar Lampung. Lokasi kost ini sangat strategis, dekat dengan kampus, masjid, toko swalayan, rumah makan, laundry, dan penyedia layanan lainnya yang dibutukan oleh penghuni.
+              {{-- Kost Abang Adek merupakan kosan khusus mahasiswa dengan konsep apartemen yang terletak di Jl. Pangeran Senopati Raya, Sukarame, Bandar Lampung. Lokasi kost ini sangat strategis, dekat dengan kampus, masjid, toko swalayan, rumah makan, laundry, dan penyedia layanan lainnya yang dibutukan oleh penghuni.
               <br/><br/>
-              Kalau Anda mencari kosan yang nyaman, aman, tentram, dan asri : Kost Abang Adek solusinya!
+              Kalau Anda mencari kosan yang nyaman, aman, tentram, dan asri : Kost Abang Adek solusinya! --}}
+              {{$tentang->deskripsi_tentang}}
               </p>
 
               <!-- <p class="card-text">
@@ -108,7 +108,7 @@
           <div class="my-3 d-flex justify-content-center flex-wrap">
             @foreach ($fasilitas as $item)
             <div class="card mx-3 my-1" style="width: 7rem; height: 7rem">
-              <img src="{{asset('storage/'.$item->foto_fasilitas)}}" class="card-img-top m-auto" style="width: 2rem" alt="..." />
+              <img src="{{$item->foto_fasilitas}}" class="card-img-top m-auto" style="width: 2rem" alt="..." />
               <div class="card-body m-auto text-center">
                 <p class="card-text" style="font-size: 10px">{{$item->deskripsi_fasilitas}}</p>
               </div>

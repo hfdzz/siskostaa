@@ -15,7 +15,7 @@
             </div>
             <div class="card-body">
                 <p class="card-text">{{$tentang->deskripsi_tentang}}</p>
-                <img src="{{asset('storage/'.$tentang->foto_tentang)}}" alt="" class="img-fluid" width="100px" height="100px">
+                <img src="{{$tentang->foto_tentang}}" alt="" class="img-fluid" width="100px" height="100px">
                 <a href="{{route('profile-kost-tentang.edit')}}" class="btn btn-primary">Edit</a>
             </div>
         </div>
@@ -38,7 +38,7 @@
                         @foreach ($fasilitas as $item)
                             <tr>
                                 <td>{{$item->deskripsi_fasilitas}}</td>
-                                <td><img src="{{asset('storage/'.$item->foto_fasilitas)}}" alt="" class="img-fluid" width="100px" height="100px"></td>
+                                <td><img src="{{$item->foto_fasilitas}}" alt="" class="img-fluid" width="100px" height="100px"></td>
                                 <td>
                                     <!-- <div class="d-grid gap-2 d-md-flex justify-content-md-end"> -->
                                         <a href="{{route('profile-kost-fasilitas.edit', $item->id)}}" class="btn btn-primary">Edit</a>

@@ -19,7 +19,7 @@ class FasilitasFactory extends Factory
         return [
             // one to three words in a sentence
             'deskripsi_fasilitas' => $this->faker->sentence($nbWords = 2, $variableNbWords = true),
-            'foto_fasilitas' => '../Assets/default_img/placeholder_fasilitas.png',
+            'foto_fasilitas' => null,
         ];
     }
 }

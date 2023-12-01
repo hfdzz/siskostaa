@@ -15,4 +15,12 @@ class Tentang extends Model
         'foto_tentang',
         'deskripsi_tentang',
     ];
+
+    public function getFotoTentangAttribute($value)
+    {
+        if ($value) {
+            return asset('storage/' . $value);
+        }
+        return asset('Assets/default_img/default_tentang.png');
+    }
 }
