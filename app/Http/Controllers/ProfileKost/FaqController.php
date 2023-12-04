@@ -83,7 +83,7 @@ class FaqController extends Controller
         $faqItem->update($request->all());
 
         // Redirect ke halaman FAQ index dengan pesan sukses
-        return redirect()->route('profile-kost')->with('success', 'FAQ berhasil diperbarui');
+        return redirect()->route('admin-profile-kost')->with('success', 'FAQ berhasil diperbarui');
     }
 
     /**
