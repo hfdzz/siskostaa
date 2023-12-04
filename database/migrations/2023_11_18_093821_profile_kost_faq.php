@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('profile_kost_faq', function (Blueprint $table) {
             $table->id();
-            $table->string('pertanyaan');
-            $table->string('jawaban');
+            $table->mediumText('pertanyaan');
+            $table->mediumText('jawaban');
             $table->timestamps();
         });
     }

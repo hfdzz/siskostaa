@@ -76,7 +76,7 @@
               {{-- Kost Abang Adek merupakan kosan khusus mahasiswa dengan konsep apartemen yang terletak di Jl. Pangeran Senopati Raya, Sukarame, Bandar Lampung. Lokasi kost ini sangat strategis, dekat dengan kampus, masjid, toko swalayan, rumah makan, laundry, dan penyedia layanan lainnya yang dibutukan oleh penghuni.
               <br/><br/>
               Kalau Anda mencari kosan yang nyaman, aman, tentram, dan asri : Kost Abang Adek solusinya! --}}
-              {{$tentang->deskripsi_tentang}}
+              {!! nl2br(e($tentang->deskripsi_tentang)) !!}
               </p>
 
               <!-- <p class="card-text">
