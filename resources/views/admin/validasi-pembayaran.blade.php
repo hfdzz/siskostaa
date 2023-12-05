@@ -146,6 +146,10 @@
                                     <input type="text" class="form-control" id="jenisPembayaran" value="{{ $tagihan->pemesanan->getJenisPembayaranText() }}" readonly>
                                 </div>
                                 <div class="mb-3">
+                                    <label for="jenis_kamar" class="form-label">Jenis Kamar</label>
+                                    <input type="text" class="form-control" id="jenis_kamar" value="{{ $tagihan->pemesanan->jenis_kamar }}" readonly>
+                                </div>
+                                <div class="mb-3">
                                     <label for="buktiPembayaran" class="form-label">Bukti Pembayaran</label>
                                     <div class="mb-3">
                                         <img src="{{ asset('storage/' . $tagihan->bukti_pembayaran) }}" alt="" width="100" class="img-thumbnail">

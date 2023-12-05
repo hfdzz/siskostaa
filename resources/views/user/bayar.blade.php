@@ -102,9 +102,9 @@
         <div class="modal-body text-center" style="margin-top: 70px">
           <p class="font-weight-bold">Silahkan Lakukan Pembayaran</p>
           <p class="font-weight-bold">Ke Nomor Rekening Ini:</p>
-          <p class="font-weight-bold" style="margin-top: 70px">BNI xxxxxxxxxxxxxx</p>
+          <p class="font-weight-bold" style="margin-top: 70px">Mandiri 114-00-1023333-9</p>
           <p class="font-weight-bold">Atas Nama:</p>
-          <p class="font-weight-bold">Syafrial</p>
+          <p class="font-weight-bold">Ir Syafrial</p>
         </div>
         <form action={{ route('bayar') }} method="POST" enctype="multipart/form-data">
           @csrf

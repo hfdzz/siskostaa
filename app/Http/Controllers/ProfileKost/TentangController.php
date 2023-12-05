@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\ProfileKost\Tentang;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class TentangController extends Controller
 {
@@ -49,6 +50,15 @@ class TentangController extends Controller
      */
     public function update(Request $request)
     {
+        // $validator = Validator::make($request->all(), [
+        //     'deskripsi' => 'max:255',
+        //     // tambahkan aturan validasi lainnya jika diperlukan
+        // ]);
+    
+        // if ($validator->fails()) {
+        //     return redirect()->back()->withErrors($validator)->withInput();
+        // }
+
         // admin update
         $request->validate([
             'deskripsi' => 'required|string',
