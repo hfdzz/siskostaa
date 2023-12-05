@@ -121,8 +121,10 @@
               <td>7.000.000</td>
               <td>30A</td>
               <td>
-                <button type="button" class="btn btn-primary" id="perpanjanganBtn">Perpanjang Kos</button>
-                <button type="button" class="btn btn-primary"id="tidakPerpanjanganBtn">Tidak Perpanjang Kos</button>
+                <a href="/pesan" class="btn btn-primary" id="perpanjanganBtn">Perpanjang Kos</a>
+                <a href="" class="btn btn-danger" id="tidakPerpanjanganBtn">Tidak Perpanjang Kos</a>
+                <!-- <button type="button" class="btn btn-primary" id="perpanjanganBtn">Perpanjang Kos</button>
+                <button type="button" class="btn btn-primary"id="tidakPerpanjanganBtn">Tidak Perpanjang Kos</button> -->
               </td>
               
             </tr>
