@@ -21,6 +21,7 @@ class Tagihan extends Model
         'menunggu_validasi' => '1',
         'ditolak' => '2',
         'selesai' => '3',
+        'kadaluarsa' => '4'
     ];
     
     public static $text_status = [
@@ -28,6 +29,7 @@ class Tagihan extends Model
         '1' => 'Menunggu Validasi',
         '2' => 'Ditolak',
         '3' => 'Selesai',
+        '4' => 'Kadaluarsa'
     ];
 
     protected $fillable = [
@@ -36,14 +38,6 @@ class Tagihan extends Model
         'bukti_pembayaran',
         'pemesanan_id',
     ];
-
-    // tanggal keluar from pemesanan->tanggal_masuk + 1 year
-    public function getTanggalKeluarAttribute()
-    {
-        $tanggal_masuk = $this->pemesanan->tanggal_masuk;
-        $tanggal_keluar = date('Y-m-d', strtotime('+1 year', strtotime($tanggal_masuk)));
-        return $tanggal_keluar;
-    }
 
     public function pemesanan()
     {

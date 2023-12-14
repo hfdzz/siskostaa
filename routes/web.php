@@ -58,12 +58,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/bayar', [TagihanController::class, 'bayar']);
 
     //Perpanjangan
-    Route::get('/perpanjangan', function () {
-        return view('user.perpanjangan');
-    })->name('perpanjangan');
-    
-    // laravel Example
-    Route::get('/dashboard', function () {return view('dashboard');})->name('dashboard');
+    Route::get('/perpanjangan', [TagihanController::class, 'getPerpanjangan'])->name('perpanjangan');
 });
 
 // Admin routes with 'can:admin' middleware

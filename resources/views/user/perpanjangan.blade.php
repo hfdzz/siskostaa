@@ -125,17 +125,27 @@
                 <a href="" class="btn btn-danger" id="tidakPerpanjanganBtn">Tidak Perpanjang Kos</a>
                 <!-- <button type="button" class="btn btn-primary" id="perpanjanganBtn">Perpanjang Kos</button>
                 <button type="button" class="btn btn-primary"id="tidakPerpanjanganBtn">Tidak Perpanjang Kos</button> -->
-              </td>
-              
-              <td>{{ $pemesanan -> nama }}</td>
-              <td>{{ $pemesanan -> tanggal_masuk }}</td>
-              <td>{{ $pemesanan -> tanggal_keluar }}</td>
-              <td>{{ $pemesanan -> total_tagihan }}</td>
-              <td>{{ $pemesanan -> nomor_kamar }}</td>
-              <td>
-                <button type="button" class="btn btn-primary" id="perpanjanganBtn">Perpanjang Kos</button>
-                <button type="button" class="btn btn-primary"id="tidakPerpanjanganBtn">Tidak Perpanjang Kos</button>
-              </td>
+              </td> --}}
+
+              {{-- check if pemesanan exist --}}
+
+              @if($pemesanan)
+      
+                <td>{{ $pemesanan -> nama }}</td>
+                <td>{{ $pemesanan -> tanggal_masuk }}</td>
+                <td>{{ $pemesanan -> tanggal_keluar }}</td>
+                <td>{{ $pemesanan -> total_tagihan }}</td>
+                <td>{{ $pemesanan -> nomor_kamar }}</td>
+                <td>
+                  <button type="button" class="btn btn-primary" id="perpanjanganBtn">Perpanjang Kos</button>
+                  <button type="button" class="btn btn-primary"id="tidakPerpanjanganBtn">Tidak Perpanjang Kos</button>
+                </td>
+
+              @else
+
+                <td colspan="6" align="center">Tidak ada data</td>
+
+              @endif
 
             </tr>
           </tbody>

@@ -12,6 +12,7 @@ class Pemesanan extends Model
         'menunggu_pembayaran' => '1',
         'ditolak' => '2',
         'selesai' => '3',
+        'kadaluarsa' => '4'
     ];
 
     public static $text_status = [
@@ -19,6 +20,7 @@ class Pemesanan extends Model
         '1' => 'Menunggu Pembayaran',
         '2' => 'Ditolak',
         '3' => 'Selesai',
+        '4' => 'Kadaluarsa'
     ];
 
     use HasFactory;
@@ -86,6 +88,15 @@ class Pemesanan extends Model
     public function getJenisKelaminText()
     {
         return $this->jenis_kelamin == 'L' ? 'Laki-laki' : 'Perempuan';
+    }
+
+    // tanggal keluar from pemesanan->tanggal_masuk + 1 year
+    public function getTanggalKeluarAttribute()
+    {
+        // $tanggal_masuk = $this->pemesanan->tanggal_masuk;
+        // $tanggal_keluar = date('Y-m-d', strtotime('+1 year', strtotime($tanggal_masuk)));
+        // return $tanggal_keluar;
+        return date('Y-m-d', strtotime('+1 year', strtotime($this->tanggal_masuk))); 
     }
 
 }

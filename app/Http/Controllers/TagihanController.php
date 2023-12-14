@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pemesanan;
 use App\Models\Tagihan;
 
 use Illuminate\Http\Request;
@@ -70,6 +71,68 @@ class TagihanController extends Controller
         $tagihan->save();
 
         return redirect()->route('tagihan');
+    }
+
+    public function getPerpanjangan()
+    {
+        // get user's active pemesanan (status = '3' && tanggal_masuk + 1 year > now())
+        /** @var \App\Models\User $user **/
+        $user = auth()->user();
+        $pemesanan = $user->pemesanan()->where('status', '3')->where('tanggal_masuk', '>', now()->subYear())->first();
+
+        // dd($pemesanan);
+        
+        return view('user.perpanjangan', ['pemesanan' => $pemesanan]);
+    }
+
+    public function perpanjang(Request $request)
+    {
+        // craete new pemesanan with same data as current (active) pemesanan
+        /** @var \App\Models\User $user **/
+        $user = auth()->user();
+        $pemesanan = $user->pemesanan()->where('status', '3')->where('tanggal_masuk', '>', now()->subYear())->first();
+        $new_pemesanan = Pemesanan::create([
+            'nama' => $pemesanan->nama,
+            'email' => $pemesanan->email,
+            'no_hp' => $pemesanan->no_hp,
+            'perguruan_tinggi' => $pemesanan->perguruan_tinggi,
+            'nik' => $pemesanan->nik,
+            'jenis_kelamin' => $pemesanan->jenis_kelamin,
+            'tanggal_masuk' => $pemesanan->tanggal_masuk,
+            'jenis_kamar' => $pemesanan->jenis_kamar,
+            'jenis_pembayaran' => $pemesanan->jenis_pembayaran,
+            'status' => '0',
+            'nomor_kamar' => $pemesanan->nomor_kamar,
+            'keterangan' => null,
+            'total_tagihan' => $pemesanan->total_tagihan,
+            'user_id' => $pemesanan->user_id,
+        ]);
+        $new_pemesanan->save();
+
+        return redirect()->route('perpanjangan');
+    }
+
+    public function tidakPerpanjang()
+    {
+        // set current user's kamar status_available to '1'
+        /** @var \App\Models\User $user **/
+        $user = auth()->user();
+
+        /** @var \App\Models\Pemesanan $pemesanan **/
+        $pemesanan = $user->pemesanan()->where('status', '3')->where('tanggal_masuk', '>', now()->subYear())->first();
+
+        $kamar = $pemesanan->getKamar();
+
+        $kamar->status_available = '1';
+
+        $kamar->save();
+
+        // set current user's pemesanan status to '4'
+        $pemesanan->status = '4';
+
+        $pemesanan->save();
+        
+        return redirect()->route('perpanjangan');
     }
 
 }
