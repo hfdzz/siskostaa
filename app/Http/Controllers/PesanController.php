@@ -29,6 +29,11 @@ class PesanController extends Controller
             'jenis_pembayaran' => 'required|string|in:penuh,dp',
         ]);
 
+        // check if tanggal_masuk is not in the past
+        if (strtotime($request->input('tanggal_masuk')) < strtotime(date('Y-m-d'))) {
+            return redirect()->route('pesan')->withErrors(['Tanggal masuk tidak valid']);
+        }
+
         // check if user already logged in
         if (!auth()->check()) {
             return redirect()->route('login')->withErrors(['Silahkan login terlebih dahulu']);

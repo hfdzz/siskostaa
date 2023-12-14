@@ -115,7 +115,7 @@
           </thead>
           <tbody>
             <tr>
-              <td>rafi</td>
+              {{-- <td>rafi</td>
               <td>2023-09-11</td>
               <td>2024-09-11</td>
               <td>7.000.000</td>
@@ -127,6 +127,16 @@
                 <button type="button" class="btn btn-primary"id="tidakPerpanjanganBtn">Tidak Perpanjang Kos</button> -->
               </td>
               
+              <td>{{ $pemesanan -> nama }}</td>
+              <td>{{ $pemesanan -> tanggal_masuk }}</td>
+              <td>{{ $pemesanan -> tanggal_keluar }}</td>
+              <td>{{ $pemesanan -> total_tagihan }}</td>
+              <td>{{ $pemesanan -> nomor_kamar }}</td>
+              <td>
+                <button type="button" class="btn btn-primary" id="perpanjanganBtn">Perpanjang Kos</button>
+                <button type="button" class="btn btn-primary"id="tidakPerpanjanganBtn">Tidak Perpanjang Kos</button>
+              </td>
+
             </tr>
           </tbody>
         </table>
