@@ -11,11 +11,9 @@ class FaqController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): never
     {
-        // Ambil data FAQ dari model Faq dan kirim ke view
-        $faq = Faq::all();
-        return view('profile-kost-faq', compact('faq'));
+        abort(404);
     }
 
     /**
@@ -24,7 +22,7 @@ class FaqController extends Controller
     public function create()
     {
         // Tampilkan form untuk membuat FAQ baru
-        return view('profile-kost-faq.create');
+        return view('profile-kost.faq.create');
     }
 
     /**
@@ -42,17 +40,15 @@ class FaqController extends Controller
         Faq::create($request->all());
 
         // Redirect ke halaman FAQ index dengan pesan sukses
-        return redirect()->route('profile-kost-faq')->with('success', 'FAQ berhasil ditambahkan');
+        return redirect()->route('admin-profile-kost')->with('success', 'FAQ berhasil ditambahkan');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $id): never
     {
-        // Tampilkan halaman detail FAQ
-        $faqItem = Faq::findOrFail($id);
-        return view('profile-kost-faq.show', compact('faqItem'));
+        abort(404);
     }
 
     /**
@@ -62,7 +58,7 @@ class FaqController extends Controller
     {
         // Tampilkan form untuk mengedit FAQ
         $faqItem = Faq::findOrFail($id);
-        return view('profile-kost\faq\edit', compact('faqItem'));
+        return view('profile-kost.faq.edit', compact('faqItem'));
     }
 
     /**
@@ -95,6 +91,6 @@ class FaqController extends Controller
         Faq::destroy($id);
 
         // Redirect ke halaman FAQ index dengan pesan sukses
-        return redirect()->route('profile-kost-faq')->with('success', 'FAQ berhasil dihapus');
+        return redirect()->route('admin-profile-kost')->with('success', 'FAQ berhasil dihapus');
     }
 }
