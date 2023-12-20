@@ -232,9 +232,11 @@
 
     <div class="mt-3 d-flex justify-content-center">
       <div class="card mt-4" style="width: 60rem; background-color: #ffcdba; border-radius: 40px">
-        <h3 class="title text-center"><span style="color: #84545a">Lokasi</span>Kami</h3>
+        <h3 class="title text-center"><span style="color: #84545a">Lokasi </span>Kami</h3>
         <div class="card-body d-flex justify-content-center">
-          <img src="./Assets/Lokasi.png" class="card-img-top" style="width: 50rem; height: 25rem" alt="..." />
+          {{-- <img src="./Assets/Lokasi.png" class="card-img-top" style="width: 50rem; height: 25rem" alt="..." /> --}}
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2702.7761244913254!2d105.30607087271142!3d-5.361433283348481!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e40c54fedfc75c9%3A0x12212e77a5b9bd4b!2sKosan%20Abang%20Adek!5e0!3m2!1sen!2sid!4v1703090498619!5m2!1sen!2sid" 
+          width="600" height="450" style="border: solid #84545a 2px;border-radius:10px" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
       </div>
     </div>

@@ -21,7 +21,7 @@ class DefaultSeeder extends Seeder
             "foto_tentang"=>null
         ]);
 
-        // Fasilitas Kost\
+        // Fasilitas Kost
         \App\Models\ProfileKost\Fasilitas::factory()->create([
             'deskripsi_fasilitas'=>'Kamar Fully Furnished',
             'foto_fasilitas'=>null
@@ -64,6 +64,14 @@ class DefaultSeeder extends Seeder
             'password' => bcrypt('password'),
         ]);
 
+        // Test User
+         \App\Models\User::factory()->create([
+            'nama' => 'test',
+            'email' => 'test@test.com',
+            'is_admin' => '0',
+            'password' => bcrypt('password'),
+        ]);
+        
         // faq
         \App\Models\ProfileKost\Faq::factory()->create([
             "pertanyaan"=>"Apakah masyarakat umum bisa menempati kost ini?",
@@ -94,6 +102,52 @@ class DefaultSeeder extends Seeder
             "pertanyaan"=>"Bisa bayar DP terlebih dahulu?",
             "jawaban"=>"Bisa, kami menerima pembayaran DP untuk memesan kamar. Dan setelahnya akan diberi tenggat waktu pelunasannya."
         ]);
+
+
+        
+        /**
+         * 50 kamar with kode_gedung A
+         */
+        \App\Models\Kamar::factory()->count(50)->sequence(
+            function ($sequence) {
+                $kode_gedung = 'A';
+                $last_kamar = \App\Models\Kamar::where('kode_gedung', $kode_gedung)->orderBy('nomor_kamar', 'desc')->first();
+                $next_nomor_kamar = $last_kamar ? $last_kamar->nomor_kamar + 1 + $sequence->index : 1 + $sequence->index;
+                return [
+                    'nomor_kamar' => $next_nomor_kamar,
+                    'kode_gedung' => $kode_gedung,
+                ];
+            }
+        )->create();
+        /**
+         * 50 kamar with kode_gedung B
+         */
+        \App\Models\Kamar::factory()->count(50)->sequence(
+            function ($sequence) {
+                $kode_gedung = 'B';
+                $last_kamar = \App\Models\Kamar::where('kode_gedung', $kode_gedung)->orderBy('nomor_kamar', 'desc')->first();
+                $next_nomor_kamar = $last_kamar ? $last_kamar->nomor_kamar + 1 + $sequence->index : 1 + $sequence->index;
+                return [
+                    'nomor_kamar' => $next_nomor_kamar,
+                    'kode_gedung' => $kode_gedung,
+                ];
+            }
+        )->create();
+        /**
+         * 50 kamar with kode_gedung C
+         */
+        \App\Models\Kamar::factory()->count(50)->sequence(
+            function ($sequence) {
+                $kode_gedung = 'C';
+                $last_kamar = \App\Models\Kamar::where('kode_gedung', $kode_gedung)->orderBy('nomor_kamar', 'desc')->first();
+                $next_nomor_kamar = $last_kamar ? $last_kamar->nomor_kamar + 1 + $sequence->index : 1 + $sequence->index;
+                return [
+                    'nomor_kamar' => $next_nomor_kamar,
+                    'kode_gedung' => $kode_gedung,
+                ];
+            }
+        )->create();
+
 
     }
 }
