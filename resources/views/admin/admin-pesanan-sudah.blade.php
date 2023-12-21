@@ -133,7 +133,7 @@
                                         <th scope="col">Jenis Kelamin</th>
                                         <th scope="col">Tanggal Masuk</th>
                                         <th scope="col">Jenis Pembayaran</th>
-                                        <th scope="col">Aksi</th>
+                                        {{-- <th scope="col">Aksi</th> --}}
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -147,10 +147,10 @@
                                         <td>{{ $item->jenis_kelamin }}</td>
                                         <td>{{ $item->tanggal_masuk }}</td>
                                         <td>{{ $item->jenis_pembayaran }}</td>
-                                        <td>
+                                        {{-- <td>
                                             <a >Validasi</a>
                                             <a >Tidak Validasi</a>
-                                        </td>
+                                        </td> --}}
                                     </tr>
                                     @endforeach
                                 </tbody>

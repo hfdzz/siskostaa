@@ -133,7 +133,7 @@
                                         <th scope="col">Tanggal Masuk</th>
                                         <th scope="col">Jenis Pembayaran</th>
                                         <th scope="col">Bukti Pembayaran</th>
-                                        <th scope="col">Aksi</th>
+                                        {{-- <th scope="col">Aksi</th> --}}
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -173,10 +173,10 @@
                                             </button>
                                         </td>
                                         <!-- <td><img src="{{ asset('storage/' . $item->bukti_pembayaran) }}" alt="" width="100"></td> -->
-                                        <td>
+                                        {{-- <td>
                                             <a href="/validasi-pembayaran/{{ $item->id }}" class="btn btn-primary">Validasi</a>
                                             <a href="/tidak-validasi-pembayaran/{{ $item->id }}" class="btn btn-danger">Tidak Validasi</a>
-                                        </td>
+                                        </td> --}}
                                     </tr>
                                     @endforeach
                                 </tbody>
