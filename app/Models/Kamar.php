@@ -16,6 +16,7 @@ class Kamar extends Model
         'kode_gedung',
         'jenis_kamar',
         'pemesanan_id',
+        'status_available',
     ];
 
     public function pemesanan()
