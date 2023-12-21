@@ -106,9 +106,10 @@
                         <h5 class="modal-title" id="modalAddFAQLabel">Add FAQ</h5>
                         <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body">
-                        <!-- Form for adding FAQ -->
-                        <form id="faqForm">
+                    <form id="faqForm" action="{{route('profile-kost-faq.store')}}" method="POST">
+                        @csrf
+                        <div class="modal-body">
+                            <!-- Form for adding FAQ -->
                             <div class="form-group">
                                 <label for="pertanyaan">Pertanyaan:</label>
                                 <input type="text" class="form-control" id="pertanyaan" name="pertanyaan" required>
@@ -117,12 +118,12 @@
                                 <label for="jawaban">Jawaban:</label>
                                 <textarea class="form-control" id="jawaban" name="jawaban" rows="3" required></textarea>
                             </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-primary" onclick="submitFAQ()">Submit</button>
-                    </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
