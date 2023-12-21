@@ -18,11 +18,19 @@ class PenghuniController extends Controller
     {
         $entries = $request->input('entries', 10);
         $filter = $request->input('filter');
-        $kamar = Kamar::whereNotNull('pemesanan_id')->paginate($entries);
+        $kamar = Kamar::whereNotNull('pemesanan_id')
+        ->whereHas('pemesanan', function($query) {
+            $query->where('status', Pemesanan::$kode_status['selesai']);
+        })
+        ->paginate($entries);
         
         if ($filter) {
             // filter by tagihan's pemesanan's nama, email, no_hp, jenis_kelamin, tanggal_masuk, jenis_pembayaran
-            $kamar = Kamar::whereNotNull('pemesanan_id')->whereHas('pemesanan', function($query) use ($filter) {
+            $kamar = Kamar::whereNotNull('pemesanan_id')
+            ->whereHas('pemesanan', function($query) {
+                $query->where('status', Pemesanan::$kode_status['selesai']);
+            })
+            ->whereHas('pemesanan', function($query) use ($filter) {
                 $query->where('nama', 'like', "%$filter%")->orWhere('email', 'like', "%$filter%")->orWhere('no_hp', 'like', "%$filter%")->orWhere('jenis_kelamin', 'like', "%$filter%")->orWhere('tanggal_masuk', 'like', "%$filter%")->orWhere('jenis_pembayaran', 'like', "%$filter%");
             })->paginate($entries);
         }
