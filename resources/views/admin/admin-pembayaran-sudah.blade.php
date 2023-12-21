@@ -76,12 +76,9 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle second-text fw-bold" href="#" id="navbarDropdown"
                                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fas fa-user me-2"></i>
-                                <span>Admin</span>
+                                <i class="fas fa-user me-2"></i>Admin
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Profile</a></li>
-                                <li><a class="dropdown-item" href="#">Settings</a></li>
                                 <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             @csrf
@@ -98,20 +95,30 @@
                 <div class="row g-3 my-2">
                     <div class="row my-5">
                     <div class="col-12 mb-3 text-end">
-                            <div class="datatable-dropdown d-inline-block me-3">
+                            <div class="datatable-dropdown d-inline-block me-5">
                                     <label class="m-0">
-                                        <select class="datatable-selector">
-                                            <option value="5">5</option>
+                                        <select class="datatable-selector" onchange="window.location.href='{{route('admin-pesanan')}}?entries=' + this.value;">
+                                            {{-- <option value="5">5</option>
                                             <option value="10" selected="">10</option>
                                             <option value="15">15</option>
                                             <option value="20">20</option>
-                                            <option value="25">25</option>
+                                            <option value="25">25</option> --}}
+                                            {{-- option from 5 t0 25 (step:+5) with loop --}}
+                                            @for ($i = 5; $i <= 25; $i+=5)
+                                                <option value="{{ $i }}" {{ ($entries == $i) ? 'selected' : '' }}>{{ $i }}</option>
+                                            @endfor
                                         </select> entries per page
                                     </label>
                                 </div>
-                                <div class="datatable-search d-inline-block">
-                                    <input class="datatable-input form-control rounded-pill" placeholder="Search..." type="search" title="Search within table">
-                                </div>
+
+                                <form class="datatable-search d-inline-block ms-auto me-2 ">
+                                    <div class="datatable-search d-inline-block"> 
+                                        <div class="input-group">
+                                            <input class="datatable-input form-control rounded-pill" placeholder="Search..." type="search" title="Search within table">
+                                            <button class="btn btn-primary rounded-pill" type="button"><i class="fas fa-search"></i></button>
+                                        </div>
+                                    </div>
+                                </form>                  
                             </div>
                         <div class="col">
                             <table class="table bg-white rounded shadow-sm  table-hover datatable">
@@ -130,8 +137,8 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
+                                    {{-- <tr>
+                                        <th scope="row">3</th>
                                         <td>rafi</td>
                                         <td>rafi@mail</td>
                                         <td>087812121212</td>
@@ -140,34 +147,66 @@
                                         <td>2023-11-11</td>
                                         <td>Penuh</td>
                                         <td>
-                                            <img src="assets/tf1.jpg" alt="" width="100">
-                                            <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#gambarModal">
+                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#gambarModal{{ $item->id }}">
                                                 Lihat Gambar
-                                            </button> -->
+                                            </button>
                                         </td>
-                                        <td>divalidasi</td>
+                                        <!-- <td><img src="assets/tf1.jpg" alt="" width="100"></td> -->
+                                        <td>
+                                          <button type="button" class="btn btn-primary validasiBtn">Validasi</button>
+                                          <button type="button" class="btn btn-danger tidakvalidasiBtn">Tidak Validasi</button>
+                                        </td>
+                                    </tr> --}}
+                                    @foreach ($tagihan as $item)
+                                    <tr>
+                                        <td>{{ $loop->iteration + $tagihan->firstItem() - 1 }}</td>
+                                        <td>{{ $item->pemesanan->nama }}</td>
+                                        <td>{{ $item->pemesanan->email }}</td>
+                                        <td>{{ $item->pemesanan->no_hp }}</td>
+                                        <td>{{ $item->pemesanan->nik }}</td>
+                                        <td>{{ $item->pemesanan->jenis_kelamin }}</td>
+                                        <td>{{ $item->pemesanan->tanggal_Masuk }}</td>
+                                        <td>{{ $item->pemesanan->jenis_pembayaran }}</td>
+                                        <td>
+                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#gambarModal{{ $item->id }}">
+                                                Lihat Gambar
+                                            </button>
+                                        </td>
+                                        <!-- <td><img src="{{ asset('storage/' . $item->bukti_pembayaran) }}" alt="" width="100"></td> -->
+                                        <td>
+                                            <a href="/validasi-pembayaran/{{ $item->id }}" class="btn btn-primary">Validasi</a>
+                                            <a href="/tidak-validasi-pembayaran/{{ $item->id }}" class="btn btn-danger">Tidak Validasi</a>
+                                        </td>
                                     </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
 
+                            <!-- Modal -->
+                            @foreach ($tagihan as $item)
+                            <div class="modal fade" id="gambarModal{{ $item->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Bukti Pembayaran</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body text-center">
+                                            <img src="{{ asset('storage/' . $item->bukti_pembayaran) }}" alt="Bukti Pembayaran" class="img-fluid">
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+
                             <div class="d-flex justify-content-between align-items-center mt-2">
-                                    <div class="datatable-info">Showing 1 to 1 of 1 entries</div>
-                                    <nav class="datatable-pagination">
-                                        <ul class="datatable-pagination-list">
-                                            <li class="datatable-pagination-list-item datatable-hidden datatable-disabled">
-                                                <button data-page="1" class="datatable-pagination-list-item-link" aria-label="Page 1">‹</button>
-                                            </li>
-                                            <li class="datatable-pagination-list-item datatable-active">
-                                                <button data-page="1" class="datatable-pagination-list-item-link" aria-label="Page 1">1</button>
-                                            </li>
-                                            <!-- <li class="datatable-pagination-list-item">
-                                                <button data-page="2" class="datatable-pagination-list-item-link" aria-label="Page 2">2</button>
-                                            </li> -->
-                                            <li class="datatable-pagination-list-item">
-                                                <button data-page="2" class="datatable-pagination-list-item-link" aria-label="Page 2">›</button>
-                                            </li>
-                                        </ul>
-                                    </nav>
+                                <div class="datatable-info">
+                                    Showing {{ $tagihan->firstItem() }} to {{ $tagihan->lastItem() }} of {{ $tagihan->total() }} entries
+                                </div>
+                                    {{ $tagihan->links() }}
                                 </div>
                             </div>                            
                         </div>
@@ -177,24 +216,6 @@
             </div>
         </div>
     </div>
-        <!-- Modal -->
-        <!-- <div class="modal fade" id="gambarModal" tabindex="-1" aria-labelledby="gambarModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-sm">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="gambarModalLabel">Bukti Pembayaran</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body"> -->
-                        <!-- Isi modal dengan gambar -->
-                        <!-- <img src="assets/tf1.jpg" alt="" class="img-fluid">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                    </div>
-                </div>
-            </div>
-        </div> -->
     <!-- /#page-content-wrapper -->
     </div>
 
@@ -207,6 +228,32 @@
             el.classList.toggle("toggled");
         };
     </script>
+
+<script>
+    // Fungsi untuk menangani validasi
+    function handleValidasi() {
+        // Lakukan sesuatu di sini sesuai dengan kebutuhan Anda
+        window.location.href = "/validasi-pembayaran";
+    }
+    function handleTidakValidasi() {
+        // Lakukan sesuatu di sini sesuai dengan kebutuhan Anda
+        window.location.href = "/tidak-validasi-pembayaran";
+    }
+
+
+    // Menambahkan event listener pada semua elemen dengan class "validasiBtn"
+    var buttons = document.querySelectorAll('.validasiBtn');
+    buttons.forEach(function(button) {
+        button.addEventListener('click', handleValidasi);
+    });
+
+    var buttons = document.querySelectorAll('.tidakvalidasiBtn');
+    buttons.forEach(function(button) {
+        button.addEventListener('click', handleTidakValidasi);
+
+
+    });
+</script>
 
 </body>
 

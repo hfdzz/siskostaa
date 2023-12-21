@@ -50,7 +50,7 @@
 
                         <div >
                             <button type="submit" class="btn btn-primary">Simpan</button>
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <a href="{{route('admin-profile-kost')}}" class="btn btn-secondary">Cancel</a>
                         </div>
 
                         @if ($errors->any())
@@ -76,23 +76,7 @@
 </div>
 
 
-<!-- Add this modal code at the end of your HTML, just before the closing </body> tag -->
-<!-- <div class="modal fade" id="fotoModal" tabindex="-1" aria-labelledby="fotoModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="fotoModalLabel">Foto Fasilitas Preview</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <img src="{{ asset('storage/'.$fasilitas->foto_fasilitas) }}" alt="" class="img-fluid" style="max-height: 400px;">
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div> -->
+
 
 <!-- Add this modal code at the end of your HTML, just before the closing </body> tag -->
 <div class="modal fade" id="fotoModal" tabindex="-1" aria-labelledby="fotoModalLabel" aria-hidden="true">

@@ -43,7 +43,7 @@
 
                         <div>
                             <button type="submit" class="btn btn-primary">Simpan</button>
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <a href="javascript:history.go(-1);" class="btn btn-secondary">Cancel</a>
                         </div>
                     </form>
                 </div>

@@ -63,7 +63,7 @@
                 <h4>FAQ</h4>
             </div>
             <div class="card-body">
-                <table class="table">
+                <table id="faqTable" class="table">
                     <thead>
                         <tr>
                             <th>Pertanyaan</th>
@@ -82,7 +82,6 @@
                                         <form action="{{route('profile-kost-faq.destroy', $item->id)}}" method="POST" style="display:inline-block;">
                                             @csrf
                                             @method('DELETE')
-
                                             <button type="submit" class="btn btn-danger">Hapus</button>
                                         </form>
                                     </div>
@@ -91,7 +90,40 @@
                         @endforeach
                     </tbody>
                 </table>
-                <a href="{{route('profile-kost-faq.create')}}" class="btn btn-success">Add</a>
+        
+                <button class="btn btn-success" data-toggle="modal" data-target="#modalAddFAQ">
+                    Add
+                </button>
+            </div>
+        </div>
+
+
+        <!-- Modal for adding FAQ -->
+        <div class="modal fade" id="modalAddFAQ" tabindex="-1" role="dialog" aria-labelledby="modalAddFAQLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalAddFAQLabel">Add FAQ</h5>
+                        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Form for adding FAQ -->
+                        <form id="faqForm">
+                            <div class="form-group">
+                                <label for="pertanyaan">Pertanyaan:</label>
+                                <input type="text" class="form-control" id="pertanyaan" name="pertanyaan" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="jawaban">Jawaban:</label>
+                                <textarea class="form-control" id="jawaban" name="jawaban" rows="3" required></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-primary" onclick="submitFAQ()">Submit</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -110,6 +142,19 @@
         $("#myModal").modal();
     });
 </script>
+
+<script>
+    // Show the modal when the "Tambah FAQ Kos" button is clicked
+    $("#tambahFAQModal").on("show.bs.modal", function (e) {
+        // Reset form if needed
+        // $("#formFAQ")[0].reset();
+        // Clear preview image if needed
+        // $("#img-foto-modal").attr("src", "");
+    });
+</script>
+
+
+
 
 <script>
         var el = document.getElementById("wrapper");

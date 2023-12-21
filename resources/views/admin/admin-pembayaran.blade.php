@@ -79,9 +79,7 @@
                                 <i class="fas fa-user me-2"></i>Admin
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Profile</a></li>
-                                <li><a class="dropdown-item" href="#">Settings</a></li>
-<li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                                <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             @csrf
                                         </form>        
@@ -99,12 +97,16 @@
                     <div class="col-12 mb-3 text-end">
                             <div class="datatable-dropdown d-inline-block me-5">
                                     <label class="m-0">
-                                        <select class="datatable-selector">
-                                            <option value="5">5</option>
+                                        <select class="datatable-selector" onchange="window.location.href='{{route('admin-pesanan')}}?entries=' + this.value;">
+                                            {{-- <option value="5">5</option>
                                             <option value="10" selected="">10</option>
                                             <option value="15">15</option>
                                             <option value="20">20</option>
-                                            <option value="25">25</option>
+                                            <option value="25">25</option> --}}
+                                            {{-- option from 5 t0 25 (step:+5) with loop --}}
+                                            @for ($i = 5; $i <= 25; $i+=5)
+                                                <option value="{{ $i }}" {{ ($entries == $i) ? 'selected' : '' }}>{{ $i }}</option>
+                                            @endfor
                                         </select> entries per page
                                     </label>
                                 </div>
@@ -116,8 +118,7 @@
                                             <button class="btn btn-primary rounded-pill" type="button"><i class="fas fa-search"></i></button>
                                         </div>
                                     </div>
-                                </form>
-                                                                 
+                                </form>                  
                             </div>
                         <div class="col">
                             <table class="table bg-white rounded shadow-sm  table-hover datatable">

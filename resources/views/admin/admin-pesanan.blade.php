@@ -79,8 +79,7 @@
                                 <i class="fas fa-user me-2"></i>Admin
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Profile</a></li>
-                                <li><a class="dropdown-item" href="#">Settings</a></li>
+                                
                                 <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             @csrf
@@ -96,8 +95,9 @@
             <div class="container-fluid px-4">
                 <div class="row g-3 my-2">
                     <div class="row my-5">
-                    <div class="col-12 mb-3 text-end">
-                            <div class="datatable-dropdown d-inline-block me-3">
+                            <div class="col-12 mb-3 text-end">
+
+                                <div class="datatable-dropdown d-inline-block me-3">
                                     <label class="m-0">
                                         <select class="datatable-selector" onchange="window.location.href='{{route('admin-pesanan')}}?entries=' + this.value;">
                                             {{-- <option value="5">5</option>
@@ -111,9 +111,15 @@
                                             @endfor
                                         </select> entries per page
                                     </label>
-                                </div>
-                                <div class="datatable-search d-inline-block">
-                                    <input class="datatable-input form-control rounded-pill" placeholder="Search..." type="search" title="Search within table">
+                                    
+                                    <form class="datatable-search d-inline-block ms-auto me-2 ">
+                                        <div class="datatable-search d-inline-block"> 
+                                            <div class="input-group">
+                                                <input class="datatable-input form-control rounded-pill" placeholder="Search..." type="search" title="Search within table">
+                                                <button class="btn btn-primary rounded-pill" type="button"><i class="fas fa-search"></i></button>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         <div class="col">

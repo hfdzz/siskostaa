@@ -76,13 +76,11 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle second-text fw-bold" href="#" id="navbarDropdown"
                                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fas fa-user me-2"></i>
-                                <span>Admin</span>
+                                <i class="fas fa-user me-2"></i>Admin
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Profile</a></li>
-                                <li><a class="dropdown-item" href="#">Settings</a></li>
-<li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                                
+                                <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             @csrf
                                         </form>        
@@ -100,24 +98,34 @@
                     <div class="col-12 mb-3 text-end">
                             <div class="datatable-dropdown d-inline-block me-3">
                                     <label class="m-0">
-                                        <select class="datatable-selector">
-                                            <option value="5">5</option>
+                                        <select class="datatable-selector" onchange="window.location.href='{{route('admin-pesanan')}}?entries=' + this.value;">
+                                            {{-- <option value="5">5</option>
                                             <option value="10" selected="">10</option>
                                             <option value="15">15</option>
                                             <option value="20">20</option>
-                                            <option value="25">25</option>
+                                            <option value="25">25</option> --}}
+                                            {{-- option from 5 t0 25 (step:+5) with loop --}}
+                                            @for ($i = 5; $i <= 25; $i+=5)
+                                                <option value="{{ $i }}" {{ ($entries == $i) ? 'selected' : '' }}>{{ $i }}</option>
+                                            @endfor
                                         </select> entries per page
                                     </label>
-                                </div>
-                                <div class="datatable-search d-inline-block">
-                                    <input class="datatable-input form-control rounded-pill" placeholder="Search..." type="search" title="Search within table">
+
+                                    <form class="datatable-search d-inline-block ms-auto me-2 ">
+                                        <div class="datatable-search d-inline-block"> 
+                                            <div class="input-group">
+                                                <input class="datatable-input form-control rounded-pill" placeholder="Search..." type="search" title="Search within table">
+                                                <button class="btn btn-primary rounded-pill" type="button"><i class="fas fa-search"></i></button>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         <div class="col">
                             <table class="table bg-white rounded shadow-sm  table-hover datatable">
                                 <thead>
                                     <tr>
-                                        <th scope="col" width="50">#</th>
+                                        <th scope="col" width="50">#</th>   
                                         <th scope="col">Nama</th>
                                         <th scope="col">Email</th>
                                         <th scope="col">No Handphone</th>
@@ -129,23 +137,33 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach ($pesanan as $item)
                                     <tr>
-                                        <th scope="row">1</th>
-                                        <td>rafi</td>
-                                        <td>rafi@mail</td>
-                                        <td>087812121212</td>
-                                        <td>1234123412341234</td>
-                                        <td>Pria</td>
-                                        <td>2023-11-11</td>
-                                        <td>Penuh</td>
-                                        <td>Divalidasi</td>
+                                        <td>{{ $loop->iteration + $pesanan->firstItem() - 1 }}</td>
+                                        <td>{{ $item->nama }}</td>
+                                        <td>{{ $item->email }}</td>
+                                        <td>{{ $item->no_hp }}</td>
+                                        <td>{{ $item->nik }}</td>
+                                        <td>{{ $item->jenis_kelamin }}</td>
+                                        <td>{{ $item->tanggal_masuk }}</td>
+                                        <td>{{ $item->jenis_pembayaran }}</td>
+                                        <td>
+                                            <a >Validasi</a>
+                                            <a >Tidak Validasi</a>
+                                        </td>
                                     </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
 
+                            <div>
+                            </div>
                             <div class="d-flex justify-content-between align-items-center mt-2">
-                                    <div class="datatable-info">Showing 1 to  of 1 entries</div>
-                                    <nav class="datatable-pagination">
+                                <div class="datatable-info">
+                                    Showing {{ $pesanan->firstItem() }} to {{ $pesanan->lastItem() }} of {{ $pesanan->total() }} entries
+                                </div>
+                                    {{ $pesanan->links() }}
+                                    {{-- <nav class="datatable-pagination">
                                         <ul class="datatable-pagination-list">
                                             <li class="datatable-pagination-list-item datatable-hidden datatable-disabled">
                                                 <button data-page="1" class="datatable-pagination-list-item-link" aria-label="Page 1">‹</button>
@@ -160,7 +178,7 @@
                                                 <button data-page="2" class="datatable-pagination-list-item-link" aria-label="Page 2">›</button>
                                             </li>
                                         </ul>
-                                    </nav>
+                                    </nav> --}}
                                 </div>
                             </div>                            
                         </div>
@@ -183,31 +201,7 @@
         };
     </script>
 
-<!-- <script>
-    // Fungsi untuk menangani validasi
-    function handleValidasi() {
-        // Lakukan sesuatu di sini sesuai dengan kebutuhan Anda
-        window.location.href = "/validasi-pesanan";
-    }
-    function handleTidakValidasi() {
-        // Lakukan sesuatu di sini sesuai dengan kebutuhan Anda
-        window.location.href = "/tidak-validasi-pesanan";
-    }
 
-
-    // Menambahkan event listener pada semua elemen dengan class "validasiBtn"
-    var buttons = document.querySelectorAll('.validasiBtn');
-    buttons.forEach(function(button) {
-        button.addEventListener('click', handleValidasi);
-    });
-
-    var buttons = document.querySelectorAll('.tidakvalidasiBtn');
-    buttons.forEach(function(button) {
-        button.addEventListener('click', handleTidakValidasi);
-
-
-    });
-</script> -->
 
 </body>
 
