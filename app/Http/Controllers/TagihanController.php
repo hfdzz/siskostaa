@@ -79,10 +79,16 @@ class TagihanController extends Controller
         /** @var \App\Models\User $user **/
         $user = auth()->user();
         $pemesanan = $user->pemesanan()->where('status', '3')->where('tanggal_masuk', '>', now()->subYear())->first();
+        // check if user has active pemesanan
+        $has_active_pemesanan = false;
+        $active_pemesanan = $user->pemesanan()->where('status', '0')->orWhere('status', '1')->first();
+        if ($active_pemesanan) {
+            $has_active_pemesanan = true;
+        }
 
         // dd($pemesanan);
         
-        return view('user.perpanjangan', ['pemesanan' => $pemesanan]);
+        return view('user.perpanjangan', ['pemesanan' => $pemesanan, 'has_active_pemesanan' => $has_active_pemesanan]);
     }
 
     public function perpanjang(Request $request)
@@ -98,7 +104,8 @@ class TagihanController extends Controller
             'perguruan_tinggi' => $pemesanan->perguruan_tinggi,
             'nik' => $pemesanan->nik,
             'jenis_kelamin' => $pemesanan->jenis_kelamin,
-            'tanggal_masuk' => $pemesanan->tanggal_masuk,
+            // tanggal_masuk = TanggalKeluar
+            'tanggal_masuk' => $pemesanan->tanggal_keluar,
             'jenis_kamar' => $pemesanan->jenis_kamar,
             'jenis_pembayaran' => $pemesanan->jenis_pembayaran,
             'status' => '0',
@@ -108,6 +115,11 @@ class TagihanController extends Controller
             'user_id' => $pemesanan->user_id,
         ]);
         $new_pemesanan->save();
+
+        // update kamar pemesanan 'pemesanan_id' to new pemesanan
+        $kamar = $pemesanan->getKamar();
+        $kamar->pemesanan_id = $new_pemesanan->id;
+        $kamar->save();
 
         return redirect()->route('perpanjangan');
     }

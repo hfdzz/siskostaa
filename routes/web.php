@@ -59,6 +59,8 @@ Route::middleware('auth')->group(function () {
 
     //Perpanjangan
     Route::get('/perpanjangan', [TagihanController::class, 'getPerpanjangan'])->name('perpanjangan');
+    Route::get('/perpanjang_kamar', [TagihanController::class, 'perpanjang'])->name('perpanjang_kamar');
+    Route::get('/tidak_perpanjang_kamar', [TagihanController::class, 'tidakPerpanjang'])->name('tidak_perpanjang_kamar');
 });
 
 // Admin routes with 'can:admin' middleware
