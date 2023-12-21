@@ -108,9 +108,12 @@
           <div class="my-3 d-flex justify-content-center flex-wrap">
             @foreach ($fasilitas as $item)
             <div class="card mx-3 my-1" style="width: 7rem; height: 7rem">
-              <img src="{{$item->foto_fasilitas}}" class="card-img-top m-auto" style="width: 2rem" alt="..." />
+              <img src="{{$item->foto_fasilitas}}" class="card-img-top m-auto" style="width: 4rem" alt="{{$item->nama_fasilitas}}" />
+              <div class="">
+                <p class="card-text text-center" style="font-size: 10px">{{$item->deskripsi_fasilitas}}</p>
+              {{-- <img src="{{$item->foto_fasilitas}}" class="card-img-top m-auto" style="width: 2rem" alt="..." />
               <div class="card-body m-auto text-center">
-                <p class="card-text" style="font-size: 10px">{{$item->deskripsi_fasilitas}}</p>
+                <p class="card-text" style="font-size: 10px">{{$item->deskripsi_fasilitas}}</p> --}}
               </div>
             </div>
             @endforeach
