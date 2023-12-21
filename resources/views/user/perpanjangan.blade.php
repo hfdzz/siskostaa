@@ -137,8 +137,12 @@
                 <td>{{ $pemesanan -> total_tagihan }}</td>
                 <td>{{ $pemesanan -> nomor_kamar }}</td>
                 <td>
-                  <button type="button" class="btn btn-primary" id="perpanjanganBtn">Perpanjang Kos</button>
-                  <button type="button" class="btn btn-primary"id="tidakPerpanjanganBtn">Tidak Perpanjang Kos</button>
+                  @if (!$has_active_pemesanan)
+                    <button type="button" class="btn btn-primary" id="perpanjanganBtn">Perpanjang Kos</button>
+                    <button type="button" class="btn btn-primary"id="tidakPerpanjanganBtn">Tidak Perpanjang Kos</button>
+                  @else
+                    <p>Anda sudah memiliki pemesanan aktif</p>
+                  @endif
                 </td>
 
               @else
@@ -194,14 +198,15 @@
   const perpanjanganBtn = document.getElementById("perpanjanganBtn");
   perpanjanganBtn.addEventListener("click", function() {
     if (confirm("Apakah Anda yakin untuk melanjutkan perpanjangan kos?")) {
-      alert("Anda memilih YA. Silahkan Melanjutkan Pembayaran");
+      // alert("Anda memilih YA. Silahkan Melanjutkan Pembayaran");
+      window.location.href = "/perpanjang_kamar";
     } 
   });
 
   const tidakPerpanjanganBtn = document.getElementById("tidakPerpanjanganBtn");
   tidakPerpanjanganBtn.addEventListener("click", function() {
     if (confirm("Apakah Anda yakin untuk tidak melanjutkan perpanjangan kos?")) {
-      alert("Anda memilih YA.");
+      window.location.href = "/tidak_perpanjang_kamar";
     } 
   });
 </script>
