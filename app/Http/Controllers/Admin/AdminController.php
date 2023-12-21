@@ -18,7 +18,11 @@ class AdminController extends Controller
         $tagihan = Tagihan::where('status', Pemesanan::$kode_status['menunggu_validasi'])->count();
         
         // get occupied kamar count (pemesasan_id != null)
-        $kamar = Kamar::where('pemesanan_id', '!=', null)->count();
+        $temp = Kamar::where('pemesanan_id', '!=', null)->count();
+        // get all pemesanan from $temp['pemesanan_id']
+        $kamar = Pemesanan::whereIn('id', function($query) {
+            $query->select('pemesanan_id')->from('kamar');
+        })->where('status', Pemesanan::$kode_status['selesai'])->count();
 
         return view('admin.admin', [
             'pemesanan' => $pemesanan,
